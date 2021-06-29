@@ -1,7 +1,7 @@
 # grupo_3_proyectoDH
 Proyecto integrador DH grupo 3
 
-El sitio está orientado a la venta de productos relacionados con la práctica de Snowboard, Skateboard y Surf. 
+El sitio está orientado a la venta de productos relacionados con la práctica de Snowboard, Skateboard, Wakeboard y Surf. 
 
 Nuestro público objetivo está dentro del rango de 10 a 50 años.
 
@@ -19,3 +19,6 @@ Nos ha inspirado el layout de la página web, la distribución de las fotos y la
 
 - https://www.sport-conrad.com/
 El menú desplegable muestra todos los subapartados dentro de la categoría. Además, cada uno viene representado con una foto representativa. Esto nos ha gustado mucho pues como usuario es muy fácil navegar por la página
+
+- https://www.backcountry.com/
+Creemos que esta website tiene unas transiciones muy buenas al hacer hover sobre las fotos o cómo aparece el contenido en los items del menú de navegación
