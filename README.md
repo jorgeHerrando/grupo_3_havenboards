@@ -22,3 +22,6 @@ El menú desplegable muestra todos los subapartados dentro de la categoría. Ade
 
 - https://www.backcountry.com/
 Creemos que esta website tiene unas transiciones muy buenas al hacer hover sobre las fotos o cómo aparece el contenido en los items del menú de navegación
+
+- https://camposcoffee.com/
+El diseño de la muestra de artículos y el diseño del carrito nos parece muy bien diseñado. Los espacios blancos están muy bien aprovechados y esto lo hace atractivo, sencillo, y fácil de navegar a partes iguales. 
