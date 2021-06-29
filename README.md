@@ -1,4 +1,4 @@
-# gurpo_3_proyectoDH
+# grupo_3_proyectoDH
 Proyecto integrador DH grupo 3
 
 El sitio está orientado a la venta de productos relacionados con la práctica de Snowboard, Skateboard y Surf. 
