@@ -26,5 +26,5 @@ Creemos que esta website tiene unas transiciones muy buenas al hacer hover sobre
 - https://camposcoffee.com/
 El diseño de la muestra de artículos y el diseño del carrito nos parece muy bien diseñado. Los espacios blancos están muy bien aprovechados y esto lo hace atractivo, sencillo, y fácil de navegar a partes iguales. 
 
-- https://www.genesis.com/worldwide/en/main.html
+- https://www.wattwiller.com/
 Nos intriga y atrapa mucho la manera que tiene esta website de mostrar el contenido a medida que vamos haciendo scroll sobre la misma. El dinamismo de la página es algo excelente.
