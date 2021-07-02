@@ -1,14 +1,15 @@
-# grupo_3_proyectoDH
+# grupo_3_havenboards
 Proyecto integrador DH grupo 3
 
 El sitio está orientado a la venta de productos relacionados con la práctica de Snowboard, Skateboard, Wakeboard y Surf. 
+Asímismo, todo el material relacionado como guantes, gorros y todo tipo de accesorios también se pueden encontrar en nuestro e-commerce.
 
-Nuestro público objetivo está dentro del rango de 10 a 50 años.
+Nuestro público objetivo son hombres y mujeres entre los 10 y 55 años de edad. Personas aficionadas al deporte extremo y aventureros. Amantes del mar y de la montaña.
 
 Pablo Sarrión -> Actualmente trabajo en una industria que vende artículos de librería. 
 Soy diseñador multimedial.
 
-Jorge Herrando -> Soy graduado en óptica y optometría, aunque llevo ya muchos años sin ejercer. Viajé mucho por el mundo y ahora me quiero dedicar a la programación web, algo en lo que he estado interesado por mucho tiempo, pero nunca me puse serio con esto.
+Jorge Herrando -> Soy graduado en óptica y optometría, aunque llevo ya muchos años sin ejercer. Viajé mucho por el mundo y ahora me quiero dedicar al desarrollo web, algo en lo que he estado interesado por mucho tiempo, pero nunca me puse serio con esto.
 
 Florencia Ocampo -> Estudié diseño de indumentaria, y tengo mi propia línea de trajes de baño.
 
