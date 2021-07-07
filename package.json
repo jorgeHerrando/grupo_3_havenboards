@@ -1,0 +1,22 @@
+{
+  "name": "grupo_3_havenboards",
+  "version": "1.0.0",
+  "description": "Proyecto integrador DH grupo 3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgeHerrando/grupo_3_havenboards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgeHerrando/grupo_3_havenboards/issues"
+  },
+  "homepage": "https://github.com/jorgeHerrando/grupo_3_havenboards#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
