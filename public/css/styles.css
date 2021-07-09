@@ -1,3 +1,6 @@
+/* GENERAL RULES */
+
+/* quitamos margen y padding y aplicamos box-sizing */
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -5,7 +8,271 @@
   padding: 0;
 }
 
+/* quitamos por defecto todos los colores y líneas de los a */
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/*  */
+/*  */
+/* HEADER */
+
+/* sólo para diferenciarlo */
+header {
+  background-color: lightseagreen;
+}
+
+/* este header solo se verá en tablets y desktop */
+.header-account {
+  padding: 7px 5%;
+  border-bottom: 0.5px solid lightgray;
+  display: none;
+}
+
+/* hacemos la lista flex para situar li horizontalmente */
+.header-account ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+/* añadimos margen entre li */
+.header-account ul li {
+  margin-left: 1rem;
+}
+
+/* hacemos flex en el top header */
+/* con justify ponemos los items separados */
+/* con align los centramos verticalmente */
+header div.top-header {
+  padding: 10px 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* tamaño del logo */
+div.top-header div.logo {
+  width: 60px;
+  margin-right: 1rem;
+}
+/* que la img ocupe el 100% */
+div.top-header div.logo img {
+  width: 100%;
+}
+
+/* hacemos flex en los iconos y los ponemos a la dcha con flex-end */
+div.top-header div.header-icons {
+  max-width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: flex-end;
+  margin-left: 1rem;
+}
+
+/* hacemos flex la subcontainer para dejar espacio entr estos y barra menú */
+div.top-header div.header-icons div.header-icons-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+/* aquí va el icon menú */
+div.top-header div.header-icons div.header-icon-menu {
+  min-width: 50px;
+  text-align: right;
+}
+
+/* tamaño y formato de iconos */
+div.top-header div.header-icons i {
+  font-size: 1.5rem;
+}
+div.top-header div.header-icons div.header-icons-action i {
+  padding: 0 3px;
+}
+div.top-header div.header-icons div.header-icons-action a:last-child i {
+  padding-right: 0;
+}
+
+/* damos formato a la barra de búsqueda */
+header form.form-search {
+  width: 50%;
+  margin: auto 0;
+  display: none;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+header form.form-search input {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa */
+header form.form-search div.input-search {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+}
+/* posicionamos i */
+header form.form-search div.input-search i {
+  position: absolute;
+  color: #666666;
+  right: 3px;
+  top: 6px;
+}
+
+/* de momento no lo mostramos */
+div.header-bottom {
+  padding: 11px 0;
+  display: none;
+  width: 90%;
+  margin: 0 auto;
+}
+/* quitamos diseño de lista predeterminado */
+div.header-bottom nav ul {
+  list-style: none;
+}
+
+/* animación al hacer hover */
+div.header-bottom nav a:hover {
+  padding-bottom: 3px;
+  border-bottom: 2px solid blue;
+  color: pink;
+}
+
+/* que crezca todo lo que pueda. Aún no se muestra */
+nav.nav-desktop {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: none;
+}
+
+/* hacemos ul flex container y damos formato */
+nav.nav-desktop ul {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+nav.nav-desktop a:hover {
+  border-bottom: 2px solid blue;
+  padding-bottom: 5px;
+}
+
+/*  */
+/*  */
+/* MEDIA - QUERIES */
+/*  */
+/*  */
+/* MEDIA - QUERIES */
+
+/* para pantallas mayores que iPhone 8 Plus */
+@media (min-width: 415px) {
+  /* HEADER */
+
+  /* sacamos el icono de buscar */
+  div.header-icons a.search-icon {
+    display: none;
+  }
+  /* ponemos la barra de búsqueda */
+  header form.form-search {
+    display: block;
+  }
+}
+
+/* Para tablets y mayores */
+@media (min-width: 769px) {
+  /* HEADER */
+
+  /* mostramos la parte de arriba de tiendas y cuenta */
+  .header-account {
+    display: block;
+  }
+  /* quitamos el icono del menú desplegable */
+  div.top-header div.header-icon-menu {
+    display: none;
+  }
+
+  /* ponemos borde debajo de top-header */
+  div.top-header {
+    border-bottom: 0.5px solid lightgray;
+  }
+
+  /* enseñamos el menú por abajo */
+  div.header-bottom {
+    display: block;
+  }
+  /* y le damos formato */
+  div.header-bottom nav ul {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  /* movemos la barra de búsqueda a la dcha */
+  header form.form-search div.input-search {
+    width: 250px;
+    float: right;
+  }
+}
+
+/* Para desktop */
+@media (min-width: 1050px) {
+  /* reducimos el tamaño de la barra búsqueda para dejar hueco al nuevo menú */
+  header form.form-search {
+    width: 250px;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    margin-left: 1.5rem;
+  }
+
+  /* mostramos menú */
+  nav.nav-desktop {
+    display: block;
+    font-size: 0.95rem;
+    max-width: 645px;
+  }
+  /* ponemos margen al logo */
+  div.top-header div.logo {
+    margin-right: 1.5rem;
+  }
+
+  /* escondemos el menú anterior */
+  div.header-bottom {
+    display: none;
+  }
+  /* quitamos el borde */
+  header div.top-header {
+    border: none;
+  }
 }
