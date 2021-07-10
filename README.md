@@ -6,12 +6,17 @@ Asímismo, todo el material relacionado como guantes, gorros y todo tipo de acce
 
 Nuestro público objetivo son hombres y mujeres entre los 10 y 55 años de edad. Personas aficionadas al deporte extremo y aventureros. Amantes del mar y de la montaña.
 
+
+
+
 Pablo Sarrión -> Actualmente trabajo en una industria que vende artículos de librería. 
 Soy diseñador multimedial.
 
 Jorge Herrando -> Soy graduado en óptica y optometría, aunque llevo ya muchos años sin ejercer. Viajé mucho por el mundo y ahora me quiero dedicar al desarrollo web, algo en lo que he estado interesado por mucho tiempo, pero nunca me puse serio con esto.
 
 Florencia Ocampo -> Estudié diseño de indumentaria, y tengo mi propia línea de trajes de baño.
+
+
 
 
 5 sitios de referencia:
@@ -29,3 +34,9 @@ El diseño de la muestra de artículos y el diseño del carrito nos parece muy b
 
 - https://www.wattwiller.com/
 Nos intriga y atrapa mucho la manera que tiene esta website de mostrar el contenido a medida que vamos haciendo scroll sobre la misma. El dinamismo de la página es algo excelente.
+
+
+
+
+Link al archivo de organización de trabajo:
+https://trello.com/b/1bOfwF5Y/havenboards
