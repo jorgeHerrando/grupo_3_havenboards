@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a20967f511.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Havenboards-Shop</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-account">
+        <ul>
+          <li>
+            <a href="#"
+              >NUESTRAS TIENDAS <i class="fas fa-map-marker-alt"></i
+            ></a>
+          </li>
+          <li>
+            <a href="login"
+              >INICIAR SESIÓN <i class="fas fa-sign-in-alt"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-header">
+        <div class="logo">
+          <a href="/">
+            <img src="/images/Logo.png" alt="Logo de Havenboards" />
+          </a>
+        </div>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="#">Snowboarding</a></li>
+            <li><a href="#">Skateboarding</a></li>
+            <li><a href="#">Surf</a></li>
+            <li><a href="#">Wakeboarding</a></li>
+            <li><a href="#">Accesorios</a></li>
+            <li><a href="#">Marcas</a></li>
+          </ul>
+        </nav>
+        <form action="#" method="GET" class="form-search none">
+          <div class="input-search">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="¿Qué estás buscando?"
+            />
+            <a href="#"><i class="fa fa-search"></i></a>
+          </div>
+        </form>
+        <div class="header-icons">
+          <div class="header-icons-action">
+            <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="cart"><i class="fas fa-shopping-cart"></i></a>
+          </div>
+          <div class="header-icon-menu">
+            <a href="#"><i class="fas fa-bars"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <nav>
+          <ul>
+            <li><a href="#">Snowboarding</a></li>
+            <li><a href="#">Skateboarding</a></li>
+            <li><a href="#">Surf</a></li>
+            <li><a href="#">Wakeboarding</a></li>
+            <li><a href="#">Accesorios</a></li>
+            <li><a href="#">Marcas</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-shop">
+      <section class="shop-category">
+        <h1>Categoría</h1>
+        <article class="shop-category-picture">
+          <img
+              src="/images/560x1080_snowboarding_trick_jump_2.jpg"
+              alt="man jumping on snowboard"
+            />
+        </article>
+
+        <article class="shop-filter">
+          <button>Filtrar por</button>
+          <div class="shop-filter-select">
+            <select name="shop-filter" id="filter">
+              <option value="name">Nombre del producto</option>
+              <option value="price">Precio</option>
+              <option value="size">Talle</option>
+            </select>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <section class="logo-footer">
+        <a href="/">
+          <img src="/images/LogoWhite.png" alt="Logo de Havenboards" />
+        </a>
+      </section>
+      <section class="main-footer">
+        <nav class="nav-footer">
+          <ul class="footer-info">
+            <li><h3 href="#">INFORMACIÓN</h3></li>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Nuestros locales</a></li>
+            <li><a href="#">Envíos y devoluciones</a></li>
+          </ul>
+
+          <section class="social-footer-desktop">
+            <a href="#"
+              ><img src="/images/icons/facebook.png" alt="facebook icon"></img
+            ></a>
+            <a href="#"
+              ><img src="/images/icons/twitter.png" alt="twitter icon"
+            /></a>
+            <a href="#"
+              ><img src="/images/icons/youtube.png" alt="youtube icon"
+            /></a>
+            <a href="#"
+              ><img src="/images/icons/instagram.png" alt="instagram icon"
+            /></a>
+          </section>
+
+          <ul class="footer-menu">
+            <li><h3 href="#">HAVENBOARDS</h3></li>
+            <li><a href="#">Surf</a></li>
+            <li><a href="#">Skateboards</a></li>
+            <li><a href="#">Snowboards</a></li>
+            <li><a href="#">Wakeboards</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </nav>
+      </section>
+      <section class="social-footer">
+        <a href="#"
+          ><img src="/images/icons/facebook.png" alt="facebook icon"></img
+        ></a>
+        <a href="#"
+          ><img src="/images/icons/twitter.png" alt="twitter icon"
+        /></a>
+        <a href="#"
+          ><img src="/images/icons/youtube.png" alt="youtube icon"
+        /></a>
+        <a href="#"
+          ><img src="/images/icons/instagram.png" alt="instagram icon"
+        /></a>
+      </section>
+      <section class="subscribe-footer">
+        <form action="/" method="POST">
+          <label for="email"><p>SUSCRÍBETE</p></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder="Ingresa tu email"
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+      <section class="copyright">
+        <p>Copyright &copy 2021 - Havenboards</p>
+      </section>
+    </footer>
+  </body>
+</html>
