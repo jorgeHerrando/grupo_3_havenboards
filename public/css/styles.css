@@ -26,9 +26,9 @@ a {
 /* //////////// */
 
 /* sólo para diferenciarlo */
-header {
+/* header {
   /* background-color: lightseagreen; */
-}
+/* }  */
 
 /* este header solo se verá en tablets y desktop */
 .header-account {
@@ -191,7 +191,7 @@ main section {
 main section.top-promotion article.top-promotion-img {
   width: 100%;
   position: relative;
-  max-height: 480px;
+  /* max-height: 480px; */
 }
 /* centramos las imagenes */
 main section.top-promotion article.top-promotion-img img,
@@ -323,8 +323,8 @@ footer {
   text-align: center;
   padding-top: 1rem;
 }
-.logo-footer a {
-}
+/* .logo-footer a {
+} */
 .logo-footer img {
   width: 60px;
 }
@@ -408,9 +408,9 @@ section.social-footer-desktop {
 /*  */
 /*  */
 
-.main-shop {
-  /* padding: 5%; */
-}
+/* .main-shop {
+  padding: 5%;
+} */
 
 section.shop-category h1 {
   padding: 2% 5%;
@@ -429,7 +429,10 @@ section.shop-category article.shop-filter {
   justify-content: space-between;
 }
 section.shop-category article.shop-filter button {
-  min-width: 30%;
+  min-width: 80px;
+  max-width: 155px;
+  flex-grow: 1;
+  margin-right: 8px;
 }
 
 section.shop-category article.shop-filter div.shop-filter-select {
