@@ -13,6 +13,14 @@ a {
   color: inherit;
 }
 
+/* box-shadow para articles con clase .box-shadow */
+.article-box-shadow {
+  transition: box-shadow 0.3s;
+}
+.article-box-shadow:hover {
+  box-shadow: 0 0 11px #4abac79f;
+}
+
 /*  */
 /*  */
 /* /////////////////////////////// */
@@ -25,11 +33,6 @@ a {
 /* /// HEADER - INDEX /// */
 /* //////////// */
 
-/* sólo para diferenciarlo */
-/* header {
-  /* background-color: lightseagreen; */
-/* }  */
-
 /* este header solo se verá en tablets y desktop */
 .header-account {
   padding: 7px 5%;
@@ -37,7 +40,6 @@ a {
   display: none;
   /* background-color: #fff; */
 }
-
 /* hacemos la lista flex para situar li horizontalmente */
 .header-account ul {
   list-style: none;
@@ -50,7 +52,6 @@ a {
 .header-account ul li {
   margin-left: 1rem;
 }
-
 /* hacemos flex en el top header */
 /* con justify ponemos los items separados */
 /* con align los centramos verticalmente */
@@ -60,7 +61,6 @@ header div.top-header {
   justify-content: space-between;
   align-items: center;
 }
-
 /* tamaño del logo */
 div.top-header div.logo {
   width: 60px;
@@ -72,7 +72,6 @@ div.top-header div.logo {
 div.top-header div.logo img {
   width: 100%;
 }
-
 /* hacemos flex en los iconos y los ponemos a la dcha con flex-end */
 div.top-header div.header-icons {
   max-width: 45%;
@@ -80,18 +79,19 @@ div.top-header div.header-icons {
   justify-content: flex-end;
   margin-left: 1rem;
 }
-
 /* hacemos flex la subcontainer para dejar espacio entr estos y barra menú */
 div.top-header div.header-icons div.header-icons-action {
   display: flex;
   justify-content: flex-end;
+}
+div.top-header div.header-icons div.header-icons-action a:hover {
+  color: #fcd89d;
 }
 /* aquí va el icon menú */
 div.top-header div.header-icons div.header-icon-menu {
   min-width: 50px;
   text-align: right;
 }
-
 /* tamaño y formato de iconos */
 div.top-header div.header-icons i {
   font-size: 1.5rem;
@@ -102,7 +102,6 @@ div.top-header div.header-icons div.header-icons-action i {
 div.top-header div.header-icons div.header-icons-action a:last-child i {
   padding-right: 0;
 }
-
 /* damos formato a la barra de búsqueda */
 header form.form-search {
   width: 50%;
@@ -110,13 +109,11 @@ header form.form-search {
   display: none;
   flex-grow: 1;
 }
-
 header form.form-search input {
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
 }
-
 /* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa */
 header form.form-search div.input-search {
   position: relative;
@@ -130,7 +127,6 @@ header form.form-search div.input-search i {
   right: 3px;
   top: 6px;
 }
-
 /* de momento no lo mostramos */
 div.header-bottom {
   padding: 11px 0;
@@ -142,24 +138,20 @@ div.header-bottom {
 div.header-bottom nav ul {
   list-style: none;
 }
-
 div.header-bottom nav a {
   transition: color 200ms;
 }
-
 /* animación al hacer hover */
 div.header-bottom nav a:hover {
   padding-bottom: 3px;
   /* border-bottom: 2px solid blue; */
   color: #4abbc7;
 }
-
 /* que crezca todo lo que pueda. Aún no se muestra */
 nav.nav-desktop {
   flex-grow: 1;
   display: none;
 }
-
 /* hacemos ul flex container y damos formato */
 nav.nav-desktop ul {
   width: 100%;
@@ -169,11 +161,9 @@ nav.nav-desktop ul {
   display: flex;
   justify-content: space-between;
 }
-
 nav.nav-desktop a {
   transition: border-bottom 150ms;
 }
-
 nav.nav-desktop a:hover {
   border-bottom: 2px solid #153351;
   padding-bottom: 5px;
@@ -184,7 +174,7 @@ nav.nav-desktop a:hover {
 /* //////////// */
 
 /* que todas las secciones ocupen todo el ancho */
-main section {
+main.main-index section {
   width: 100%;
 }
 /* hacemos el contenedror de la img relative para colocar componentes encima, y le damos altura máxima */
@@ -204,25 +194,33 @@ main section.top-promotion article.top-promotion-img img {
   max-height: 480px;
   min-height: 200px;
 }
-
 /* será un elem flex cuando se vea para centrar a dentro. Se posiciona con absolute */
 main section.top-promotion article.top-promotion-img div.main-offer {
+  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50px;
+  top: 20%;
   left: 50%;
-  width: 30%;
-  max-width: 300px;
+  width: 50%;
+  min-width: 160px;
+  max-width: 380px;
   transform: translateX(-50%);
-  background-color: #666666a4;
+  background-color: #bbc2c4;
   color: #fff;
-  border-radius: 5px;
-  display: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px #000;
+  transition: all 0.3s;
+}
+main section.top-promotion article.top-promotion-img div.main-offer:hover {
+  background-color: #153351;
 }
 /* se le da padding a dicho a */
 main section.top-promotion article.top-promotion-img div.main-offer a {
-  padding: 10px 15px;
+  padding: 12px 15px 10px;
+  font-size: 1.05rem;
+  width: 100%;
+  text-align: center;
 }
 
 /* se posiciona el botón shop now en la foto principal */
@@ -232,12 +230,17 @@ main section.top-promotion article.top-promotion-img a.shop-now {
   left: 50%;
   max-width: 200px;
   transform: translateX(-50%);
-  background-color: #448c2ec9;
+  background-color: #153351;
   color: #fff;
+  transition: all 0.3s;
   border-radius: 5px;
   text-align: center;
   padding: 10px 15px;
-  display: none;
+}
+main section.top-promotion article.top-promotion-img a.shop-now:hover {
+  background-color: #fcd89d;
+  color: #000;
+  box-shadow: 0px 0px 2px #000;
 }
 
 /* le damos padding a la seccion principal */
@@ -254,6 +257,12 @@ div.main-section section.home-categories article {
   margin-bottom: 1rem;
   width: 100%;
 }
+div.main-section section.home-categories article a p {
+  margin-left: 5%;
+}
+div.main-section section.home-categories article a p:last-child {
+  padding-bottom: 1rem;
+}
 /* margen tras sales */
 main section.home-section-sales {
   margin-bottom: 1rem;
@@ -267,6 +276,14 @@ main section.home-section-sales h2.home-sales-title {
 main section.home-section-sales div.home-sales {
   display: flex;
   justify-content: space-between;
+}
+
+main section.home-section-sales div.home-sales article.home-sales-img h3,
+main section.home-section-sales div.home-sales article.home-sales-img p {
+  margin-left: 5%;
+}
+main section.home-section-sales div.home-sales article.home-sales-img p {
+  padding-bottom: 1rem;
 }
 /* dos en una línea */
 main section.home-section-sales div.home-sales article.home-sales-img {
@@ -408,21 +425,27 @@ section.social-footer-desktop {
 /*  */
 /*  */
 
-/* .main-shop {
-  padding: 5%;
-} */
-
-section.shop-category h1 {
-  padding: 2% 5%;
+section.shop-category {
+  position: relative;
 }
-
+section.shop-category h1 {
+  position: absolute;
+  top: 30px;
+  left: 8%;
+  padding: 5px 20px;
+  font-size: 1.5rem;
+  background-color: #000;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  box-shadow: 0px 0px 2px #4abbc7;
+}
 section.shop-category article.shop-category-picture {
   width: 100%;
 }
 section.shop-category article.shop-category-picture img {
   width: 100%;
 }
-
 section.shop-category article.shop-filter {
   padding: 1rem 5%;
   display: flex;
@@ -434,10 +457,170 @@ section.shop-category article.shop-filter button {
   flex-grow: 1;
   margin-right: 8px;
 }
-
 section.shop-category article.shop-filter div.shop-filter-select {
   display: flex;
   justify-content: flex-end;
+}
+section.shop-category article.shop-category-picture img {
+  max-height: 480px;
+  min-height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+section.shop-view {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0.5rem 1rem;
+}
+section.shop-view article.shop-view-img {
+  width: 50%;
+  padding: 1rem 2%;
+}
+section.shop-view article.shop-view-img img {
+  width: 100%;
+}
+section.shop-view article.shop-view-img div {
+  margin: 0 10%;
+  padding: 5px 5%;
+}
+section.shop-view article.shop-view-img div.shop-article-title {
+  border-bottom: 1px solid #bbc2c4;
+  padding-bottom: 0;
+}
+section.shop-view article.shop-view-img div.shop-article-price {
+  border-top: 1px solid #bbc2c4;
+  text-align: right;
+}
+
+section.shop-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+section.shop-more a.shop-more-button {
+  width: 200px;
+  max-width: 250px;
+  text-align: center;
+  background-color: #4abbc7;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/*  */
+/*  */
+/* /////////////////////////////// */
+/* //////////  CART  //////////// */
+/* /////////////////////////////// */
+/*  */
+/*  */
+
+main.main-cart {
+  padding: 5%;
+}
+section.cart-shopping article.cart-product-description {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #bbc2c4;
+  border-bottom: 1px solid #bbc2c4;
+  /* align-items: center; */
+}
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-img-container {
+  width: 30%;
+  max-width: 220px;
+}
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-img-container
+  img {
+  width: 100%;
+}
+
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-container {
+  width: 60%;
+  /* flex-grow: 1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-container
+  div.cart-product-top {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-container
+  div.cart-product-bottom {
+  margin-bottom: 1rem;
+}
+section.cart-shopping
+  article.cart-product-description
+  div.cart-product-container
+  div.cart-product-bottom
+  input {
+  width: 100px;
+}
+
+section.cart-shopping article.cart-product-description div.cart-trash {
+  width: 10%;
+  text-align: center;
+  margin-top: 1rem;
+}
+section.cart-shopping article.cart-product-description div.cart-trash i {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+article.cart-delivery-container {
+  margin-bottom: 1rem;
+}
+article.cart-delivery-container div.cart-delivery-pre {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+article.cart-delivery-container div.cart-delivery-pre h4:last-child {
+  width: 35%;
+}
+article.cart-delivery-container div.cart-delivery-price label {
+  display: block;
+  padding-bottom: 3px;
+}
+article.cart-delivery-container div.cart-delivery-price select {
+  width: 50%;
+  margin-right: 5px;
+}
+
+article.cart-price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+article.cart-buttons {
+  width: 90%;
+  margin: 2rem auto 0;
+}
+article.cart-buttons button {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 5px auto;
 }
 
 /*  */
@@ -499,6 +682,17 @@ section.shop-category article.shop-filter div.shop-filter-select {
   nav.nav-footer ul.footer-menu {
     text-align: right;
   }
+
+  /*  */
+  /* SHOP */
+  /*  */
+
+  section.shop-view article.shop-view-img {
+    width: 33%;
+  }
+  section.shop-category h1 {
+    font-size: 2rem;
+  }
 }
 
 /* Para tablets y mayores */
@@ -516,12 +710,10 @@ section.shop-category article.shop-filter div.shop-filter-select {
   div.top-header div.header-icon-menu {
     display: none;
   }
-
   /* ponemos borde debajo de top-header */
   div.top-header {
-    border-bottom: 0.5px solid lightgray;
+    border-bottom: 0.5px solid #bbc2c4;
   }
-
   /* enseñamos el menú por abajo */
   div.header-bottom {
     display: block;
@@ -531,7 +723,6 @@ section.shop-category article.shop-filter div.shop-filter-select {
     display: flex;
     justify-content: space-between;
   }
-
   /* movemos la barra de búsqueda a la dcha */
   header form.form-search div.input-search {
     width: 250px;
@@ -539,6 +730,9 @@ section.shop-category article.shop-filter div.shop-filter-select {
   }
 
   /* MAIN */
+  main section.top-promotion article.top-promotion-img div.main-offer a {
+    font-size: 1.2rem;
+  }
   div.main-section section.home-categories article.home-categories-img {
     width: 48%;
   }
@@ -582,6 +776,48 @@ section.shop-category article.shop-filter div.shop-filter-select {
 
   section.social-footer-desktop img {
     max-width: 30px;
+  }
+
+  /*  */
+  /* SHOP */
+  /*  */
+
+  section.shop-view article.shop-view-img {
+    width: 25%;
+  }
+
+  /*  */
+  /* CART */
+  /*  */
+  section.cart-shopping
+    article.cart-product-description
+    div.cart-product-container
+    div.cart-product-top
+    div
+    h4 {
+    font-size: 1.5rem;
+  }
+  section.cart-shopping
+    article.cart-product-description
+    div.cart-product-container
+    div.cart-product-top
+    div
+    p {
+    font-size: 1.3rem;
+  }
+  section.cart-shopping
+    article.cart-product-description
+    div.cart-product-container
+    div.cart-product-bottom
+    input {
+    width: 150px;
+  }
+  article.cart-delivery-container,
+  article.cart-delivery-container div.cart-delivery-price select,
+  article.cart-delivery-container div.cart-delivery-price button,
+  article.cart-price,
+  article.cart-buttons button {
+    font-size: 1.3rem;
   }
 }
 
