@@ -2,625 +2,883 @@
 
 /* quitamos margen y padding y aplicamos box-sizing */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* quitamos por defecto todos los colores y líneas de los a */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/*  */
-/*  */
-/* /////////////////////////////// */
-/* //////////  INDEX  //////////// */
-/* /////////////////////////////// */
-/*  */
-/*  */
-
-/* //////////// */
-/* /// HEADER - INDEX /// */
-/* //////////// */
-
-/* sólo para diferenciarlo */
-/* header {
-  /* background-color: lightseagreen; */
-/* }  */
-
-/* este header solo se verá en tablets y desktop */
-.header-account {
-  padding: 7px 5%;
-  border-bottom: 0.5px solid lightgray;
-  display: none;
-  /* background-color: #fff; */
-}
-
-/* hacemos la lista flex para situar li horizontalmente */
-.header-account ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 15px;
-  color: #888;
-}
-/* añadimos margen entre li */
-.header-account ul li {
-  margin-left: 1rem;
-}
-
-/* hacemos flex en el top header */
-/* con justify ponemos los items separados */
-/* con align los centramos verticalmente */
-header div.top-header {
-  padding: 10px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* tamaño del logo */
-div.top-header div.logo {
-  width: 60px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: 1rem;
-}
-/* que la img ocupe el 100% */
-div.top-header div.logo img {
-  width: 100%;
-}
-
-/* hacemos flex en los iconos y los ponemos a la dcha con flex-end */
-div.top-header div.header-icons {
-  max-width: 45%;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 1rem;
-}
-
-/* hacemos flex la subcontainer para dejar espacio entr estos y barra menú */
-div.top-header div.header-icons div.header-icons-action {
-  display: flex;
-  justify-content: flex-end;
-}
-/* aquí va el icon menú */
-div.top-header div.header-icons div.header-icon-menu {
-  min-width: 50px;
-  text-align: right;
-}
-
-/* tamaño y formato de iconos */
-div.top-header div.header-icons i {
-  font-size: 1.5rem;
-}
-div.top-header div.header-icons div.header-icons-action i {
-  padding: 0 3px;
-}
-div.top-header div.header-icons div.header-icons-action a:last-child i {
-  padding-right: 0;
-}
-
-/* damos formato a la barra de búsqueda */
-header form.form-search {
-  width: 50%;
-  margin: auto 0;
-  display: none;
-  flex-grow: 1;
-}
-
-header form.form-search input {
-  width: 100%;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-/* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa */
-header form.form-search div.input-search {
-  position: relative;
-  max-width: 320px;
-  margin: 0 auto;
-}
-/* posicionamos i */
-header form.form-search div.input-search i {
-  position: absolute;
-  color: #666666;
-  right: 3px;
-  top: 6px;
-}
-
-/* de momento no lo mostramos */
-div.header-bottom {
-  padding: 11px 0;
-  display: none;
-  width: 90%;
-  margin: 0 auto;
-}
-/* quitamos diseño de lista predeterminado */
-div.header-bottom nav ul {
-  list-style: none;
-}
-
-div.header-bottom nav a {
-  transition: color 200ms;
-}
-
-/* animación al hacer hover */
-div.header-bottom nav a:hover {
-  padding-bottom: 3px;
-  /* border-bottom: 2px solid blue; */
-  color: #4abbc7;
-}
-
-/* que crezca todo lo que pueda. Aún no se muestra */
-nav.nav-desktop {
-  flex-grow: 1;
-  display: none;
-}
-
-/* hacemos ul flex container y damos formato */
-nav.nav-desktop ul {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-nav.nav-desktop a {
-  transition: border-bottom 150ms;
-}
-
-nav.nav-desktop a:hover {
-  border-bottom: 2px solid #153351;
-  padding-bottom: 5px;
-}
-
-/* //////////// */
-/* /// MAIN - INDEX /// */
-/* //////////// */
-
-/* que todas las secciones ocupen todo el ancho */
-main section {
-  width: 100%;
-}
-/* hacemos el contenedror de la img relative para colocar componentes encima, y le damos altura máxima */
-main section.top-promotion article.top-promotion-img {
-  width: 100%;
-  position: relative;
-  /* max-height: 480px; */
-}
-/* centramos las imagenes */
-main section.top-promotion article.top-promotion-img img,
-main section.home-categories article.home-categories-img img {
-  width: 100%;
-  object-fit: cover;
-}
-/* altura maxmin de la imagen de arriba */
-main section.top-promotion article.top-promotion-img img {
-  max-height: 480px;
-  min-height: 200px;
-}
-
-/* será un elem flex cuando se vea para centrar a dentro. Se posiciona con absolute */
-main section.top-promotion article.top-promotion-img div.main-offer {
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  width: 30%;
-  max-width: 300px;
-  transform: translateX(-50%);
-  background-color: #666666a4;
-  color: #fff;
-  border-radius: 5px;
-  display: none;
-}
-/* se le da padding a dicho a */
-main section.top-promotion article.top-promotion-img div.main-offer a {
-  padding: 10px 15px;
-}
-
-/* se posiciona el botón shop now en la foto principal */
-main section.top-promotion article.top-promotion-img a.shop-now {
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  max-width: 200px;
-  transform: translateX(-50%);
-  background-color: #448c2ec9;
-  color: #fff;
-  border-radius: 5px;
-  text-align: center;
-  padding: 10px 15px;
-  display: none;
-}
-
-/* le damos padding a la seccion principal */
-main div.main-section {
-  padding: 0 3%;
-}
-/* centramos texto debajo de la foto princ */
-section.top-info p.top-info-p {
-  text-align: center;
-  padding: 10px 0;
-}
-/* margen entre articles */
-div.main-section section.home-categories article {
-  margin-bottom: 1rem;
-  width: 100%;
-}
-/* margen tras sales */
-main section.home-section-sales {
-  margin-bottom: 1rem;
-}
-/* título del sales */
-main section.home-section-sales h2.home-sales-title {
-  text-align: center;
-  padding-bottom: 1rem;
-}
-/* contenedor flex */
-main section.home-section-sales div.home-sales {
-  display: flex;
-  justify-content: space-between;
-}
-/* dos en una línea */
-main section.home-section-sales div.home-sales article.home-sales-img {
-  width: 48%;
-  transition: all 0.5s;
-}
-main section.home-section-sales div.home-sales article.home-sales-img:hover {
-  box-shadow: #4abbc7;
-}
-main section.home-section-sales div.home-sales article.home-sales-img3,
-main section.home-section-sales div.home-sales article.home-sales-img4 {
-  display: none;
-}
-/* para que las img no achiquen demasiado */
-main section.home-section-sales article.home-sales-img img {
-  width: 100%;
-  min-height: 180px;
-  object-fit: cover;
-}
-
-/*  */
-/* bottom info */
-section.bottom-info {
-  margin: 1rem 0;
-}
-section.bottom-info p.bottom-info-p {
-  text-align: center;
-  padding: 10px 0;
-}
-
-/* margen para el banner de abajo */
-/* main div.banner-bottom {
-  margin-top: 1rem;
-}
-
-main div.banner-bottom img {
-  width: 100%;
-} */
-
-/*  */
-/*  */
-/* FOOTER */
-/*  */
-/*  */
-
-footer {
-  padding: 0 5%;
-  background-color: #000;
-  color: #fff;
-}
-
-/* logo */
-.logo-footer {
-  text-align: center;
-  padding-top: 1rem;
-}
-/* .logo-footer a {
-} */
-.logo-footer img {
-  width: 60px;
-}
-
-/* main-section */
-.main-footer {
-  margin-top: 1rem;
-}
-
-.main-footer .nav-footer ul {
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-.main-footer .nav-footer ul.footer-menu {
-  margin-bottom: 0;
-}
-
-.main-footer .nav-footer ul li {
-  padding-bottom: 5px;
-}
-.main-footer .nav-footer ul li:last-child {
-  padding-bottom: 0;
-}
-
-.main-footer .nav-footer ul h3 {
-  margin-bottom: 5px;
-}
-
-section.social-footer-desktop {
-  display: none;
-}
-
-/* social-section */
-.social-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  margin: 1.5rem 8%;
-}
-
-.social-footer a {
-  max-width: 30px;
-}
-
-.social-footer a img {
-  width: 100%;
-  color: #fff;
-}
-
-.subscribe-footer {
-  margin-bottom: 2rem;
-}
-.subscribe-footer p {
-  padding-bottom: 5px;
-}
-.subscribe-footer input {
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: 70%;
-  max-width: 250px;
-}
-.subscribe-footer button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: #4abbc7;
-  /* color: #fff; */
-}
-
-.copyright {
-  padding-bottom: 1rem;
-}
-.copyright p {
-  text-align: center;
-}
-
-/*  */
-/*  */
-/* /////////////////////////////// */
-/* //////////  SHOP  //////////// */
-/* /////////////////////////////// */
-/*  */
-/*  */
-
-/* .main-shop {
-  padding: 5%;
-} */
-
-section.shop-category h1 {
-  padding: 2% 5%;
-}
-
-section.shop-category article.shop-category-picture {
-  width: 100%;
-}
-section.shop-category article.shop-category-picture img {
-  width: 100%;
-}
-
-section.shop-category article.shop-filter {
-  padding: 1rem 5%;
-  display: flex;
-  justify-content: space-between;
-}
-section.shop-category article.shop-filter button {
-  min-width: 80px;
-  max-width: 155px;
-  flex-grow: 1;
-  margin-right: 8px;
-}
-
-section.shop-category article.shop-filter div.shop-filter-select {
-  display: flex;
-  justify-content: flex-end;
-}
-
-/*  */
-/*  */
-/* MEDIA - QUERIES */
-/*  */
-/*  */
-
-/* para pantallas mayores que iPhone 8 Plus */
-@media (min-width: 415px) {
-  /* HEADER */
-
-  /* sacamos el icono de buscar */
-  div.header-icons a.search-icon {
-    display: none;
-  }
-  /* ponemos la barra de búsqueda */
-  header form.form-search {
-    display: block;
-  }
-
-  /* MAIN */
-  main {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
   }
-  main section.top-promotion article.top-promotion-img div.main-offer {
-    display: flex;
+  
+  /* quitamos por defecto todos los colores y líneas de los a */
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 
-  main section.top-promotion article.top-promotion-img a.shop-now {
-    display: block;
+  body{
+    font-family: 'Open Sans', sans-serif;
   }
-
-  div.main-section section.home-categories {
+  /*  */
+  /*  */
+  /* /////////////////////////////// */
+  /* //////////  INDEX  //////////// */
+  /* /////////////////////////////// */
+  /*  */
+  /*  */
+  
+  /* //////////// */
+  /* /// HEADER - INDEX /// */
+  /* //////////// */
+  
+  /* sólo para diferenciarlo */
+  /* header {
+    /* background-color: lightseagreen; */
+  /* }  */
+  
+  /* este header solo se verá en tablets y desktop */
+  .header-account {
+    padding: 7px 5%;
+    border-bottom: 0.5px solid lightgray;
+    display: none;
+    /* background-color: #fff; */
+  }
+  
+  /* hacemos la lista flex para situar li horizontalmente */
+  .header-account ul {
+    list-style: none;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 15px;
+    color: #888;
+  }
+  /* añadimos margen entre li */
+  .header-account ul li {
+    margin-left: 1rem;
+  }
+  
+  /* hacemos flex en el top header */
+  /* con justify ponemos los items separados */
+  /* con align los centramos verticalmente */
+  header div.top-header {
+    padding: 10px 5%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
   }
-  div.main-section section.home-categories article.home-categories-img {
-    width: 48%;
+  
+  /* tamaño del logo */
+  div.top-header div.logo {
+    width: 60px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 1rem;
   }
-  div.main-section section.home-categories article.home-categories-img3 {
+  /* que la img ocupe el 100% */
+  div.top-header div.logo img {
     width: 100%;
   }
-  /* sales */
-  main section.home-section-sales div.home-sales article.home-sales-img {
-    width: 30%;
-  }
-  main section.home-section-sales div.home-sales article.home-sales-img3 {
-    display: block;
-  }
-
-  /* FOOTER */
-  nav.nav-footer {
+  
+  /* hacemos flex en los iconos y los ponemos a la dcha con flex-end */
+  div.top-header div.header-icons {
+    max-width: 45%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin-left: 1rem;
   }
-
-  nav.nav-footer ul.footer-menu {
+  
+  /* hacemos flex la subcontainer para dejar espacio entr estos y barra menú */
+  div.top-header div.header-icons div.header-icons-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+  /* aquí va el icon menú */
+  div.top-header div.header-icons div.header-icon-menu {
+    min-width: 50px;
     text-align: right;
   }
-}
-
-/* Para tablets y mayores */
-@media (min-width: 769px) {
-  /* HEADER */
-
-  /* mostramos la parte de arriba de tiendas y cuenta */
-  .header-account {
-    display: block;
+  
+  /* tamaño y formato de iconos */
+  div.top-header div.header-icons i {
+    font-size: 1.5rem;
   }
-  div.top-header {
-    background-color: #4abbc7;
+  div.top-header div.header-icons div.header-icons-action i {
+    padding: 0 3px;
   }
-  /* quitamos el icono del menú desplegable */
-  div.top-header div.header-icon-menu {
+  div.top-header div.header-icons div.header-icons-action a:last-child i {
+    padding-right: 0;
+  }
+  
+  /* damos formato a la barra de búsqueda */
+  header form.form-search {
+    width: 50%;
+    margin: auto 0;
+    display: none;
+    flex-grow: 1;
+  }
+  
+  header form.form-search input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa */
+  header form.form-search div.input-search {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  /* posicionamos i */
+  header form.form-search div.input-search i {
+    position: absolute;
+    color: #666666;
+    right: 3px;
+    top: 6px;
+  }
+  
+  /* de momento no lo mostramos */
+  div.header-bottom {
+    padding: 11px 0;
+    display: none;
+    width: 90%;
+    margin: 0 auto;
+  }
+  /* quitamos diseño de lista predeterminado */
+  div.header-bottom nav ul {
+    list-style: none;
+  }
+  
+  div.header-bottom nav a {
+    transition: color 200ms;
+  }
+  
+  /* animación al hacer hover */
+  div.header-bottom nav a:hover {
+    padding-bottom: 3px;
+    /* border-bottom: 2px solid blue; */
+    color: #4abbc7;
+  }
+  
+  /* que crezca todo lo que pueda. Aún no se muestra */
+  nav.nav-desktop {
+    flex-grow: 1;
     display: none;
   }
-
-  /* ponemos borde debajo de top-header */
-  div.top-header {
-    border-bottom: 0.5px solid lightgray;
-  }
-
-  /* enseñamos el menú por abajo */
-  div.header-bottom {
-    display: block;
-  }
-  /* y le damos formato */
-  div.header-bottom nav ul {
+  
+  /* hacemos ul flex container y damos formato */
+  nav.nav-desktop ul {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
     display: flex;
     justify-content: space-between;
   }
-
-  /* movemos la barra de búsqueda a la dcha */
-  header form.form-search div.input-search {
-    width: 250px;
-    float: right;
+  
+  nav.nav-desktop a {
+    transition: border-bottom 150ms;
   }
-
-  /* MAIN */
-  div.main-section section.home-categories article.home-categories-img {
-    width: 48%;
+  
+  nav.nav-desktop a:hover {
+    border-bottom: 2px solid #153351;
+    padding-bottom: 5px;
   }
-  div.main-section section.home-categories article.home-categories-img4 {
-    order: -1;
+  
+  /* //////////// */
+  /* /// MAIN - INDEX /// */
+  /* //////////// */
+  
+  /* que todas las secciones ocupen todo el ancho */
+  main section {
+    width: 100%;
   }
-  div.main-section section.home-categories article.home-categories-img5 {
-    order: 3;
+  /* hacemos el contenedror de la img relative para colocar componentes encima, y le damos altura máxima */
+  main section.top-promotion article.top-promotion-img {
+    width: 100%;
+    position: relative;
+    /* max-height: 480px; */
   }
-  div.main-section section.home-categories article.home-categories-img1 {
-    order: 1;
+  /* centramos las imagenes */
+  main section.top-promotion article.top-promotion-img img,
+  main section.home-categories article.home-categories-img img {
+    width: 100%;
+    object-fit: cover;
   }
-  div.main-section section.home-categories article.home-categories-img3 {
-    order: 2;
+  /* altura maxmin de la imagen de arriba */
+  main section.top-promotion article.top-promotion-img img {
+    max-height: 480px;
+    min-height: 200px;
   }
-  div.main-section section.home-categories article.home-categories-img3,
-  div.main-section section.home-categories article.home-categories-img1,
-  div.main-section section.home-categories article.home-categories-img5 {
+  
+  /* será un elem flex cuando se vea para centrar a dentro. Se posiciona con absolute */
+  main section.top-promotion article.top-promotion-img div.main-offer {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    left: 50%;
     width: 30%;
-  }
-
-  /* sales */
-  main section.home-section-sales div.home-sales article.home-sales-img {
-    width: 23%;
-  }
-  main section.home-section-sales div.home-sales article.home-sales-img4 {
-    display: block;
-  }
-
-  /* FOOTER */
-  section.social-footer {
+    max-width: 300px;
+    transform: translateX(-50%);
+    background-color: #666666a4;
+    color: #fff;
+    border-radius: 5px;
     display: none;
   }
-  section.social-footer-desktop {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 40%;
+  /* se le da padding a dicho a */
+  main section.top-promotion article.top-promotion-img div.main-offer a {
+    padding: 10px 15px;
   }
-
-  section.social-footer-desktop img {
+  
+  /* se posiciona el botón shop now en la foto principal */
+  main section.top-promotion article.top-promotion-img a.shop-now {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    max-width: 200px;
+    transform: translateX(-50%);
+    background-color: #448c2ec9;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 15px;
+    display: none;
+  }
+  
+  /* le damos padding a la seccion principal */
+  main div.main-section {
+    padding: 0 3%;
+  }
+  /* centramos texto debajo de la foto princ */
+  section.top-info p.top-info-p {
+    text-align: center;
+    padding: 10px 0;
+  }
+  /* margen entre articles */
+  div.main-section section.home-categories article {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  /* margen tras sales */
+  main section.home-section-sales {
+    margin-bottom: 1rem;
+  }
+  /* título del sales */
+  main section.home-section-sales h2.home-sales-title {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  /* contenedor flex */
+  main section.home-section-sales div.home-sales {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* dos en una línea */
+  main section.home-section-sales div.home-sales article.home-sales-img {
+    width: 48%;
+    transition: all 0.5s;
+  }
+  main section.home-section-sales div.home-sales article.home-sales-img:hover {
+    box-shadow: #4abbc7;
+  }
+  main section.home-section-sales div.home-sales article.home-sales-img3,
+  main section.home-section-sales div.home-sales article.home-sales-img4 {
+    display: none;
+  }
+  /* para que las img no achiquen demasiado */
+  main section.home-section-sales article.home-sales-img img {
+    width: 100%;
+    min-height: 180px;
+    object-fit: cover;
+  }
+  
+  /*  */
+  /* bottom info */
+  section.bottom-info {
+    margin: 1rem 0;
+  }
+  section.bottom-info p.bottom-info-p {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  /* margen para el banner de abajo */
+  /* main div.banner-bottom {
+    margin-top: 1rem;
+  }
+  main div.banner-bottom img {
+    width: 100%;
+  } */
+  
+  /*  */
+  /*  */
+  /* FOOTER */
+  /*  */
+  /*  */
+  
+  footer {
+    padding: 0 5%;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* logo */
+  .logo-footer {
+    text-align: center;
+    padding-top: 1rem;
+  }
+  /* .logo-footer a {
+  } */
+  .logo-footer img {
+    width: 60px;
+  }
+  
+  /* main-section */
+  .main-footer {
+    margin-top: 1rem;
+  }
+  
+  .main-footer .nav-footer ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  .main-footer .nav-footer ul.footer-menu {
+    margin-bottom: 0;
+  }
+  
+  .main-footer .nav-footer ul li {
+    padding-bottom: 5px;
+  }
+  .main-footer .nav-footer ul li:last-child {
+    padding-bottom: 0;
+  }
+  
+  .main-footer .nav-footer ul h3 {
+    margin-bottom: 5px;
+  }
+  
+  section.social-footer-desktop {
+    display: none;
+  }
+  
+  /* social-section */
+  .social-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 1.5rem 8%;
+  }
+  
+  .social-footer a {
     max-width: 30px;
   }
-}
-
-/* Para desktop */
-@media (min-width: 1050px) {
-  /* reducimos el tamaño de la barra búsqueda para dejar hueco al nuevo menú */
-  header form.form-search {
-    width: 250px;
-    flex-grow: 0;
-    margin-left: 1.5rem;
+  
+  .social-footer a img {
+    width: 100%;
+    color: #fff;
   }
-
-  /* mostramos menú */
-  nav.nav-desktop {
-    display: block;
-    font-size: 1.05rem;
-    max-width: 645px;
+  
+  .subscribe-footer {
+    margin-bottom: 2rem;
   }
-
-  div.top-header {
-    background-color: #fff;
+  .subscribe-footer p {
+    padding-bottom: 5px;
   }
-  /* ponemos margen al logo */
-  div.top-header div.logo {
-    margin-right: 1.5rem;
+  .subscribe-footer input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 70%;
+    max-width: 250px;
   }
-
-  /* escondemos el menú anterior */
-  div.header-bottom {
-    display: none;
-  }
-  /* quitamos el borde */
-  header div.top-header {
-    border: none;
-  }
-  .header-account {
+  .subscribe-footer button {
+    padding: 5px 10px;
+    border-radius: 5px;
     background-color: #4abbc7;
+    /* color: #fff; */
   }
-  .header-account ul {
-    color: #153351;
+  
+  .copyright {
+    padding-bottom: 1rem;
   }
-}
+  .copyright p {
+    text-align: center;
+  }
+  
+  /*  */
+  /*  */
+  /* /////////////////////////////// */
+  /* //////////  SHOP  //////////// */
+  /* /////////////////////////////// */
+  /*  */
+  /*  */
+  
+  /* .main-shop {
+    padding: 5%;
+  } */
+  
+  section.shop-category h1 {
+    padding: 2% 5%;
+  }
+  
+  section.shop-category article.shop-category-picture {
+    width: 100%;
+  }
+  section.shop-category article.shop-category-picture img {
+    width: 100%;
+  }
+  
+  section.shop-category article.shop-filter {
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+  }
+  section.shop-category article.shop-filter button {
+    min-width: 80px;
+    max-width: 155px;
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+  
+  section.shop-category article.shop-filter div.shop-filter-select {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /*  */
+  /*  */
+  /* MEDIA - QUERIES */
+  /*  */
+  /*  */
+  .content{
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+  }
+  
+  .content .logo{
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  .contact-wrapper > *{
+    padding: 0.3em;
+    margin: 1em 0;
+    /*border: 2px solid #b8b8b8;*/
+  }
+  
+  .contact-form{
+    width: 100%;
+    margin: 10px auto;
+    max-width: 500px;
+  }
+  
+  .contact-form form{
+  box-shadow:1px 1px 7px 1px rgb(0 0 0 / 30%);
+  }
+  
+  .contact-form form p{
+    margin: 0;
+    padding: 0.5em;
+  }
+  
+  .contact-form form p.centrado{
+    text-align: center;
+  }
+  
+  .contact-form form button,
+  .contact-form form input,
+  .contact-form form textarea{
+    width: 100%;
+    padding: .5em;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #187991;
+    color: #000;
+  }
+  
+  .contact-form form div.block{
+    padding: 5px 10px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .contact-form form div.block input{
+    width: unset;
+  }
+  
+  .contact-form form button{
+    background: #cccccc;
+    color: #000;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+    border-radius: 5px;
+  }
+  
+  .contact-form form button:hover,
+  .contact-form form button:focus{
+    background: #afafaf;
+    color: #fff;
+    transition: background-color 0.5s ease-out;
+    cursor: pointer;
+    outline: none;
+  } 
+  
+  /* ----------------------------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------------------------- */
+  /* ----------------------------------  Detalle de Producto --------------------------------------- */
+  /* ----------------------------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------------------------- */
+    
+  
+  .small-container{
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 20px;
+  }
+  
+  .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .single-product{
+    margin-top: 20px;
+  }
+  
+  .small-img-row{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+  }
+  
+  .small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+  }
+  
+  .single-product .col-2 img{
+    padding: 0%;
+  }
+  
+  .single-product .col-2{
+    padding: 20px;
+  }
+  
+  .col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+  }
+  
+  .col-2 h1{
+    font-size: 28px;
+    line-height: 32px;
+    margin: 25px 0;
+  }
+  
+  .single-product select{
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .single-product h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ff523b;
+  }
+  
+  .single-product input:focus{
+    outline: none;
+  }
+  
+  .single-product a{
+    text-decoration: none;
+    color: #555;
+  }
+  
+  .single-product .fa{
+    color:#ff523b;
+    margin-left: 10px;
+  }
+  
+  .single-product p{
+    color: #555;
+  }
+  
+  .btn{
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+  }
+  
+  .btn:hover{
+    background: #563434;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ----------------------------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------------------------- */
+  /* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
+  /* ------------------------------------------- 415 ----------------------------------------------- */
+  /* ----------------------------------------------------------------------------------------------- */
+  
+  
+
+  
+  /* para pantallas mayores que iPhone 8 Plus */
+  @media (min-width: 415px) {
+    /* HEADER */
+  
+    /* sacamos el icono de buscar */
+    div.header-icons a.search-icon {
+      display: none;
+    }
+    /* ponemos la barra de búsqueda */
+    header form.form-search {
+      display: block;
+    }
+  
+    /* MAIN */
+    main {
+      padding: 0;
+    }
+    main section.top-promotion article.top-promotion-img div.main-offer {
+      display: flex;
+    }
+  
+    main section.top-promotion article.top-promotion-img a.shop-now {
+      display: block;
+    }
+  
+    div.main-section section.home-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    div.main-section section.home-categories article.home-categories-img {
+      width: 48%;
+    }
+    div.main-section section.home-categories article.home-categories-img3 {
+      width: 100%;
+    }
+    /* sales */
+    main section.home-section-sales div.home-sales article.home-sales-img {
+      width: 30%;
+    }
+    main section.home-section-sales div.home-sales article.home-sales-img3 {
+      display: block;
+    }
+  
+    /* FOOTER */
+    nav.nav-footer {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    nav.nav-footer ul.footer-menu {
+      text-align: right;
+    }
+  }
+  
+  
+/* ----------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+/* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
+/* ------------------------------------------- 769 ----------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+
+
+  /* Para tablets y mayores */
+  @media (min-width: 769px) {
+    /* HEADER */
+  
+    /* mostramos la parte de arriba de tiendas y cuenta */
+    .header-account {
+      display: block;
+    }
+    div.top-header {
+      background-color: #4abbc7;
+    }
+    /* quitamos el icono del menú desplegable */
+    div.top-header div.header-icon-menu {
+      display: none;
+    }
+  
+    /* ponemos borde debajo de top-header */
+    div.top-header {
+      border-bottom: 0.5px solid lightgray;
+    }
+  
+    /* enseñamos el menú por abajo */
+    div.header-bottom {
+      display: block;
+    }
+    /* y le damos formato */
+    div.header-bottom nav ul {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    /* movemos la barra de búsqueda a la dcha */
+    header form.form-search div.input-search {
+      width: 250px;
+      float: right;
+    }
+  
+    /* MAIN */
+    div.main-section section.home-categories article.home-categories-img {
+      width: 48%;
+    }
+    div.main-section section.home-categories article.home-categories-img4 {
+      order: -1;
+    }
+    div.main-section section.home-categories article.home-categories-img5 {
+      order: 3;
+    }
+    div.main-section section.home-categories article.home-categories-img1 {
+      order: 1;
+    }
+    div.main-section section.home-categories article.home-categories-img3 {
+      order: 2;
+    }
+    div.main-section section.home-categories article.home-categories-img3,
+    div.main-section section.home-categories article.home-categories-img1,
+    div.main-section section.home-categories article.home-categories-img5 {
+      width: 30%;
+    }
+  
+    /* sales */
+    main section.home-section-sales div.home-sales article.home-sales-img {
+      width: 23%;
+    }
+    main section.home-section-sales div.home-sales article.home-sales-img4 {
+      display: block;
+    }
+  
+    /* FOOTER */
+    section.social-footer {
+      display: none;
+    }
+    section.social-footer-desktop {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-grow: 1;
+      max-width: 40%;
+    }
+  
+    section.social-footer-desktop img {
+      max-width: 30px;
+    }
+  }
+ 
+  
+  
+
+/* ----------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+/* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
+/* ------------------------------------------- 1050 ---------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+
+
+  @media (min-width: 1050px) {
+    /* reducimos el tamaño de la barra búsqueda para dejar hueco al nuevo menú */
+    header form.form-search {
+      width: 250px;
+      flex-grow: 0;
+      margin-left: 1.5rem;
+    }
+  
+    /* mostramos menú */
+    nav.nav-desktop {
+      display: block;
+      font-size: 1.05rem;
+      max-width: 645px;
+    }
+  
+    div.top-header {
+      background-color: #fff;
+    }
+    /* ponemos margen al logo */
+    div.top-header div.logo {
+      margin-right: 1.5rem;
+    }
+  
+    /* escondemos el menú anterior */
+    div.header-bottom {
+      display: none;
+    }
+    /* quitamos el borde */
+    header div.top-header {
+      border: none;
+    }
+    .header-account {
+      background-color: #4abbc7;
+    }
+    .header-account ul {
+      color: #153351;
+    }
+
+
+    .contact-wrapper > *{
+        padding: 1em;
+    }
+    
+    .contact-form{
+      width: 500px;
+      margin: 20px auto;
+      min-width: inherit;
+    }
+    
+    .contact-form form p{
+      margin: 0;
+      padding: 1em;
+    }
+    
+    .contact-form form div.block{
+      width: 100%;
+    }
+
+
+
+
+  }
