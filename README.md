@@ -36,7 +36,16 @@ El diseño de la muestra de artículos y el diseño del carrito nos parece muy b
 Nos intriga y atrapa mucho la manera que tiene esta website de mostrar el contenido a medida que vamos haciendo scroll sobre la misma. El dinamismo de la página es algo excelente.
 
 
+SPRINT 2
 
-
-Link al archivo de organización de trabajo:
+- Link al archivo de organización de trabajo:
 https://trello.com/b/1bOfwF5Y/havenboards
+
+- Paleta de colores principal para nuestro proyecto:
+#153351   #4abbc7   #ffffff   #bbc2c4   #fcd89d
+
+- Tipografías:
+. Open-sans
+. Montserrat
+. Heebo
+
