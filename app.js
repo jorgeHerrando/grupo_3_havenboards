@@ -26,10 +26,10 @@ app.get("/shop", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/shop.html"));
 });
 
-app.get("/detail", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/detail.html"));
+app.get("/productDetail", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/views/productDetail.html"));
 });
 
-app.get("/cart", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/cart.html"));
+app.get("/productCart", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/views/productCart.html"));
 });
