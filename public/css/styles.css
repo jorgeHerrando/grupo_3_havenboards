@@ -219,7 +219,8 @@ main section.top-promotion article.top-promotion-img div.main-offer {
   transition: all 0.3s;
 }
 main section.top-promotion article.top-promotion-img div.main-offer:hover {
-  background-color: #153351;
+  background-color: #fcd89d;
+  color: #000;
 }
 /* se le da padding a dicho a */
 main section.top-promotion article.top-promotion-img div.main-offer a {
@@ -239,10 +240,10 @@ main section.top-promotion article.top-promotion-img a.shop-now {
   transform: translateX(-50%);
   background-color: #4abbc7;
   transition: all 0.3s;
-  border-radius: 5px;
   text-align: center;
-  padding: 10px 15px;
   box-shadow: 0px 0px 2px #fcd89d;
+  padding: 15px 30px;
+  border-radius: 30px;
 }
 main section.top-promotion article.top-promotion-img a.shop-now:hover {
   background-color: #153351;
@@ -687,7 +688,7 @@ article.cart-buttons button:first-child {
   border: none;
   background: none;
   outline: none;
-  border-bottom: 1px solid #187991;
+  border-bottom: 1px solid #4abbc7;
   color: #000;
 }
 
@@ -703,7 +704,7 @@ article.cart-buttons button:first-child {
 }
 
 .contact-form form button {
-  background: #cccccc;
+  background: #bbc2c4;
   color: #000;
   border: 0;
   text-transform: uppercase;
@@ -719,9 +720,54 @@ article.cart-buttons button:first-child {
   cursor: pointer;
   outline: none;
 }
-.contact-form .infovalidacion{
+.contact-form .infovalidacion {
   font-size: 11px;
 }
+
+.contact-form-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.login-form,
+.signup-form {
+  width: 100%;
+}
+.signup-form {
+  margin-top: 2rem;
+}
+
+.signup-form p {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+.signup-form p button {
+  width: 100%;
+}
+
+.signup-form button {
+  background: #bbc2c4;
+  color: #000;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.signup-form button:hover,
+.signup-form button:focus {
+  background: #afafaf;
+  color: #fff;
+  transition: background-color 0.5s ease-out;
+  cursor: pointer;
+  outline: none;
+}
+
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------  Detalle de Producto --------------------------------------- */
@@ -1045,6 +1091,17 @@ article.cart-buttons button:first-child {
   article.cart-buttons button {
     font-size: 1.3rem;
   }
+
+  /* ------------------------- LOGIN --------------------*/
+  .login-form,
+  .signup-form {
+    width: 50%;
+    padding: 0 2rem;
+  }
+  .signup-form {
+    margin-top: 0;
+    align-self: flex-start;
+  }
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -1111,5 +1168,9 @@ article.cart-buttons button:first-child {
 
   .contact-form form div.block {
     width: 100%;
+  }
+
+  .signup-form {
+    margin-top: 5rem;
   }
 }
