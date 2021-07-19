@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font open sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font Heebo -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a20967f511.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Havenboards</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-account">
+        <ul>
+          <li>
+            <a href="#"
+              >NUESTRAS TIENDAS <i class="fas fa-map-marker-alt"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/login"
+              >INICIAR SESIÓN <i class="fas fa-sign-in-alt"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-header">
+        <div class="logo">
+          <a href="/">
+            <img src="/images/Logo.png " alt="Logo de Havenboards" />
+          </a>
+        </div>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="/shop">Snowboarding</a></li>
+            <li><a href="/shop">Skateboarding</a></li>
+            <li><a href="/shop">Surf</a></li>
+            <li><a href="/shop">Wakeboarding</a></li>
+            <li><a href="/shop">Accesorios</a></li>
+            <li><a href="/shop">Marcas</a></li>
+          </ul>
+        </nav>
+        <form action="#" method="GET" class="form-search none">
+          <div class="input-search">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="¿Qué estás buscando?"
+            />
+            <a href="#"><i class="fa fa-search"></i></a>
+          </div>
+        </form>
+        <div class="header-icons">
+          <div class="header-icons-action">
+            <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="cart"><i class="fas fa-shopping-cart"></i></a>
+          </div>
+          <div class="header-icon-menu">
+            <a href="#"><i class="fas fa-bars"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <nav>
+          <ul>
+            <li><a href="/shop">Snowboarding</a></li>
+            <li><a href="/shop">Skateboarding</a></li>
+            <li><a href="/shop">Surf</a></li>
+            <li><a href="/shop">Wakeboarding</a></li>
+            <li><a href="/shop">Accesorios</a></li>
+            <li><a href="/shop">Marcas</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="top-section">
+        <section class="top-promotion">
+          <article class="top-promotion-img">
+            <img src="/images/login4.jpg" alt="Foto para login"/>
+          </article>
+        </section>
+      </div>
+      <div class="content">
+        <h1 class="logo">Crear Cuenta</h1>
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <form action="">
+                    <p>
+                      <label for="usuario">Nombre de Usuario*</label>
+                      <input type="text" name="usuario" id="usuario" minlength="6" maxlength="14" required="" pattern="[a-zA-Z]+" placeholder="pablosarrion">
+                      <label class="infovalidacion">El usuario tiene que tener entre 6 a 14 digitos y solo puede contener letras</label>
+                    </p>
+                    <p>
+                        <label>Contraseña*</label>
+                        <input type="password" name="password" required="">
+                        <label class="infovalidacion">Las Contraseñas deben coincidir</label>
+                    </p>
+                    <p>
+                        <label>Repetir Contraseña*</label>
+                        <input type="password" name="re-password" required="">
+                        <label class="infovalidacion">Las Contraseñas deben coincidir</label>
+                    </p>
+                    <p>
+                      <label for="email">E-mail*</label>
+                      <input type="email" name="email" id="email" placeholder="haven@havenboards.com.ar" required="" title="El campo debe tener un dato del tipo E-mail, por lo que debe contener el simbolo @">
+                      <label class="infovalidacion">El campo debe tener formato de email</label>
+                    </p>
+                    <p>
+                      <label for="nombreCompleto">Nombre Completo*</label>
+                      <input type="text" name="nombreCompleto" id="nombreCompleto" placeholder="Pablo Sarrion" required="" title="Aqui va el nombre completo.">
+                    </p>
+                    <p>
+                      <label for="telefono">Teléfono*</label>
+                      <input type="tel" name="tel" id="tel"  required="" title="Un número telefonico válido consiste en 3 digitos para el código de area, un espacio, 4 dígitos para el número, luego un espacio o un guion y otros 4 digitos más" pattern="\([0-9]{3}\) [0-9]{4}[ -][0-9]{4}">
+                      <label class="infovalidacion">Ej. 011 4981-2539</label>
+                    </p>
+                    <p>
+                      <label for="direccion">Dirección*</label>
+                      <input type="text" name="direccion" id="direccion" placeholder="Calle Falsa 1234" required="" title="Aqui va la dirección y puede tener letras y numeros en el mismo campo">
+                    </p>
+                    <p>
+                      <label for="codigo_postal">Código Postal*</label>
+                      <input type="text" name="codigo_postal" id="codigo_postal" placeholder="1714" required="" title="Este campo solo acepta números">
+                    </p>
+                    <p>
+                      <label for="pais">País*</label>
+                      <select name="pais" id="pais" placeholder="Argentina" required="">
+
+                        <option value="">Seleccionar Opción</option>
+                        <option value="">Argentina</option>
+                        <option value="">Bolivia</option>                     
+                        <option value="">Brasil</option>
+                        <option value="">Chile</option>
+                        <option value="">Colombia</option>
+                        <option value="">Ecuador</option>
+                        <option value="">Peru</option>
+                        <option value="">Venezuela</option>
+                      </select>
+                    </p>
+                    <p>
+                      <label for="ciudad">Ciudad*</label>
+                      <input type="text" name="ciudad" id="ciudad" required="">
+                    </p>
+                    <p class="block">
+                        <button type="submit"> Crear Cuenta </button>
+                    </p>                 
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer>
+      <section class="logo-footer">
+        <a href="/">
+          <img src="/images/LogoWhite.png" alt="Logo de Havenboards" />
+        </a>
+      </section>
+      <section class="main-footer">
+        <nav class="nav-footer">
+          <ul class="footer-info">
+            <li><h3>INFORMACIÓN</h3></li>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Nuestros locales</a></li>
+            <li><a href="#">Envíos y devoluciones</a></li>
+          </ul>
+
+          <section class="social-footer-desktop">
+            <a href="#"
+              ><img src="/images/icons/facebook.png" alt="facebook icon" />
+            </a>
+            <a href="#"
+              ><img src="/images/icons/twitter.png" alt="twitter icon"
+            /></a>
+            <a href="#"
+              ><img src="/images/icons/youtube.png" alt="youtube icon"
+            /></a>
+            <a href="#"
+              ><img src="/images/icons/instagram.png" alt="instagram icon"
+            /></a>
+          </section>
+
+          <ul class="footer-menu">
+            <li><h3>HAVENBOARDS</h3></li>
+            <li><a href="/shop">Surf</a></li>
+            <li><a href="/shop">Skateboards</a></li>
+            <li><a href="/shop">Snowboards</a></li>
+            <li><a href="/shop">Wakeboards</a></li>
+            <li><a href="/shop">Sale</a></li>
+          </ul>
+        </nav>
+      </section>
+      <section class="social-footer">
+        <a href="#"
+          ><img src="/images/icons/facebook.png" alt="facebook icon" />
+        </a>
+        <a href="#"
+          ><img src="/images/icons/twitter.png" alt="twitter icon"
+        /></a>
+        <a href="#"
+          ><img src="/images/icons/youtube.png" alt="youtube icon"
+        /></a>
+        <a href="#"
+          ><img src="/images/icons/instagram.png" alt="instagram icon"
+        /></a>
+      </section>
+      <section class="subscribe-footer">
+        <form action="/" method="POST">
+          <label for="email"><p>SUSCRÍBETE</p></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder="Ingresa tu email"
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+      <section class="copyright">
+        <p>Copyright &copy 2021 - Havenboards</p>
+      </section>
+    </footer>
+  </body>
+</html>
