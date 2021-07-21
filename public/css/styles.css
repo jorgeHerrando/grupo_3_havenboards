@@ -185,7 +185,10 @@ main.main-index section {
 main section.top-promotion article.top-promotion-img {
   width: 100%;
   position: relative;
-  /* max-height: 480px; */
+}
+/* con esto se soluciona el mini gap que aparecía */
+main section.top-promotion article.top-promotion-img div.top-promotion-top {
+  display: flex;
 }
 /* centramos las imagenes */
 main section.top-promotion article.top-promotion-img img,
@@ -256,8 +259,7 @@ main div.main-section {
 }
 
 section.top-info {
-  margin-bottom: 2rem;
-  margin-top: 1.5rem;
+  margin: 2rem 0;
 }
 /* centramos texto debajo de la foto princ */
 section.top-info p.top-info-p {
@@ -299,14 +301,31 @@ main section.home-section-sales div.home-sales article.home-sales-img h3,
 main section.home-section-sales div.home-sales article.home-sales-img p {
   margin-left: 5%;
 }
-main section.home-section-sales div.home-sales article.home-sales-img p {
+/* main section.home-section-sales div.home-sales article.home-sales-img p {
   padding-bottom: 1rem;
-}
+} */
 /* dos en una línea */
 main section.home-section-sales div.home-sales article.home-sales-img {
   width: 48%;
   transition: all 0.5s;
+  max-height: 400px;
 }
+article.home-sales-img .sales-product-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+article.home-sales-img .sales-product-container .sales-img-container {
+  height: 85%;
+}
+article.home-sales-img .sales-product-container .sales-img-container img {
+  height: 100%;
+}
+article.home-sales-img .sales-product-container .sales-info-container {
+  height: 15%;
+}
+
 main section.home-section-sales div.home-sales article.home-sales-img:hover {
   box-shadow: 0 0 11px #4abbc7;
 }
@@ -318,14 +337,13 @@ main section.home-section-sales div.home-sales article.home-sales-img4 {
 main section.home-section-sales article.home-sales-img img {
   width: 100%;
   min-height: 180px;
-  object-fit: cover;
-  height: 75%;
+  object-fit: contain;
 }
 
 /*  */
 /* bottom info */
 section.bottom-info {
-  margin: 2rem 0;
+  padding: 2rem 0;
 }
 section.bottom-info p.bottom-info-p {
   text-align: center;
@@ -447,6 +465,9 @@ section.shop-category h1 {
 section.shop-category article.shop-category-picture {
   width: 100%;
 }
+section.shop-category article.shop-category-picture div.top-promotion-top {
+  display: flex;
+}
 section.shop-category article.shop-category-picture img {
   width: 100%;
 }
@@ -476,18 +497,41 @@ section.shop-view {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0.5rem 1rem;
+  padding: 1rem 5%;
 }
 section.shop-view article.shop-view-img {
   width: 50%;
-  padding: 1rem 2%;
+  padding: 0.5rem 1rem;
+  max-height: 400px;
+  margin: 1rem 0;
+}
+article.shop-view-img div.shop-product-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+article.shop-view-img div.shop-product-container div.shop-img-container {
+  height: 80%;
+}
+article.shop-view-img div.shop-product-container div.shop-product-info {
+  height: 20%;
 }
 section.shop-view article.shop-view-img img {
+  height: 100%;
   width: 100%;
+  object-fit: contain;
+  min-height: 180px;
 }
-section.shop-view article.shop-view-img div {
-  margin: 0 10%;
-  padding: 5px 5%;
+section.shop-view article.shop-view-img div.shop-product-info div {
+  margin: 0 8%;
+  padding: 0 5% 5px;
+}
+section.shop-view
+  article.shop-view-img
+  div.shop-product-info
+  div.shop-article-title {
+  padding-top: 5px;
 }
 section.shop-view article.shop-view-img div.shop-article-title {
   border-bottom: 1px solid #bbc2c4;
@@ -502,7 +546,7 @@ section.shop-more {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 section.shop-more a.shop-more-button {
@@ -544,6 +588,7 @@ section.cart-shopping
   div.cart-product-img-container
   img {
   width: 100%;
+  object-fit: contain;
 }
 
 section.cart-shopping
@@ -865,7 +910,7 @@ article.cart-buttons button:first-child {
   display: inline-block;
   background: #fcd89d;
   color: #fff;
-  padding: 8px 30px;
+  padding: 10px 25px;
   margin: 30px 0;
   border-radius: 30px;
   transition: background 0.5s;

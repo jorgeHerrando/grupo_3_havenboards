@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css" />
     <script
       src="https://kit.fontawesome.com/a20967f511.js"
@@ -98,10 +99,9 @@
       <div class="top-section">
         <section class="top-promotion">
           <article class="top-promotion-img">
-            <img
-              src="/images/panoramic/1080x560_snowboarding_trick_jump_2.jpg"
-              alt="man and woman holding snowboards"
-            />
+            <div class="top-promotion-top">
+              <img src="/images/panoramic/1080x560_snowboarding_trick_jump_2.jpg" alt="man and woman holding snowboards"/>
+            </div>
             <div class="main-offer promotion-offer">
               <a href="/productDetail">OFERTA INICIAL</a>
             </div>
@@ -121,14 +121,18 @@
           <article
             class="home-categories-img home-categories-img1 article-box-shadow"
           >
+          <div>
             <a href="/shop"
               ><img
                 src="/images/square/square_2048_wake.jpg"
                 alt="wakeboarding girl jumping"
               />
+            </div>
+            <div>
               <p class="home-categories-title">Wakeboards</p>
               <p class="home-categories-title">Shop Now</p>
             </a>
+          </div>
           </article>
 
           <article
@@ -188,45 +192,63 @@
           <h2 class="home-sales-title">Productos en oferta</h2>
           <div class="home-sales">
             <article class="home-sales-img home-sales-img1 article-box-shadow">
-              <a href="/productDetail"
-                ><img
-                  src="/images/tall/768x1024_tabla-surf.jpg"
-                  alt="tabla surf"
-                />
-                <h3>Tabla de surf</h3>
-                <p>$500</p></a
-              >
+              <div class="sales-product-container">
+                <div class="sales-img-container">
+                  <a href="/productDetail">
+                    <img src="/images/tall/768x1024_tabla-surf.jpg" alt="tabla surf" />
+                  </a>
+                </div>
+                <div class="sales-info-container">
+                  <h3>Tabla de surf</h3>
+                  <p>$500</p>
+                </div>
+              </div>
             </article>
 
             <article class="home-sales-img home-sales-img2 article-box-shadow">
-              <a href="/productDetail"
-                ><img
+              <div class="sales-product-container">
+                <div class="sales-img-container">
+                  <a href="/productDetail">
+                    <img
                   src="/images/tall/975x1461_SkateFlamingo.jpg"
-                  alt="man and woman holding snowboards"
-              /></a>
-              <h3>Tabla de skate</h3>
-              <p>$300</p>
+                  alt="man and woman holding snowboards"/>
+                  </a>
+                </div>
+                <div class="sales-info-container">
+                  <h3>Tabla de skate</h3>
+                  <p>$300</p>
+                </div>
+              </div>
             </article>
 
             <article class="home-sales-img home-sales-img3 article-box-shadow">
-              <a href="/productDetail"
-                ><img
-                  src="/images/tall/1200x1601_snow_berzerker.jpg"
-                  alt="man and woman holding snowboards"
-              /></a>
-              <h3>Tabla de snow</h3>
-              <p>$400</p>
+              <div class="sales-product-container">
+                <div class="sales-img-container">
+                  <a href="/productDetail">
+                    <img
+                    src="/images/tall/1200x1601_snow_berzerker.jpg"
+                    alt="man and woman holding snowboards"/>
+                  </a>
+                </div>
+                <div class="sales-info-container">
+                  <h3>Tabla de snow</h3>
+                  <p>$400</p>
+                </div>
+              </div>
             </article>
 
             <article class="home-sales-img home-sales-img4 article-box-shadow">
-              <a href="/productDetail"
-                ><img
-                  src="/images/tall/768x1024_wakeboard.png"
-                  alt="man and woman holding snowboards"
-                />
-                <h3>Wakeboard</h3>
-                <p>$600</p></a
-              >
+              <div class="sales-product-container">
+                <div class="sales-img-container">
+                  <a href="/productDetail">
+                    <img src="/images/tall/768x1024_wakeboard.png" alt="man and woman holding snowboards"/>
+                  </a>
+                </div>
+                <div class="sales-info-container">
+                  <h3>Wakeboard</h3>
+                  <p>$600</p>
+                </div>
+              </div>
             </article>
           </div>
         </section>
