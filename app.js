@@ -11,25 +11,25 @@ let mensaje = () => {
 app.listen(3000, mensaje());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/index.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/index.html"));
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/register.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/register.html"));
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/login.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/login.html"));
 });
 
 app.get("/shop", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/shop.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/shop.html"));
 });
 
 app.get("/productDetail", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/productDetail.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/productDetail.html"));
 });
 
 app.get("/productCart", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/productCart.html"));
+  res.sendFile(path.resolve(__dirname + "/src/views/productCart.html"));
 });
