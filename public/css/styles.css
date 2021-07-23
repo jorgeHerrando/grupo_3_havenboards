@@ -43,14 +43,18 @@ header {
   z-index: 100;
   background-color: #fff;
 }
+header div.top-header {
+  height: 88px;
+}
 main {
-  margin-top: 88.1667px;
+  margin-top: 88px;
 }
 /* este header solo se verá en tablets y desktop */
 .header-account {
   padding: 7px 5%;
   border-bottom: 0.5px solid lightgray;
   display: none;
+  height: 30px;
   /* background-color: #fff; */
 }
 /* hacemos la lista flex para situar li horizontalmente */
@@ -145,6 +149,7 @@ div.header-bottom {
   padding: 11px 5%;
   display: none;
   width: 100%;
+  height: 40px;
 }
 /* quitamos diseño de lista predeterminado */
 div.header-bottom nav ul {
@@ -1020,10 +1025,12 @@ article.cart-buttons button:first-child {
   /* HEADER */
   /* cambiar header margin y ajustar main */
   main {
-    margin-top: 146.817px;
+    margin-top: 145px;
   }
+
   header div.top-header {
     padding: 3px 5%;
+    height: 75px;
   }
   /* mostramos la parte de arriba de tiendas y cuenta */
   .header-account {
@@ -1177,10 +1184,11 @@ article.cart-buttons button:first-child {
   /* ------------------------- HEADER --------------------*/
   /* cambiar header margin y ajustar main */
   main {
-    margin-top: 119.917px;
+    margin-top: 118px;
   }
   header div.top-header {
     padding: 10px 5%;
+    height: 88px;
   }
   /* reducimos el tamaño de la barra búsqueda para dejar hueco al nuevo menú */
   header form.form-search {
