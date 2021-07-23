@@ -35,6 +35,17 @@ a {
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 
+/* header fixed y ajustar margin main */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+}
+main {
+  margin-top: 88.1667px;
+}
 /* este header solo se verá en tablets y desktop */
 .header-account {
   padding: 7px 5%;
@@ -1007,7 +1018,13 @@ article.cart-buttons button:first-child {
 @media (min-width: 769px) {
   /* ------------------------- INDEX --------------------*/
   /* HEADER */
-
+  /* cambiar header margin y ajustar main */
+  main {
+    margin-top: 146.817px;
+  }
+  header div.top-header {
+    padding: 3px 5%;
+  }
   /* mostramos la parte de arriba de tiendas y cuenta */
   .header-account {
     display: block;
@@ -1157,7 +1174,14 @@ article.cart-buttons button:first-child {
 
 /* Para desktop */
 @media (min-width: 1050px) {
-  /* ------------------------- INDEX --------------------*/
+  /* ------------------------- HEADER --------------------*/
+  /* cambiar header margin y ajustar main */
+  main {
+    margin-top: 119.917px;
+  }
+  header div.top-header {
+    padding: 10px 5%;
+  }
   /* reducimos el tamaño de la barra búsqueda para dejar hueco al nuevo menú */
   header form.form-search {
     width: 250px;
