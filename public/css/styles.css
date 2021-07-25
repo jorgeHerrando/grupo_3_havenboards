@@ -176,11 +176,11 @@ nav.nav-desktop ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Heebo", sans-serif;
+  /* padding: 0 0.3rem; */
 }
 nav.nav-desktop a {
   transition: border-bottom 150ms;
-  font-family: initial;
 }
 nav.nav-desktop a:hover {
   border-bottom: 2px solid #153351;
@@ -1199,7 +1199,7 @@ article.cart-buttons button:first-child {
   /* mostramos menú */
   nav.nav-desktop {
     display: block;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     max-width: 645px;
   }
 
