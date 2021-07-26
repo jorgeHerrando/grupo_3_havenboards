@@ -1,103 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- favicon -->
-    <link rel="icon" href="/images/icons/favicon.ico">
-    <!-- font open sans -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <!-- font Montserrat -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!-- font Heebo -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styles.css" />
-    <script
-      src="https://kit.fontawesome.com/a20967f511.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Havenboards</title>
-  </head>
+<%- include('./partials/head') %>
   <body>
-    <header>
-      <div class="header-account">
-        <ul>
-          <li>
-            <a href="#"
-              >NUESTRAS TIENDAS <i class="fas fa-map-marker-alt"></i
-            ></a>
-          </li>
-          <li>
-            <a href="/users/login"
-              >INICIAR SESIÓN <i class="fas fa-sign-in-alt"></i
-            ></a>
-          </li>
-        </ul>
-      </div>
-      <div class="top-header">
-        <div class="logo">
-          <a href="/">
-            <img src="/images/Logo.png " alt="Logo de Havenboards" />
-          </a>
-        </div>
-        <nav class="nav-desktop">
-          <ul>
-            <li><a href="/products">Snowboarding</a></li>
-            <li><a href="/products">Skateboarding</a></li>
-            <li><a href="/products">Surf</a></li>
-            <li><a href="/products">Wakeboarding</a></li>
-            <li><a href="/products">Accesorios</a></li>
-            <li><a href="/products">Marcas</a></li>
-          </ul>
-        </nav>
-        <form action="#" method="GET" class="form-search none">
-          <div class="input-search">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              placeholder="¿Qué estás buscando?"
-            />
-            <a href="#"><i class="fa fa-search"></i></a>
-          </div>
-        </form>
-        <div class="header-icons">
-          <div class="header-icons-action">
-            <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-            <a href="#"><i class="far fa-heart"></i></a>
-            <a href="/productCart"><i class="fas fa-shopping-cart"></i></a>
-          </div>
-          <div class="header-icon-menu">
-            <a href="#"><i class="fas fa-bars"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="header-bottom">
-        <nav>
-          <ul>
-            <li><a href="/products">Snowboarding</a></li>
-            <li><a href="/products">Skateboarding</a></li>
-            <li><a href="/products">Surf</a></li>
-            <li><a href="/products">Wakeboarding</a></li>
-            <li><a href="/products">Accesorios</a></li>
-            <li><a href="/products">Marcas</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
+    <%- include('./partials/header') %>
     <main class="main-index">
       <div class="top-section">
         <section class="top-promotion">
@@ -125,7 +28,7 @@
             class="home-categories-img home-categories-img1 article-box-shadow"
           >
           <div>
-            <a href="/shop"
+            <a href="/products/shop"
               ><img
                 src="/images/square/square_2048_wake.jpg"
                 alt="wakeboarding girl jumping"
@@ -275,78 +178,6 @@
       </div>
     </main>
 
-    <footer>
-      <section class="logo-footer">
-        <a href="/">
-          <img src="/images/LogoWhite.png" alt="Logo de Havenboards" />
-        </a>
-      </section>
-      <section class="main-footer">
-        <nav class="nav-footer">
-          <ul class="footer-info">
-            <li><h3>INFORMACIÓN</h3></li>
-            <li><a href="#">Términos y condiciones</a></li>
-            <li><a href="#">Sobre nosotros</a></li>
-            <li><a href="#">Preguntas frecuentes</a></li>
-            <li><a href="#">Nuestros locales</a></li>
-            <li><a href="#">Envíos y devoluciones</a></li>
-          </ul>
-
-          <section class="social-footer-desktop">
-            <a href="#"
-              ><img src="/images/icons/facebook.png" alt="facebook icon" />
-            </a>
-            <a href="#"
-              ><img src="/images/icons/twitter.png" alt="twitter icon"
-            /></a>
-            <a href="#"
-              ><img src="/images/icons/youtube.png" alt="youtube icon"
-            /></a>
-            <a href="#"
-              ><img src="/images/icons/instagram.png" alt="instagram icon"
-            /></a>
-          </section>
-
-          <ul class="footer-menu">
-            <li><h3>HAVENBOARDS</h3></li>
-            <li><a href="/shop">Surf</a></li>
-            <li><a href="/shop">Skateboards</a></li>
-            <li><a href="/shop">Snowboards</a></li>
-            <li><a href="/shop">Wakeboards</a></li>
-            <li><a href="/shop">Sale</a></li>
-          </ul>
-        </nav>
-      </section>
-      <section class="social-footer">
-        <a href="#"
-          ><img src="/images/icons/facebook.png" alt="facebook icon" />
-        </a>
-        <a href="#"
-          ><img src="/images/icons/twitter.png" alt="twitter icon"
-        /></a>
-        <a href="#"
-          ><img src="/images/icons/youtube.png" alt="youtube icon"
-        /></a>
-        <a href="#"
-          ><img src="/images/icons/instagram.png" alt="instagram icon"
-        /></a>
-      </section>
-      <section class="subscribe-footer">
-        <form action="/" method="POST">
-          <label for="email"><p>SUSCRÍBETE</p></label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            placeholder="Ingresa tu email"
-          />
-          <button type="submit">Enviar</button>
-        </form>
-      </section>
-      <section class="copyright">
-        <p>Copyright &copy 2021 - Havenboards</p>
-      </section>
-    </footer>
+    <%- include('./partials/footer') %>
   </body>
 </html>

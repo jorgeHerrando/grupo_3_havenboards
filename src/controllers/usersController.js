@@ -1,9 +1,9 @@
 const usersController = {
   login: (req, res) => {
-    res.render("login");
+    res.render("users/login");
   },
   register: (req, res) => {
-    res.render("register");
+    res.render("users/register");
   },
 };
 module.exports = usersController;

@@ -45,6 +45,7 @@ header {
 }
 header div.top-header {
   height: 88px;
+  border-bottom: 0.5px solid lightgray;
 }
 main {
   margin-top: 88px;
@@ -150,6 +151,7 @@ div.header-bottom {
   display: none;
   width: 100%;
   height: 40px;
+  border-bottom: 0.5px solid lightgray;
 }
 /* quitamos diseño de lista predeterminado */
 div.header-bottom nav ul {
@@ -705,6 +707,14 @@ article.cart-buttons button:first-child {
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 
+.top-section-login {
+  background-image: url("/images/login4.jpg");
+  height: 520px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .content {
   max-width: 1170px;
   margin-left: auto;
@@ -730,6 +740,8 @@ article.cart-buttons button:first-child {
 
 .contact-form form {
   box-shadow: 1px 1px 7px 1px rgb(0 0 0 / 30%);
+  background-color: #fff;
+  opacity: 0.9;
 }
 
 .contact-form form p {
@@ -1011,6 +1023,12 @@ article.cart-buttons button:first-child {
   section.shop-category h1 {
     font-size: 2rem;
   }
+
+  /* ------------------------- LOGIN --------------------*/
+
+  .content {
+    padding: 2.2rem;
+  }
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -1162,6 +1180,10 @@ article.cart-buttons button:first-child {
   }
 
   /* ------------------------- LOGIN --------------------*/
+
+  .content {
+    padding: 3rem;
+  }
   .login-form,
   .signup-form {
     width: 50%;
@@ -1215,12 +1237,9 @@ article.cart-buttons button:first-child {
   div.header-bottom {
     display: none;
   }
-  /* quitamos el borde */
-  header div.top-header {
-    border: none;
-  }
+
   .header-account {
-    background-color: #4abbc7;
+    background-color: #4abac7;
   }
   .header-account ul {
     color: #153351;

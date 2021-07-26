@@ -1,12 +1,12 @@
 const productsController = {
   shop: (req, res) => {
-    res.render("shop");
+    res.render("products/shop");
   },
   productCart: (req, res) => {
-    res.render("productCart");
+    res.render("products/productCart");
   },
   productDetail: (req, res) => {
-    res.render("productDetail");
+    res.render("products/productDetail");
   },
 };
 module.exports = productsController;
