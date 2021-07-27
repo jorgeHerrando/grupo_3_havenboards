@@ -2,20 +2,19 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
-const rutasMain = require("./src/routes/main");
-const rutasUsers = require("./src/routes/users");
-const rutasProducts = require("./src/routes/products");
+const mainRouter = require("./src/routes/main");
+const usersRouter = require("./src/routes/users");
+const productsRouter = require("./src/routes/products");
 
 app.use(express.static("public"));
 
-app.set("view engine", "ejs");
-
 // express accede directamente a views a la hora de renderizar si está en la raíz del proyecto. Si no (está dentro de 'src'), hay que darle la ruta con el siguiente comando
 app.set("views", path.join(__dirname, "src/views"));
+app.set("view engine", "ejs");
 
-app.use("/", rutasMain);
-app.use("/users", rutasUsers);
-app.use("/products", rutasProducts);
+app.use("/", mainRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 
 let mensaje = () => {
   console.log("Servidor funcionando en puerto 3000");
@@ -27,22 +26,22 @@ app.listen(3000, mensaje());
 //   res.sendFile(path.resolve(__dirname + "/src/views/index.html"));
 // });
 
-app.get("/register", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/src/views/register.html"));
-});
+// app.get("/register", (req, res) => {
+//   res.sendFile(path.resolve(__dirname + "/src/views/register.html"));
+// });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/src/views/login.html"));
-});
+// app.get("/login", (req, res) => {
+//   res.sendFile(path.resolve(__dirname + "/src/views/login.html"));
+// });
 
-app.get("/shop", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/src/views/shop.html"));
-});
+// app.get("/shop", (req, res) => {
+//   res.sendFile(path.resolve(__dirname + "/src/views/shop.html"));
+// });
 
-app.get("/productDetail", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/src/views/productDetail.html"));
-});
+// app.get("/productDetail", (req, res) => {
+//   res.sendFile(path.resolve(__dirname + "/src/views/productDetail.html"));
+// });
 
-app.get("/productCart", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/src/views/productCart.html"));
-});
+// app.get("/productCart", (req, res) => {
+//   res.sendFile(path.resolve(__dirname + "/src/views/productCart.html"));
+// });

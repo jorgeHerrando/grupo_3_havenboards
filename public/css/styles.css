@@ -277,7 +277,7 @@ main div.main-section {
 }
 
 section.top-info {
-  margin: 2rem 0;
+  padding: 2rem 0;
 }
 /* centramos texto debajo de la foto princ */
 section.top-info p.top-info-p {
@@ -297,8 +297,10 @@ div.main-section section.home-categories article a p:last-child {
 }
 /* margen tras sales */
 main section.home-section-sales {
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid #bbc2c454;
+  border-bottom: 1px solid #bbc2c454;
 }
 /* título del sales */
 main section.home-section-sales h2.home-sales-title {
@@ -358,6 +360,18 @@ main section.home-section-sales article.home-sales-img img {
   object-fit: contain;
 }
 
+/* botón sales */
+section.home-section-sales div.sales-button {
+  text-align: center;
+  padding-top: 1.5rem;
+}
+section.home-section-sales div.sales-button button {
+  padding: 0.3rem 5rem;
+  cursor: pointer;
+  background-color: #fcd89d;
+  border-radius: 5px;
+}
+
 /*  */
 /* bottom info */
 section.bottom-info {
@@ -407,6 +421,9 @@ footer {
 .main-footer .nav-footer ul li {
   padding-bottom: 5px;
 }
+.main-footer .nav-footer ul li:first-child {
+  color: #fcd89d;
+}
 .main-footer .nav-footer ul li:last-child {
   padding-bottom: 0;
 }
@@ -436,11 +453,22 @@ section.social-footer-desktop {
   color: #fff;
 }
 
+ul.footer-info li a,
+ul.footer-menu li a {
+  transition: color 0.3s;
+}
+ul.footer-info li a:hover,
+ul.footer-menu li a:hover {
+  color: #4abbc7;
+}
+
 .subscribe-footer {
   margin-bottom: 2rem;
+  padding-top: 0.5rem;
 }
 .subscribe-footer p {
   padding-bottom: 5px;
+  /* color: #fcd89d; */
 }
 .subscribe-footer input {
   padding: 5px 10px;
@@ -708,7 +736,7 @@ article.cart-buttons button:first-child {
 /* ----------------------------------------------------------------------------------------------- */
 
 .top-section-login {
-  background-image: url("/images/login4.jpg");
+  background-image: url("/images/panoramic/login4.jpg");
   height: 520px;
   background-position: center;
   background-repeat: no-repeat;
@@ -946,6 +974,35 @@ article.cart-buttons button:first-child {
 
 .btn:hover {
   background: #4abbc7;
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+/* --------------------------------------------  INFO -------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+
+main.main-info {
+  padding: 2rem 5%;
+}
+main.main-info section.info-view {
+  margin: 1rem 0;
+}
+.info-view article.info-text {
+  margin-bottom: 3rem;
+}
+.info-view article.info-text:last-child {
+  margin-bottom: 1rem;
+}
+.info-view article.info-text h2 {
+  margin-bottom: 1rem;
+  color: #153351;
+  font-size: 1.8rem;
+}
+.info-view article.info-text p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.05rem;
 }
 
 /* ----------------------------------------------------------------------------------------------- */
