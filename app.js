@@ -8,10 +8,13 @@ const rutasProducts = require("./src/routes/products");
 
 app.use(express.static("public"));
 
+
 app.set("view engine", "ejs");
 
 // express accede directamente a views a la hora de renderizar si está en la raíz del proyecto. Si no (está dentro de 'src'), hay que darle la ruta con el siguiente comando
 app.set("views", path.join(__dirname, "src/views"));
+
+//app.use(express.static(path.join(__dirname, 'src/public')));
 
 app.use("/", rutasMain);
 app.use("/users", rutasUsers);

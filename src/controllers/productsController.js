@@ -8,5 +8,8 @@ const productsController = {
   productDetail: (req, res) => {
     res.render("products/productDetail");
   },
+  productUp: (req, res) => {
+    res.render("products/productUp");
+  },
 };
 module.exports = productsController;
