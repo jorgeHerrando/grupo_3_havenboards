@@ -214,6 +214,9 @@ main section.home-categories article.home-categories-img img {
   width: 100%;
   object-fit: cover;
 }
+main section.top-promotion article.top-promotion-img img {
+  object-position: 50% 0%;
+}
 /* altura maxmin de la imagen de arriba */
 main section.top-promotion article.top-promotion-img img {
   max-height: 480px;
@@ -297,7 +300,7 @@ div.main-section section.home-categories article a p:last-child {
 }
 /* margen tras sales */
 main section.home-section-sales {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   padding-top: 2rem;
   border-top: 1px solid #bbc2c454;
   border-bottom: 1px solid #bbc2c454;
@@ -537,6 +540,7 @@ section.shop-category article.shop-category-picture img {
   min-height: 200px;
   width: 100%;
   object-fit: cover;
+  object-position: 50% 0%;
 }
 
 section.shop-view {
@@ -747,7 +751,12 @@ article.cart-buttons button:first-child {
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
+}
+.content-login {
   padding: 1.5em;
+}
+.content-register {
+  padding: 0.5rem 1.5rem 1.5rem;
 }
 
 .content .logo {
@@ -892,6 +901,7 @@ article.cart-buttons button:first-child {
 
 .single-product {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .small-img-row {
@@ -1084,8 +1094,11 @@ main.main-info section.info-view {
 
   /* ------------------------- LOGIN --------------------*/
 
-  .content {
+  .content-login {
     padding: 2.2rem;
+  }
+  .content-register {
+    padding: 1.5rem 2.2rem 2rem;
   }
 }
 
@@ -1113,7 +1126,7 @@ main.main-info section.info-view {
     display: block;
   }
   div.top-header {
-    background-color: #4abbc7;
+    background-color: #8bd7df;
     border-bottom: 0.5px solid #bbc2c4;
   }
 
@@ -1239,9 +1252,13 @@ main.main-info section.info-view {
 
   /* ------------------------- LOGIN --------------------*/
 
-  .content {
+  .content-login {
     padding: 3rem;
   }
+  .content-register {
+    padding: 1.5rem 3rem 2rem;
+  }
+
   .login-form,
   .signup-form {
     width: 50%;
@@ -1297,7 +1314,7 @@ main.main-info section.info-view {
   }
 
   .header-account {
-    background-color: #4abac7;
+    background-color: #8bd7df;
   }
   .header-account ul {
     color: #153351;
