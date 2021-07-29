@@ -5,14 +5,15 @@ El segundo sprint nos ha servido para saber cómo trabaja cada uno y en qué pod
 Aspectos que funcionan:
 
 - Apoyo mutuo para que todos podamos superarnos
-- Mejora de la asiduidad de reuniones
-- Todo el equipo sabe qué hacer y cómo lo vamos a implementar
+- Buena comunicación entre los miembros del grupo
+- Mejora de la frecuencia de reuniones
 
 Aspectos a mejorar:
 
 - Reuniones con temática y objetivos definidos anteriormente.
 - Implementar dailys reports cortos al principio del día, incluso por slack
-- Push con mayor asiduidad
+- Push con mayor frecuencia
+- Entendimiento de Github
 
 Retrospectiva de estrella de mar
 
@@ -21,6 +22,7 @@ Retrospectiva de estrella de mar
 1. Avanzar en el contenido de las clases para implementar los nuevos conocimientos lo antes posible.
 2. Implementar los daily reports entre nosotros.
 3. Poner tiempo límite en las reuniones acorde con los temas a tratar
+4. Empezar a trabajar con branches en Github
 
 - Hacer más:
 
@@ -30,15 +32,17 @@ Retrospectiva de estrella de mar
 
 - Continuar haciendo:
 
-1. Comunicación informal vía Slack
+1. Comunicación informal vía Slack/Discord
 2. Mantener el buen ambiente social
+3. Agregar tareas extras aunque el sprint no las requiera explícitamente
 
 - Hacer menos:
 
-1. No ser concretos en qué debemos resolver en las reuniones
-2. Creer que con el material de clase es suficiente
+1. No ser concretos sobre qué debemos resolver en las reuniones
+2. Quedarnos sólo con el material de clase
+3. Invertir tiempo en tareas que sean difíciles de implementar en el sprint con los conocimientos actuales
 
 - Dejar de hacer:
 
 1. No programar un espacio diario para trabajar en el proyecto integrador
-2. No planear lo prioritario/urgente/importante para decidir donde poner la atención
+2. No planear lo prioritario/urgente/importante para decidir dónde poner la atención
