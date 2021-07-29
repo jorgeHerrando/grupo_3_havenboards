@@ -1,6 +1,8 @@
 const mainController = {
   index: (req, res) => {
-    res.render("index", { title: "Havenboards" });
+    res.render("index", {
+      title: "Havenboards",
+    });
   },
   info: (req, res) => {
     res.render("main/info", { title: "Havenboards - Info" });
