@@ -48,10 +48,23 @@ const productsController = {
       title: "Havenboards - Product Detail",
     });
   },
-  productUp: (req, res) => {
+  productUpView: (req, res) => {
     res.render("products/productUp", {
       title: "Havenboards - Loading Product",
     });
+  },
+  productUpUpload: (req, res) => {
+    let dataForm = req.body;
+    res.redirect("/products/productUp");
+  },
+  productEditView: (req, res) => {
+    res.render("products/productEdit", {
+      title: "Havenboards - Editing Product",
+    });
+  },
+  productEditUpload: (req, res) => {
+    let dataForm = req.body;
+    res.redirect("/products/productEdit");
   },
 };
 module.exports = productsController;

@@ -829,7 +829,7 @@ article.cart-buttons button:first-child {
   transition: background-color 0.5s ease-out;
   cursor: pointer;
   outline: none;
-  line-height: 1;
+  /* line-height: 1; */
 }
 .contact-form .infovalidacion {
   font-size: 11px;

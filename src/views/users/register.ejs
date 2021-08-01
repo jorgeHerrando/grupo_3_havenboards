@@ -14,7 +14,7 @@
         <h1 class="logo">Crear Cuenta</h1>
         <div class="contact-wrapper">
           <div class="contact-form">
-            <form action="">
+            <form action="#" method="POST">
               <p>
                 <label for="usuario">Nombre de Usuario*</label>
                 <input
@@ -77,9 +77,9 @@
                   type="tel"
                   name="tel"
                   id="tel"
-                  required=""
+                  required
                   title="Un número telefonico válido consiste en 3 digitos para el código de area, un espacio, 4 dígitos para el número, luego un espacio o un guion y otros 4 digitos más"
-                  pattern="\([0-9]{3}\) [0-9]{4}[ -][0-9]{4}"
+                  pattern="[0-9]{3} [0-9]{4}[ -][0-9]{4}"
                 />
                 <label class="infovalidacion">Ej. 011 4981-2539</label>
               </p>
@@ -90,7 +90,7 @@
                   name="direccion"
                   id="direccion"
                   placeholder="Calle Falsa 1234"
-                  required=""
+                  required
                   title="Aqui va la dirección y puede tener letras y numeros en el mismo campo"
                 />
               </p>
@@ -101,7 +101,7 @@
                   name="codigo_postal"
                   id="codigo_postal"
                   placeholder="1714"
-                  required=""
+                  required
                   title="Este campo solo acepta números"
                 />
               </p>
@@ -111,17 +111,17 @@
                   name="pais"
                   id="pais"
                   placeholder="Argentina"
-                  required=""
+                  required
                 >
-                  <option value="">Seleccionar Opción</option>
-                  <option value="">Argentina</option>
-                  <option value="">Bolivia</option>
-                  <option value="">Brasil</option>
-                  <option value="">Chile</option>
-                  <option value="">Colombia</option>
-                  <option value="">Ecuador</option>
-                  <option value="">Peru</option>
-                  <option value="">Venezuela</option>
+                  <option>Seleccionar Opción</option>
+                  <option value="argentina">Argentina</option>
+                  <option value="bolivia">Bolivia</option>
+                  <option value="brasil">Brasil</option>
+                  <option value="chile">Chile</option>
+                  <option value="colombia">Colombia</option>
+                  <option value="ecuador">Ecuador</option>
+                  <option value="peru">Peru</option>
+                  <option value="venezuela">Venezuela</option>
                 </select>
               </p>
               <p>
