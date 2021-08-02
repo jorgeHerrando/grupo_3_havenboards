@@ -2,58 +2,48 @@
 
 1. ¿Qué se hizo ayer?
 
-- Pablo: Vi parte de la teoría de la clase 20 (Vistas Dinamicas)
-- Flor:
-- Jorge: Parte de la teoría de la clase 20. Añadir normalize. Poner position fixed en header. Meter imágenes en cajitas para tener más control sobre ellas
+Añadimos normalize. Pusimos la position fixed en header. Metimos imágenes en cajitas, para tener más control sobre ellas.
+Modificamos las vistas de formato html a ejs
 
 2. ¿Qué impedimentos tuvimos?
 
-- Pablo: Actualmente estoy teniendo problemas con re-adaptar lo nuevo al contenido del sprint 2
-- Flor:
-- Jorge: Entiendo los conceptos y la potencialidad de la nueva teoría, pero me resulta difícil diagramar cómo y dónde aplicarla, sobre qué elementos
+ Actualmente estamos teniendo problemas para re-adaptar lo nuevo al contenido del sprint 2
+ Entendemos los conceptos y la potencialidad de la nueva teoría, pero nos resulta difícil diagramar cómo y dónde aplicarla.
 
 3. ¿Qué se va a hacer hoy?
 
-- Pablo: Terminar el capitulo 20 para poder avanzar en el sprint
-- Flor:
-- Jorge: Terminar la teoría del capítulo 20
+Creamos el favicom, pasamos el contenido a la carpeta src y modificamos las rutas, para que todo funcione correctamente.
 
-24 / 07 / 21
+
+26 / 07 / 21
 
 1. ¿Qué se hizo ayer?
 
-- Pablo: No llegue a terminar el capitulo 20
-- Flor:
-- Jorge: Estructura carpetas.  Avanzar en el contenido de la clase 20
+
+Se realizo lo pautado la fecha anterior.
+Cambiamos dentro del controlador el metodo send por el render, ya que estamos utilizando formato ejs.
 
 2. ¿Qué impedimentos tuvimos?
 
-- Pablo: Basicamente me llevo más tiempo incorporar los nuevos conocimientos de lo que pense. Son muchos cambios.
-- Flor:
-- Jorge: No tener del todo claro dónde incorporar las nuevas herramientas
+ Basicamente nos llevo más tiempo incorporar los nuevos conocimientos de lo que pensamos. Son muchos cambios.
+ No tener del todo claro dónde incorporar las nuevas herramientas.
 
 3. ¿Qué se va a hacer hoy?
+Modificamos las rutas, metimos dentro de la carpeta views, user, products y partials.
+Creamos el archivo head, header, footer y lo metimos dentro de la carpeta partials 
+Lo implementamos en cada vista.
 
-- Pablo: Terminar el capitulo 20 y hacer una reunion para avanzar en varios puntos del sprint
-- Flor:
-- Jorge: Terminar el capitulo 20 y hacer una reunion para avanzar en varios puntos del sprint
-
-25 / 07 / 21
+30 / 07 / 21
 
 1. ¿Qué se hizo ayer?
 
-- Pablo: 
-- Flor:
-- Jorge: Se hizo reunión. Se modificaron los HTML a EJS, se crearon las rutas y controladores necesarios
+Creamos el formulario de alta y edicion para el usuario administrador.
+Terminamos la retrospectiva, añadimos la vista info para contestar a las preguntas frecuentes
 
 2. ¿Qué impedimentos tuvimos?
 
-- Pablo: 
-- Flor:
-- Jorge: El link al CSS desde los EJS a veces funcionan y a veces no. Tema de rutas internas
+Tuvimos problemas con el enlace de rutas internas
 
 3. ¿Qué se va a hacer hoy?
 
-- Pablo: 
-- Flor:
-- Jorge: Reunión para estructurar los archivos parciales
+Reunion para revisar que todo este listo para la entrega
