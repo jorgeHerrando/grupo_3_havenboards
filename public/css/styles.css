@@ -562,10 +562,14 @@ article.shop-view-img div.shop-product-container {
   justify-content: space-between;
 }
 article.shop-view-img div.shop-product-container div.shop-img-container {
-  height: 80%;
+  height: 75%;
 }
+/* la cajita con precio y nombre de producto la mandamos abajo para que se vean todas alineadas */
 article.shop-view-img div.shop-product-container div.shop-product-info {
-  height: 20%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 section.shop-view article.shop-view-img img {
   height: 100%;
@@ -879,6 +883,10 @@ article.cart-buttons button:first-child {
   outline: none;
 }
 
+/* añadí un botón borrar en el form edit */
+.delete-form {
+  padding: 1rem;
+}
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------  Detalle de Producto --------------------------------------- */
@@ -914,9 +922,13 @@ article.cart-buttons button:first-child {
   padding: 50px 0;
 }
 
+/* que las img pequeñas tengan una altura mínima */
 .small-img-col {
   flex-basis: 24%;
   cursor: pointer;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .single-product .col-2 img {
@@ -930,6 +942,19 @@ article.cart-buttons button:first-child {
 .col-2 {
   flex-basis: 50%;
   min-width: 300px;
+}
+
+/* para manipular la sección de la foto grande en detail */
+.col-2-left {
+  display: flex;
+  flex-direction: column;
+}
+/* le damos altura mínima y lo centramos con flex */
+.main-picture {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
 }
 
 .col-2 h1 {
