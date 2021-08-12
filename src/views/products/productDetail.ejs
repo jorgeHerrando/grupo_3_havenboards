@@ -61,7 +61,7 @@
             <!-- mostramos la marca y el nombre en mayúsculas -->
             <p><%= (detailProduct.brand).toUpperCase() %></p> 
             <h1><%= (detailProduct.name).toUpperCase() %></h1>
-            <h4><%= detailProduct.price %>$</h4>
+            <h4>$<%= detailProduct.price %></h4>
 
             <!-- esto se muestra si el producto dispone de tallas. Si no es null -->
             <% if(detailProduct.size !== null) { %>

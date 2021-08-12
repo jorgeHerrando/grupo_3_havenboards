@@ -52,12 +52,12 @@ const productsController = {
       // le pasamos el array con los nombres
       image: images,
       category: req.body.category,
-      subcategory: req.body.subcategory,
+      subcategory: req.body.subcategory ? req.body.subcategory : null, // si el valor que llega es vacío, ponle null
       brand: req.body.brand,
-      price: req.body.price,
-      size: req.body.size,
-      discount: req.body.discount,
-      sale: req.body.sale,
+      price: Number(req.body.price),
+      size: req.body.size ? req.body.size : null, // si el valor que llega es vacío, ponle null
+      discount: Number(req.body.discount),
+      sale: Boolean(req.body.sale),
     };
 
     // agregamos nuevo producto
@@ -83,8 +83,8 @@ const productsController = {
     let id = req.params.id;
 
     let editedProduct = products.find((elem) => elem.id == id);
-    // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos nuevo array donde los pushearemos
-    let images = [];
+    // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos array con lo anterior donde los pushearemos
+    let images = editedProduct.image;
     for (i = 0; i < req.files.length; i++) {
       images.push(req.files[i].originalname);
     }
@@ -94,12 +94,15 @@ const productsController = {
     editedProduct.description = req.body.description;
     editedProduct.image = images; // le pasamos el array con los nombres de img
     editedProduct.category = req.body.category;
-    editedProduct.subcategory = req.body.subcategory;
+    editedProduct.subcategory = req.body.subcategory
+      ? req.body.subcategory
+      : null; // si el valor que llega es vacío, ponle null
     editedProduct.brand = req.body.brand;
-    editedProduct.price = req.body.price;
-    editedProduct.size = req.body.size;
-    editedProduct.discount = req.body.discount;
-    editedProduct.sale = req.body.sale;
+    editedProduct.price = Number(req.body.price);
+    editedProduct.size = req.body.size ? req.body.size : null; // si el valor que llega es vacío, ponle null
+    editedProduct.discount = Number(req.body.discount);
+    editedProduct.sale = Boolean(req.body.sale);
+    console.log(products);
 
     fs.writeFileSync(productsFilePath, JSON.stringify(products));
 

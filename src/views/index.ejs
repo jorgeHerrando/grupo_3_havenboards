@@ -98,21 +98,23 @@
           <h2 class="home-sales-title">Productos en oferta</h2>
 
           <div class="home-sales">
-            <article class="home-sales-img home-sales-img1 article-box-shadow">
-              <a href="/products/productDetail">
-                <div class="sales-product-container">
-                  <div class="sales-img-container">
-                    <img src="/images/tall/768x1024_tabla-surf.jpg" alt="tabla surf" />
+            <% for (i=0;i<4;i++) { %>
+              <article class="home-sales-img article-box-shadow">
+                <a href="/products/detail/<%=sales[i].id%>">
+                  <div class="sales-product-container">
+                    <div class="sales-img-container">
+                      <img src="/images/tall/<%=sales[i].image[0]%>" alt="en oferta" />
+                    </div>
+                    <div class="sales-info-container">
+                      <h3><%=sales[i].name%></h3>
+                      <p>$<%=sales[i].price%></p>
+                    </div>
                   </div>
-                  <div class="sales-info-container">
-                    <h3>Tabla de surf</h3>
-                    <p>$500</p>
-                  </div>
-                </div>
-              </a>
-            </article>
+                </a>
+              </article>
+            <% } %>
 
-            <article class="home-sales-img home-sales-img2 article-box-shadow">
+            <!-- <article class="home-sales-img home-sales-img2 article-box-shadow">
               <a href="/products/productDetail">
                 <div class="sales-product-container">
                   <div class="sales-img-container">
@@ -154,7 +156,7 @@
                   </div>
                 </div>
               </a>
-            </article>
+            </article> -->
 
           </div>
 

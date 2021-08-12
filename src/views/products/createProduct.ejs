@@ -31,17 +31,6 @@
               </p>
 
               <p>
-                <label for="id">ID del Producto*</label>
-                <input
-                  type="number"
-                  name="id"
-                  id="id"
-                  required
-                  placeholder=0
-                />
-              </p>
-
-              <p>
                 <label for="description">Descripción*</label>
                 <input
                   type="text"
@@ -65,7 +54,7 @@
                   id="category"
                   required
                 >
-                  <option>Seleccionar Categoria</option>
+                  <option value="" disabled selected>Seleccionar Categoría</option>
                   <option value="Snowboarding">Snowboarding</option>
                   <option value="Skateboarding">Skateboarding</option>
                   <option value="Surf">Surf</option>
@@ -80,7 +69,7 @@
                   name="subcategory"
                   id="subcategory" 
                 >
-                  <option value="<%null%>">Ninguna</option>
+                  <option value="">Ninguna</option>
                   <option value="Helmet">Cascos</option>
                   <option value="Gloves">Guantes</option>
                   <option value="Protection">Protección</option>
@@ -97,7 +86,7 @@
                   id="brand"
                   required
                 >
-                  <option>Seleccionar Marca</option>
+                  <option value="" disabled selected>Seleccionar Marca</option>
                   <option value="Quicksilver">Quicksilver</option>
                   <option value="Billabong">Billabong</option>
                   <option value="Roxy">Roxy</option>
@@ -125,9 +114,9 @@
                   required
                 >
                 <!-- poner un if discount distinto 0? -->
-                  <option>Tiene descuento</option>
-                  <option value=<%true%>>Sí</option>
-                  <option value=<%false%>>No</option>
+                  <option disabled selected>Tiene descuento</option>
+                  <option value=<%=true%>>Sí</option>
+                  <option value=<%=false%>>No</option>
                 </select>
               </p>
 
@@ -137,7 +126,7 @@
                   name="size"
                   id="size"
                 >
-                  <option value=<%null%> selected >Talle único</option>
+                  <option value="" >Talle único</option>
                   <option value="S">S</option>
                   <option value="M">M</option>
                   <option value="L">L</option>

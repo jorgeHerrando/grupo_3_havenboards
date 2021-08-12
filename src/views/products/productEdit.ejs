@@ -52,8 +52,20 @@
               </p>
 
               <p>
-                <label for="imagen">Ingrese una o más imágenes*</label>
-                <input type="file" name="image" multiple required value="<%= ...editProduct.image %>"/>
+                <label for="imagen">Ingrese una o más imágenes</label>
+                <input type="file" name="image" multiple />
+
+                <div class="img-edit-product-container">
+                  <% for (let i = 0; i < editProduct.image.length; i++) { %>
+                    <input type="checkbox" name="image<%=i+1%>" id="image<%=i+1%>" class="checkbox-input" checked/>
+                    <div class="img-edit-product-box">
+                      <label for="image<%=i+1%>">
+                        <img class="img-edit-product" src="/images/tall/<%= editProduct.image[i]%>" alt="foto producto <%= editProduct.name %>"/>
+                      </label>
+                    </div>
+                  <% } %>
+                </div>
+                
               </p>
 
               <p>
@@ -77,7 +89,7 @@
                   name="subcategory"
                   id="subcategory" 
                 >
-                  <option value=<% null %> <%= editProduct.subcategory == null ? 'selected':"" %>>Ninguna</option>
+                  <option value="" <%= editProduct.subcategory === null ? 'selected':"" %>>Ninguna</option>
                   <option value="Helmet" <%= editProduct.subcategory === "Helmet"? 'selected':"" %>>Cascos</option>
                   <option value="Gloves" <%= editProduct.subcategory === "Gloves"? 'selected':"" %>>Guantes</option>
                   <option value="Protection" <%= editProduct.subcategory === "Protection"? 'selected':"" %>>Protección</option>
@@ -106,12 +118,25 @@
 
               <p>
                 <label for="price">Precio*</label>
-                <input type="number" name="price" id="price" value="<%= editProduct.price %>" required />
+                <input type="number" name="price" id="price" value=<%= editProduct.price %> required />
               </p>
 
               <p>
                 <label for="discount">Ingrese descuento*</label>
-                <input type="number" name="discount"  value="<%= editProduct.discount %>" id="discount" required />
+                <input type="number" name="discount"  value=<%= editProduct.discount %> id="discount" required />
+              </p>
+
+              <p>
+                <label for="size">Talle*</label>
+                <select
+                  name="size"
+                  id="size"
+                >
+                  <option value="" <%= editProduct.size === null? 'selected':"" %>>Talle único</option>
+                  <option value="S" <%= editProduct.size === "S"? 'selected':"" %>>S</option>
+                  <option value="M" <%= editProduct.size === "M"? 'selected':"" %>>M</option>
+                  <option value="L" <%= editProduct.size === "L"? 'selected':"" %>>L</option>
+                </select>
               </p>
 
               <p>
@@ -122,21 +147,8 @@
                   required
                 >
                 <!-- poner un if discount distinto 0? -->
-                  <option>Tiene descuento</option>
-                  <option value='true' <%= editProduct.sale == true? 'selected':"" %>>Sí</option>
-                  <option value='false'  <%= editProduct.sale == false? 'selected':"" %>>No</option>
-                </select>
-              </p>
-
-              <p>
-                <label for="size">Talle*</label>
-                <select
-                  name="talle"
-                  id="size"
-                >
-                  <option value="S" <%= editProduct.size === "S"? 'selected':"" %>>S</option>
-                  <option value="M" <%= editProduct.size === "M"? 'selected':"" %>>M</option>
-                  <option value="L" <%= editProduct.size === "L"? 'selected':"" %>>L</option>
+                  <option value=<%=true%> <%= editProduct.sale == true? 'selected':"" %>>Sí</option>
+                  <option value=<%=false%>>  <%= editProduct.sale == false? 'selected':"" %>>No</option>
                 </select>
               </p>
 
