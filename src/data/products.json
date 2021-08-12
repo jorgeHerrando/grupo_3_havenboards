@@ -297,11 +297,7 @@
     "category": "Wakeboard",
     "subcategory": null,
     "brand": "North",
-<<<<<<< HEAD
     "price": 120,
-=======
-    "price": 120.0,
->>>>>>> 55220b17f82fc6c789cd91ae05c2f5f697c6d4b9
     "discount": 20,
     "size": null,
     "sale": false
@@ -320,7 +316,6 @@
     "category": "Wakeboard",
     "subcategory": null,
     "brand": "North",
-<<<<<<< HEAD
     "price": 120,
     "discount": 20,
     "size": null,
@@ -459,9 +454,6 @@
     "subcategory": null,
     "brand": "Olaian",
     "price": 120,
-=======
-    "price": 120.0,
->>>>>>> 55220b17f82fc6c789cd91ae05c2f5f697c6d4b9
     "discount": 20,
     "size": null,
     "sale": false
