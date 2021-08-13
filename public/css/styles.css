@@ -1002,6 +1002,17 @@ button.button-delete {
   margin: 25px 0;
 }
 
+.col-2 p.discount,
+.col-2 h4.discount-price {
+  display: inline-block;
+}
+.col-2 h4.discount-price {
+  padding-right: 1rem;
+}
+.col-2 p.discount {
+  color: #25ca25;
+}
+
 .single-product select {
   display: block;
   padding: 10px;
