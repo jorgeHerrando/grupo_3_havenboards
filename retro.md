@@ -1,6 +1,6 @@
 RETROSPECTIVA DEL SPRINT 4: 'Havenboards'
 
-El tercer sprint nos sirvió para establecer una dedicación y responsabidad propia y grupal con respecto al trabajo a realizar en el proyecto integrador.
+El tercer sprint nos sirvió para establecer una dedicación y responsabilidad propia y grupal con respecto al trabajo a realizar en el proyecto integrador.
 
 Aspectos que funcionan:
 
@@ -36,8 +36,8 @@ Retrospectiva de estrella de mar
 - Hacer menos:
 
 1. Dudar de nuestras habilidades.
-2. Menos copy-paste de proyectos anteriores
+2. Dedicar tiempo extra a aprender nuevas habilidades sin tener terminado previamente lo básico para el sprint
 
 - Dejar de hacer:
 
-1. No programar un espacio diario para trabajar en el proyecto integrador
+1. No ser tan estrictos con los horarios pactados a la hora de las reuniones. Ser más flexibles
