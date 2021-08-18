@@ -1,48 +1,43 @@
-RETROSPECTIVA DEL SPRINT 2: 'Havenboards'
+RETROSPECTIVA DEL SPRINT 4: 'Havenboards'
 
-El segundo sprint nos ha servido para saber cómo trabaja cada uno y en qué podemos aportar aspectos más positivos.
+El tercer sprint nos sirvió para establecer una dedicación y responsabidad propia y grupal con respecto al trabajo a realizar en el proyecto integrador.
 
 Aspectos que funcionan:
 
-- Apoyo mutuo para que todos podamos superarnos
-- Buena comunicación entre los miembros del grupo
-- Mejora de la frecuencia de reuniones
+- Responsabilidad a la hora de llevar a cabo las tareas asignadas.
+- Velocidad de trabajo.
+- Apoyo entre los diferentes miembros del grupo.
 
 Aspectos a mejorar:
 
+- Incorporar el uso de branches en Github
 - Reuniones con temática y objetivos definidos anteriormente.
-- Implementar dailys reports cortos al principio del día, incluso por slack
+- Implementar daily reports cortos al principio del día, incluso por slack
 - Push con mayor frecuencia
-- Entendimiento de Github
 
 Retrospectiva de estrella de mar
 
 - Comenzar a hacer:
 
-1. Avanzar en el contenido de las clases para implementar los nuevos conocimientos lo antes posible.
-2. Implementar los daily reports entre nosotros.
-3. Poner tiempo límite en las reuniones acorde con los temas a tratar
-4. Empezar a trabajar con branches en Github
+1. En ciertos casos en que se tenga que trabajar sobre el mismo archivo, implementar nuevos conocimientos en una copia del proyecto de manera individual y ver los logros de cada uno de manera grupal.
 
 - Hacer más:
 
-1. Aprender a googlear mejor y sacarnos las dudas online
-2. Establecer deadlines
-3. Organizarnos para hacer reuniones donde estemos todos para resolver un tema en común
+1. Aprender a googlear mejor y sacarnos las dudas online.
+2. Analizar qué es lo que estamos haciendo en el Sprint y por qué.
 
 - Continuar haciendo:
 
 1. Comunicación informal vía Slack/Discord
-2. Mantener el buen ambiente social
-3. Agregar tareas extras aunque el sprint no las requiera explícitamente
+2. Establecer deadlines
+3. Mantener el buen ambiente social
+4. Agregar tareas extras aunque el sprint no las requiera explícitamente
 
 - Hacer menos:
 
-1. No ser concretos sobre qué debemos resolver en las reuniones
-2. Quedarnos sólo con el material de clase
-3. Invertir tiempo en tareas que sean difíciles de implementar en el sprint con los conocimientos actuales
+1. Dudar de nuestras habilidades.
+2. Menos copy-paste de proyectos anteriores
 
 - Dejar de hacer:
 
 1. No programar un espacio diario para trabajar en el proyecto integrador
-2. No planear lo prioritario/urgente/importante para decidir dónde poner la atención
