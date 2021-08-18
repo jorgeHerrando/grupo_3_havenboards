@@ -373,12 +373,29 @@ section.home-section-sales div.sales-button {
   text-align: center;
   padding-top: 1.5rem;
 }
+
 section.home-section-sales div.sales-button button {
+  color: #fff;
+  padding: 0.8rem 4rem;
+  cursor: pointer;
+  background-color: #6db8ff;
+  border-radius: 1px;
+  border: 1px solid #fff;
+  font-size: 16px;
+  transition: background-color 450ms, color 450ms;
+}
+section.home-section-sales div.sales-button button:hover {
+  color: #000;
+  background-color: #75e2dc;
+
+}
+
+/*section.home-section-sales div.sales-button button {
   padding: 0.3rem 5rem;
   cursor: pointer;
   background-color: #fcd89d;
   border-radius: 5px;
-}
+}*/
 
 /*  */
 /* bottom info */
