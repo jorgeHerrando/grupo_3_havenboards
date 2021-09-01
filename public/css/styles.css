@@ -90,6 +90,11 @@ div.top-header div.logo {
 div.top-header div.logo img {
   width: 100%;
 }
+
+/* que la img ocupe el 100% */
+div.logo-list img {
+  width: 100%;
+}
 /* hacemos flex en los iconos y los ponemos a la dcha con flex-end */
 div.top-header div.header-icons {
   max-width: 45%;
@@ -114,6 +119,7 @@ div.top-header div.header-icons div.header-icon-menu {
 div.top-header div.header-icons i {
   font-size: 1.5rem;
 }
+
 div.top-header div.header-icons div.header-icons-action i {
   padding: 0 3px;
 }
@@ -132,11 +138,12 @@ header form.form-search input {
   padding: 5px 10px;
   border-radius: 5px;
 }
-/* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa */
+/* damos un tamaño max a la barra y hacemos obj relative para posicionar lupa. la ponemos detrás del menú desplegable */
 header form.form-search div.input-search {
   position: relative;
   max-width: 320px;
   margin: 0 auto;
+  z-index: -1;
 }
 /* posicionamos i */
 header form.form-search div.input-search i {
@@ -145,6 +152,110 @@ header form.form-search div.input-search i {
   right: 3px;
   top: 6px;
 }
+
+/* damos formato al toggle bottom */
+div.toggle-btn {
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  float: right;
+  padding-top: 4px;
+  position: relative;
+}
+/* Styling the hamburger lines */
+div.toggle-btn .btn-line {
+  width: 28px;
+  height: 3px;
+  margin: 0 0 5px 0;
+  background: black;
+  transition: all 0.5s ease-out;
+}
+/* Adding transform to the X */
+
+/* Styling the three lines
+        to make it an X */
+.toggle-btn.close .btn-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.toggle-btn.close .btn-line:nth-child(2) {
+  opacity: 0;
+}
+
+.toggle-btn.close .btn-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -7px);
+}
+
+/* damos estilo al navbar de mobile */
+nav.nav-list {
+  /* display: none; */
+  width: 100%;
+  height: 100%;
+  background-color: #4abbc7;
+  position: fixed;
+  top: 88px;
+  left: -100%;
+  transition: 600ms;
+}
+nav.nav-list.is-open {
+  left: 0;
+}
+
+nav.nav-list a {
+  display: block;
+  font-size: 1.5rem;
+  justify-content: center;
+  color: #fff;
+  padding: 0 5%;
+  height: 40px;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  font-family: "Heebo", sans-serif;
+}
+nav.nav-list a:hover {
+  color: #153351;
+}
+/* tamaño logo nav-list */
+/* tamaño del logo */
+div.logo-list {
+  width: 60px;
+  padding-top: 1rem;
+  margin: 0 auto;
+}
+div.logo-list a {
+  border-bottom: none;
+}
+/* no se muestra de momento */
+nav.nav-desktop {
+  display: none;
+}
+
+/* style de los li de header-bottom */
+div.header-bottom nav ul li a {
+  position: relative;
+}
+div.header-bottom nav ul li a span {
+  position: relative;
+  z-index: 1;
+}
+div.header-bottom nav ul li a span i {
+  color: #4abbc7;
+  font-family: "Big Shoulders Display", cursive;
+  font-weight: bold;
+}
+div.header-bottom nav ul li a b {
+  display: inline-block;
+  height: 8px;
+  width: 110%;
+  background-color: #fcd89d;
+  position: absolute;
+  border-radius: 8px;
+  left: -7%;
+  bottom: -2px;
+  transition-duration: 0.32s;
+  transition-timing-function: ease;
+}
+
 /* de momento no lo mostramos */
 div.header-bottom {
   padding: 11px 5%;
@@ -159,34 +270,16 @@ div.header-bottom nav ul {
 }
 div.header-bottom nav a {
   transition: color 200ms;
+  color: chocolate;
 }
 /* animación al hacer hover */
 div.header-bottom nav a:hover {
-  padding-bottom: 3px;
-  color: #4abbc7;
+  /* padding-bottom: 3px; */
+  color: #fff;
 }
-/* que crezca todo lo que pueda. Aún no se muestra */
-nav.nav-desktop {
-  flex-grow: 1;
-  display: none;
-}
-/* hacemos ul flex container y damos formato */
-nav.nav-desktop ul {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  font-family: "Heebo", sans-serif;
-  /* padding: 0 0.3rem; */
-}
-nav.nav-desktop a {
-  transition: border-bottom 150ms;
-}
-nav.nav-desktop a:hover {
-  border-bottom: 2px solid #153351;
-  padding-bottom: 5px;
+div.header-bottom nav a:hover b {
+  height: 110%;
+  background-color: #153351;
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -387,7 +480,6 @@ section.home-section-sales div.sales-button button {
 section.home-section-sales div.sales-button button:hover {
   color: #000;
   background-color: #75e2dc;
-
 }
 
 /*section.home-section-sales div.sales-button button {
@@ -1218,13 +1310,17 @@ main.main-info section.info-view {
     display: block;
   }
   div.top-header {
-    background-color: #8bd7df;
+    background-color: #4abbc7;
     border-bottom: 0.5px solid #bbc2c4;
   }
 
   /* quitamos el icono del menú desplegable */
   div.top-header div.header-icon-menu {
     display: none;
+  }
+  /* se muestra el form por encima */
+  header form.form-search div.input-search {
+    z-index: 0;
   }
 
   /* enseñamos el menú por abajo */
@@ -1390,10 +1486,31 @@ main.main-info section.info-view {
     margin-left: 1.5rem;
   }
   /* mostramos menú */
+  /* que crezca todo lo que pueda. Aún no se muestra */
   nav.nav-desktop {
     display: block;
     font-size: 0.95rem;
     max-width: 645px;
+    flex-grow: 1;
+  }
+
+  /* hacemos ul flex container y damos formato */
+  nav.nav-desktop ul {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Heebo", sans-serif;
+    /* padding: 0 0.3rem; */
+  }
+  nav.nav-desktop a {
+    transition: border-bottom 150ms;
+  }
+  nav.nav-desktop a:hover {
+    border-bottom: 2px solid #153351;
+    padding-bottom: 5px;
   }
 
   div.top-header {
@@ -1410,7 +1527,7 @@ main.main-info section.info-view {
   }
 
   .header-account {
-    background-color: #8bd7df;
+    background-color: #4abbc7;
   }
   .header-account ul {
     color: #153351;

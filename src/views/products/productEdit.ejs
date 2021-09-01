@@ -57,11 +57,11 @@
 
                 <div class="img-edit-product-container">
                   <% for (let i = 0; i < editProduct.image.length; i++) { %>
-                    <input type="checkbox" name="image<%=i+1%>" id="image<%=i+1%>" class="checkbox-input" checked/>
+                    <!-- <input type="checkbox" name="image<%=i+1%>" id="image<%=i+1%>" class="checkbox-input" checked/> -->
                     <div class="img-edit-product-box">
-                      <label for="image<%=i+1%>">
+                      <!-- <label for="image<%=i+1%>"> -->
                         <img class="img-edit-product" src="/images/tall/<%= editProduct.image[i]%>" alt="foto producto <%= editProduct.name %>"/>
-                      </label>
+                      <!-- </label> -->
                     </div>
                   <% } %>
                 </div>
