@@ -17,8 +17,8 @@ let upload = multer({ storage: storage });
 
 const usersController = require("../controllers/usersController");
 
-router.post("/", upload.single("image"), usersController.createUser);
 router.get("/login", usersController.login);
+// router.post("/login", usersController.processLogin);
 
 router.get("/register", usersController.register);
 // router.get("/adminRegister", usersController.admin);

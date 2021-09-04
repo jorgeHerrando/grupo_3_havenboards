@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const usersFilePath = path.join(__dirname, "../data/users.json"); //ruta a nuestra DB JSON
 let users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8")); // pasamos de formato JSON a JS
@@ -11,6 +12,20 @@ const usersController = {
   register: (req, res) => {
     res.render("users/register", { title: "Havenboards - Sign Up" });
   },
+  // processLogin: (req, res) => {
+  //   // if(!users) {
+  //   //   users = [];
+  //   // }
+  //   for (let i = 0; i < users.length; i++) {
+  //     if (
+  //       users[i].email == req.body.email &&
+  //       bcrypt.compareSync(req.body.password, users[i].password)
+  //     ) {
+  //       res.render("adminIndex");
+  //     }
+  //   }
+  //   res.render("users/login", { title: "Havenboards - Log In" });
+  // },
   // admin: (req, res) => {
   //   res.render("users/userAdmin", { title: "Admin - Sign Up" });
   // },
@@ -23,7 +38,7 @@ const usersController = {
       id: newId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      password: req.body.password,
+      password: bcrypt.hashSync(req.body.password, 10),
       email: req.body.email,
       category: req.body.category,
       image: req.file.originalname,

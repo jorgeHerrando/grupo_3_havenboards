@@ -21,9 +21,9 @@ app.set("views", path.join(__dirname, "src/views")); // express accede directame
 
 // ************ Route System require and use() ************
 
-const mainRouter = require("./src/routes/main");
-const usersRouter = require("./src/routes/users");
-const productsRouter = require("./src/routes/products");
+const mainRouter = require("./src/routes/mainRouter");
+const usersRouter = require("./src/routes/usersRoutes");
+const productsRouter = require("./src/routes/productsRoutes");
 
 app.use("/", mainRouter);
 app.use("/users", usersRouter);
