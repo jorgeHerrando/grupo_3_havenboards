@@ -9,7 +9,7 @@ const usersController = {
     res.render("users/login", { title: "Havenboards - Log In" });
   },
   register: (req, res) => {
-    res.render("users/adminRegister", { title: "Havenboards - Sign Up" });
+    res.render("users/register", { title: "Havenboards - Sign Up" });
   },
   // admin: (req, res) => {
   //   res.render("users/userAdmin", { title: "Admin - Sign Up" });
