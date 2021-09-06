@@ -24,7 +24,7 @@
                   id="firstName"
                   minlength="1"
                   maxlength="20"
-                  
+                  required
                   pattern="([^\s][A-zÀ-ž\s]+)"
                   placeholder="Introduzca su nombre"
                   class="<%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
@@ -45,7 +45,7 @@
                   id="lastName"
                   minlength="1"
                   maxlength="20"
-                  
+                  required
                   pattern="([^\s][A-zÀ-ž\s]+)"
                   placeholder="Introduzca su apellido"
                   class="<%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
@@ -65,7 +65,7 @@
                   name="email"
                   id="email"
                   placeholder="email@havenboards.com.ar"
-                  
+                  required
                   title="El campo debe tener un dato del tipo E-mail, conteniendo el símbolo @"
                   class="<%= locals.errors && errors.email ? 'is-invalid' : null %>"
                   value="<%= locals.oldData && oldData.email ? oldData.email : null %>"
@@ -82,6 +82,7 @@
               <p>
                 <label>Contraseña*</label>
                 <input type="password" name="password"
+                required
                 class="<%= locals.errors && errors.password ? 'is-invalid' : null %>"/>
 
                 <% if (locals.errors && errors.password) { %> 

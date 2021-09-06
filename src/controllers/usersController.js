@@ -52,10 +52,8 @@ const usersController = {
       password: bcrypt.hashSync(req.body.password, 10),
       email: req.body.email,
       category: req.body.category ? req.body.category : "user",
-      image: req.file ? req.file.filename : "defaultAvatar.png",
+      image: req.file ? req.file.filename : "defaultAvatar.png", //si no sube le ponemos el avatar default
     };
-
-    console.log(req.file);
 
     // agregamos nuevo usuario
     users.push(newUser);

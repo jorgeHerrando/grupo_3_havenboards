@@ -2,8 +2,11 @@
 const express = require("express");
 const router = express.Router();
 
-const validations = require("../middlewares/resgisterValidation");
-const upload = require("../middlewares/multerValidation");
+// ************ Validations ************
+const upload = require("../middlewares/multerValidationUser");
+const validations = require("../middlewares/registerValidation");
+
+// ************ Controller Require ************
 const usersController = require("../controllers/usersController");
 
 // Formulario de registro

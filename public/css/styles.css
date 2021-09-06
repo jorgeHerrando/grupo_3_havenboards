@@ -957,6 +957,7 @@ article.cart-buttons button:first-child {
   font-size: 13px;
   color: #bf1725;
   padding-left: 3px;
+  display: inline-block;
 }
 
 .contact-form-container {
@@ -1033,6 +1034,7 @@ article.cart-buttons button:first-child {
 .delete-form {
   padding: 1rem;
   box-shadow: none !important;
+  margin-top: 1rem;
 }
 
 button.button-delete {
