@@ -78,7 +78,7 @@
                   <option value="" disabled selected>Seleccionar Categoría</option>
 
                   <% for (const oneCategory of categories) { %>
-                    <option value=<%= oneCategory %> 
+                    <option value="<%= oneCategory %>" 
                     <%= locals.oldData && (oldData.category === oneCategory) ? 'selected':"" %>><%= oneCategory %></option>
                   <% } %>
                   
@@ -103,7 +103,7 @@
                   <%= locals.oldData  && (oldData.subcategory === "") ? 'selected':"" %>>Ninguna</option>
 
                   <% for (const oneSubcategory of subcategories) { %>
-                    <option value=<%= oneSubcategory %> 
+                    <option value="<%= oneSubcategory %>" 
                     <%= locals.oldData && (oldData.subcategory === oneSubcategory) ? 'selected':"" %>><%= oneSubcategory %></option>
                   <% } %>
 
@@ -127,7 +127,7 @@
                   <option value="" disabled selected>Seleccionar Marca</option>
 
                   <% for (const oneBrand of brands) { %>
-                    <option value=<%= oneBrand %> 
+                    <option value="<%= oneBrand %>" 
                     <%= locals.oldData && (oldData.brand === oneBrand) ? 'selected':"" %>><%= oneBrand %></option>
                   <% } %>
 

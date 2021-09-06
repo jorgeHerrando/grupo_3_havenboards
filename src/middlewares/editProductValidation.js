@@ -66,10 +66,8 @@ const validations = [
     let file = req.files;
     let acceptedExtensions = [".jpg", ".png", ".gif"];
 
-    if (file.length < 1) {
+    if (file.length >= 1) {
       //probe mil cosas y es la única que funciona
-      throw new Error("Tienes que subir al menos una imagen");
-    } else {
       for (const onefile of file) {
         let fileExtension = path.extname(onefile.originalname);
         if (!acceptedExtensions.includes(fileExtension)) {

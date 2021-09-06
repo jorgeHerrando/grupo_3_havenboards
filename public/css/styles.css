@@ -1022,7 +1022,9 @@ article.cart-buttons button:first-child {
   justify-content: flex-start;
   padding: 1rem;
   align-items: center;
+  padding-bottom: 0;
 }
+
 .img-edit-product-box {
   max-width: 70px;
   margin-right: 0.5rem;

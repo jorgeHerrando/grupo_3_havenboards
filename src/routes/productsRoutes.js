@@ -4,7 +4,8 @@ const router = express.Router();
 
 // ************ Validations ************
 const upload = require("../middlewares/multerValidationProduct");
-const validations = require("../middlewares/createProductValidation");
+const validationsCreate = require("../middlewares/createProductValidation");
+const validationsEdit = require("../middlewares/editProductValidation");
 
 // ************ Controller Require ************
 const productsController = require("../controllers/productsController");
@@ -17,7 +18,7 @@ router.get("/create", productsController.create); //manda vista del form a trav√
 router.post(
   "/",
   upload.array("image", 6),
-  validations,
+  validationsCreate,
   productsController.store
 );
 
@@ -26,7 +27,12 @@ router.get("/detail/:id", productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/
 router.get("/:id/edit", productsController.productEditView); // manda el form de edici√≥n con toda la data del producto a editar
-router.put("/:id", upload.array("image"), productsController.productEditUpload);
+router.put(
+  "/:id",
+  upload.array("image", 6),
+  validationsEdit,
+  productsController.productEditUpload
+);
 
 /*** DELETE ONE PRODUCT***/
 router.delete("/:id", productsController.destroy);

@@ -9,14 +9,11 @@ let products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8")); // pasamo
 const productsController = {
   shop: (req, res) => {
     res.render("products/shop", {
-      title: "Havenboards - Tienda",
       products: products, //le pasamos todos los productos con todas sus key:value
     });
   },
   productCart: (req, res) => {
-    res.render("products/productCart", {
-      title: "Havenboards - Shopping Cart",
-    });
+    res.render("products/productCart");
   },
   detail: (req, res) => {
     let id = req.params.id; //recuperamos el param del url
@@ -80,7 +77,6 @@ const productsController = {
     let editProduct = products.find((elem) => elem.id == id);
 
     res.render("products/productEdit", {
-      title: "Havenboards - Editing Product",
       editProduct: editProduct,
     });
   },
@@ -88,6 +84,17 @@ const productsController = {
     let id = req.params.id;
 
     let editedProduct = products.find((elem) => elem.id == id);
+
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+      return res.render("products/productEdit", {
+        editProduct: editedProduct,
+        errors: resultValidation.mapped(), //convierto el array errors en obj.literal
+        oldData: req.body,
+      });
+    }
+
     // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos array con lo anterior donde los pushearemos
     let images = editedProduct.image;
     for (i = 0; i < req.files.length; i++) {
@@ -107,7 +114,6 @@ const productsController = {
     editedProduct.size = req.body.size ? req.body.size : null; // si el valor que llega es vacío, ponle null
     editedProduct.discount = Number(req.body.discount);
     editedProduct.sale = Boolean(req.body.sale);
-    console.log(products);
 
     fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
