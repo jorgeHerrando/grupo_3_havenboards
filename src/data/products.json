@@ -473,7 +473,7 @@
     "category": "Surf",
     "subcategory": null,
     "brand": "Olaian",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": false
@@ -505,7 +505,7 @@
     "category": "Wakeboard",
     "subcategory": null,
     "brand": "North",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": false
@@ -524,7 +524,7 @@
     "category": "Wakeboard",
     "subcategory": null,
     "brand": "North",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": true
@@ -603,7 +603,7 @@
     "category": "Surf",
     "subcategory": null,
     "brand": "Olaian",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": true
@@ -623,7 +623,7 @@
     "category": "Surf",
     "subcategory": null,
     "brand": "Olaian",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": false
@@ -643,7 +643,7 @@
     "category": "Surf",
     "subcategory": null,
     "brand": "Olaian",
-    "price": 120.0,
+    "price": 120,
     "discount": 20,
     "size": null,
     "sale": false
