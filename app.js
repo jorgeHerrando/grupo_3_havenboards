@@ -10,7 +10,7 @@ const app = express();
 // ************ Middlewares ************
 
 app.use(express.static("public")); // Necesario para los archivos estáticos en el folder /public
-app.use(express.urlencoded({ extended: false })); // to recognize the incoming Request Object as strings or arrays
+app.use(express.urlencoded({ extended: false })); // to recognize the incoming Request Object as strings or arrays. Nos permite capturar la info del formulario en req.body
 app.use(express.json()); // to recognize the incoming Request Object as a JSON Object
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 

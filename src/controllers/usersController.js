@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const usersFilePath = path.join(__dirname, "../data/users.json"); //ruta a nuestra DB JSON
@@ -7,29 +9,38 @@ let users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8")); // pasamos de f
 
 const usersController = {
   login: (req, res) => {
-    res.render("users/login", { title: "Havenboards - Log In" });
+    res.render("users/login");
   },
   register: (req, res) => {
-    res.render("users/register", { title: "Havenboards - Sign Up" });
+    res.render("users/register");
   },
-  // processLogin: (req, res) => {
-  //   // if(!users) {
-  //   //   users = [];
-  //   // }
-  //   for (let i = 0; i < users.length; i++) {
-  //     if (
-  //       users[i].email == req.body.email &&
-  //       bcrypt.compareSync(req.body.password, users[i].password)
-  //     ) {
-  //       res.render("adminIndex");
-  //     }
-  //   }
-  //   res.render("users/login", { title: "Havenboards - Log In" });
-  // },
+  processLogin: (req, res) => {
+    // if(!users) {
+    //   users = [];
+    // }
+    for (let i = 0; i < users.length; i++) {
+      if (
+        users[i].email == req.body.email &&
+        bcrypt.compareSync(req.body.password, users[i].password)
+      ) {
+        res.render("adminIndex");
+      }
+    }
+    res.render("users/login", { title: "Havenboards - Log In" });
+  },
   // admin: (req, res) => {
   //   res.render("users/userAdmin", { title: "Admin - Sign Up" });
   // },
   createUser: (req, res) => {
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+      return res.render("users/register", {
+        errors: resultValidation.mapped(), //convierto el array errors en obj.literal
+        oldData: req.body,
+      });
+    }
+
     // crear nuevo id para el usuario creado
     let newId = users[users.length - 1].id + 1;
 
@@ -40,9 +51,11 @@ const usersController = {
       lastName: req.body.lastName,
       password: bcrypt.hashSync(req.body.password, 10),
       email: req.body.email,
-      category: req.body.category,
-      image: req.file.originalname,
+      category: req.body.category ? req.body.category : "user",
+      image: req.file ? req.file.filename : "defaultAvatar.png",
     };
+
+    console.log(req.file);
 
     // agregamos nuevo usuario
     users.push(newUser);
@@ -50,7 +63,7 @@ const usersController = {
     // reescribimos la BD en formato JSON
     fs.writeFileSync(usersFilePath, JSON.stringify(users));
 
-    res.redirect("/users/login");
+    res.render("./users/login");
   },
 };
 module.exports = usersController;

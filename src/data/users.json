@@ -51,5 +51,14 @@
     "password": "$2a$10$sSuUrQULHKjzPoDuFANLfuxm8FyuVvAOddAGUJ9BJv6hPPF6vY0ZG",
     "email": "newuser@gmail.com",
     "image": "3.png"
+  },
+  {
+    "id": 7,
+    "firstName": "Jorge",
+    "lastName": "Herrando",
+    "password": "$2a$10$QMx/Ty8A7a/3BO8YizTZ4OWPgznhJNWfL1eivsQGOoTRQK7O053qq",
+    "email": "jorge@gmail.com",
+    "category": "user",
+    "image": "defaultAvatar.png"
   }
 ]
