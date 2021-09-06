@@ -1310,7 +1310,9 @@ main.main-info section.info-view {
     display: block;
   }
   div.top-header {
-    background-color: #4abbc7;
+    background-color: #1b1f1e; 
+     /* background-color:  #4abbc7; */
+    
     border-bottom: 0.5px solid #bbc2c4;
   }
 
