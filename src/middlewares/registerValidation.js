@@ -19,17 +19,21 @@ const validations = [
     .withMessage("Tienes que escribir un email")
     .bail()
     .isEmail()
+    .normalizeEmail()
     .withMessage("Tiene que tener formato de email"),
   body("password")
     .notEmpty()
     .withMessage("Tienes que escribir un password")
     .bail()
-    .isStrongPassword({
-      minLength: 6,
-      minLowercase: 1,
-      minUppercase: 1,
-      minNumbers: 1,
-    })
+    .isLength({ min: 6, max: 20 })
+    .withMessage(
+      "La contraseña debe tener al menos 6 dígitos, incluir una mayúscula, una minúscula, y un número"
+    )
+    .matches("[0-9]")
+    .withMessage(
+      "La contraseña debe tener al menos 6 dígitos, incluir una mayúscula, una minúscula, y un número"
+    )
+    .matches("[A-Z]")
     .withMessage(
       "La contraseña debe tener al menos 6 dígitos, incluir una mayúscula, una minúscula, y un número"
     ),

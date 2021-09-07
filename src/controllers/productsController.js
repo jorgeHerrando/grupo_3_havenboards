@@ -68,7 +68,7 @@ const productsController = {
     // reescribimos la BD en formato JSON
     fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
-    res.render("products/productDetail/" + newId);
+    res.redirect("products/productDetail/" + newId);
   },
 
   productEditView: (req, res) => {
@@ -88,7 +88,7 @@ const productsController = {
     const resultValidation = validationResult(req);
 
     if (resultValidation.errors.length > 0) {
-      return res.render("products/productEdit", {
+      return res.redirect("products/productEdit", {
         editProduct: editedProduct,
         errors: resultValidation.mapped(), //convierto el array errors en obj.literal
         oldData: req.body,

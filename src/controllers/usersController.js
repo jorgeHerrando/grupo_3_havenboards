@@ -61,7 +61,7 @@ const usersController = {
     // reescribimos la BD en formato JSON
     fs.writeFileSync(usersFilePath, JSON.stringify(users));
 
-    res.render("./users/login");
+    res.redirect("/users/login");
   },
 };
 module.exports = usersController;
