@@ -50,7 +50,7 @@ const validations = [
           `Las extensiones de archivo permitidas son ${acceptedExtensions.join(
             ", "
           )}`
-        );
+        ).bail();
       }
     }
     return true;

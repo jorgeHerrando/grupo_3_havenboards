@@ -4,8 +4,8 @@ const path = require("path");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-const usersFilePath = path.join(__dirname, "../data/users.json"); //ruta a nuestra DB JSON
-let users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8")); // pasamos de formato JSON a JS
+// traemos modelo con métodos
+const User = require("../models/User");
 
 const usersController = {
   login: (req, res) => {
@@ -13,6 +13,40 @@ const usersController = {
   },
   register: (req, res) => {
     res.render("users/register");
+  },
+  createUser: (req, res) => {
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+      return res.render("users/register", {
+        errors: resultValidation.mapped(), //convierto el array errors en obj.literal
+        oldData: req.body,
+      });
+    }
+
+    // Validación propia
+    let userInDB = User.findByField("email", req.body.email);
+
+    if (userInDB) {
+      return res.render("users/register", {
+        errors: {
+          email: {
+            msg: "Este email ya está registrado",
+          },
+        }, //convierto el array errors en obj.literal
+        oldData: req.body,
+      });
+    }
+
+    let userToCreate = {
+      ...req.body,
+      image: req.file ? req.file.filename : "defaultAvatar.png",
+      password: bcrypt.hashSync(req.body.password, 10),
+    };
+    // crear nuevo usuario con la info recopilada
+    let userCreated = User.create(userToCreate);
+
+    return res.redirect("/users/login");
   },
   processLogin: (req, res) => {
     // if(!users) {
@@ -31,37 +65,5 @@ const usersController = {
   // admin: (req, res) => {
   //   res.render("users/userAdmin", { title: "Admin - Sign Up" });
   // },
-  createUser: (req, res) => {
-    const resultValidation = validationResult(req);
-
-    if (resultValidation.errors.length > 0) {
-      return res.render("users/register", {
-        errors: resultValidation.mapped(), //convierto el array errors en obj.literal
-        oldData: req.body,
-      });
-    }
-
-    // crear nuevo id para el usuario creado
-    let newId = users[users.length - 1].id + 1;
-
-    // le damos los valores al nuevo usuario de cada uno de los campos del form
-    let newUser = {
-      id: newId,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      password: bcrypt.hashSync(req.body.password, 10),
-      email: req.body.email,
-      category: req.body.category ? req.body.category : "user",
-      image: req.file ? req.file.filename : "defaultAvatar.png", //si no sube le ponemos el avatar default
-    };
-
-    // agregamos nuevo usuario
-    users.push(newUser);
-
-    // reescribimos la BD en formato JSON
-    fs.writeFileSync(usersFilePath, JSON.stringify(users));
-
-    res.redirect("/users/login");
-  },
 };
 module.exports = usersController;

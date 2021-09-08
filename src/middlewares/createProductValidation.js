@@ -65,6 +65,8 @@ const validations = [
   body("image").custom((value, { req }) => {
     let file = req.files;
     let acceptedExtensions = [".jpg", ".png", ".gif"];
+    console.log(req);
+    console.log(file); //siempre es [] si no llega nada
 
     if (file.length < 1) {
       //probe mil cosas y es la única que funciona
