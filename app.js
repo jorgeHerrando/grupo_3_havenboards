@@ -1,5 +1,9 @@
 // ************ Require's ************
 const express = require("express");
+
+const session = require("express-session");
+const cookies = require("cookie-parser");
+
 const path = require("path");
 const methodOverride = require("method-override");
 // Para poder usar los métodos PUT y DELETE
@@ -7,7 +11,23 @@ const methodOverride = require("method-override");
 // ************ express() ************
 const app = express();
 
+const userLoggedMiddleware = require("./src/middlewares/userLoggedMiddleware");
+
 // ************ Middlewares ************
+
+// declarar sessin antes que el middleware de logueo
+app.use(
+  session({
+    secret: "Havenboards",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(cookies()); //para trabajar con cookies
+
+// comprobar si esta logueado en todas las rutas
+app.use(userLoggedMiddleware);
 
 app.use(express.static("public")); // Necesario para los archivos estáticos en el folder /public
 app.use(express.urlencoded({ extended: false })); // to recognize the incoming Request Object as strings or arrays. Nos permite capturar la info del formulario en req.body
