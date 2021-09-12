@@ -50,7 +50,7 @@
   "lastName": "Herrando",
   "email": "jorge@gmail.com",
   "password": "$2a$10$DItiMjVL4yGbV4bcko/J5.rwolNb0Sd4QRZ9/hzL4iBpt.tT/6NNK",
-  "category": "user",
+  "category": "admin",
   "image": "defaultAvatar.png"
  },
  {

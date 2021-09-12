@@ -118,6 +118,17 @@ const usersController = {
     return res.redirect("/");
   },
 
+  delete: (req, res) => {
+    res.render("users/userDelete", {
+      user: req.session.userLogged,
+    });
+  },
+
+  destroy: (req, res) => {
+    User.delete(req.session.userLogged.id);
+    res.redirect("/");
+  },
+
   // admin: (req, res) => {
   //   res.render("users/userAdmin", { title: "Admin - Sign Up" });
   // },

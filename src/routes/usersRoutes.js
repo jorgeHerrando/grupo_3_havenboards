@@ -34,6 +34,13 @@ router.get("/profile", authMiddleware, usersController.profile); //no deja entra
 
 // Logout
 router.get("/logout", usersController.logout);
+
+// Borrar usuario form
+router.post("/delete", authMiddleware, usersController.delete);
+
+// Borrar usuario
+router.delete("/destroy", authMiddleware, usersController.destroy);
+
 // router.get("/adminRegister", usersController.admin);
 
 module.exports = router;
