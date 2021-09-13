@@ -21,7 +21,7 @@ let upload = multer({ storage: storage });
 //     if (ext !== ".png" && ext !== ".jpg" && ext !== ".gif" && ext !== ".jpeg") {
 //       return cb(new Error("Only images are allowed"));
 //     }
-//     callback(null, true);
+//     cb(null, true);
 //   },
 // });
 
