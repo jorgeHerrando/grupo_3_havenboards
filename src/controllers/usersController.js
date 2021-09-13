@@ -37,9 +37,10 @@ const usersController = {
         // se crea obj.literal session con prop userLogged y valor userToLogin
         req.session.userLogged = userToLogin;
 
+        // creamos cookie
         if (req.body.remember) {
           res.cookie("userEmail", req.body.email, {
-            maxAge: 1000 * 60 * 60 * 5,
+            maxAge: 1000 * 60 * 60 * 24, //24 horas
           });
         }
         return res.redirect("/users/profile");
