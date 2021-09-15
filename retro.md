@@ -1,43 +1,33 @@
-RETROSPECTIVA DEL SPRINT 4: 'Havenboards'
-
-El tercer sprint nos sirvió para establecer una dedicación y responsabilidad propia y grupal con respecto al trabajo a realizar en el proyecto integrador.
+RETROSPECTIVA DEL SPRINT 5: 'Havenboards'
+El Sprint 4 nos llevó más tiempo de dedicación y responsabilidad a la hora de plasmar el conocimiento sobre el uso de las rutas.
+También aprender a diferenciar el render del redirect, diferenciar cuando va get y cuando va post. Para que se utiliza el method-override, Multer, filesystem, y el manejo del Json
 
 Aspectos que funcionan:
-
-- Responsabilidad a la hora de llevar a cabo las tareas asignadas.
-- Velocidad de trabajo.
-- Apoyo entre los diferentes miembros del grupo.
+- el uso de branches en Github
+- resolver problemas en conjunto
+- división de tareas asignadas
+- compromiso a la hora de la entrega de los Sprints en tiempo y forma
+- Apoyo y colaboración entre los diferentes miembros del grupo.
 
 Aspectos a mejorar:
-
-- Incorporar el uso de branches en Github
-- Reuniones con temática y objetivos definidos anteriormente.
-- Implementar daily reports cortos al principio del día, incluso por slack
-- Push con mayor frecuencia
-
+- Reuniones de menor tiempo.
+- implementar un zoom semanal para aprendizaje colaborativo
+ 
 Retrospectiva de estrella de mar
+Comenzar a hacer:
+- trabajar la modularización de nuestros archivos 
+ 
+Hacer más:
+- detalle de los avances
+- compartir ideas e intentar llevarlas a cabo
+ 
+Continuar haciendo:
+- Push con frecuencia
+- buena comunicación del grupo
+ 
+Hacer menos:
+- no perder tiempo buscando información, que después no termina siendo útil
+ 
+Dejar de hacer:
+- reuniones que lleven demasiado tiempo
 
-- Comenzar a hacer:
-
-1. En ciertos casos en que se tenga que trabajar sobre el mismo archivo, implementar nuevos conocimientos en una copia del proyecto de manera individual y ver los logros de cada uno de manera grupal.
-
-- Hacer más:
-
-1. Aprender a googlear mejor y sacarnos las dudas online.
-2. Analizar qué es lo que estamos haciendo en el Sprint y por qué.
-
-- Continuar haciendo:
-
-1. Comunicación informal vía Slack/Discord
-2. Establecer deadlines
-3. Mantener el buen ambiente social
-4. Agregar tareas extras aunque el sprint no las requiera explícitamente
-
-- Hacer menos:
-
-1. Dudar de nuestras habilidades.
-2. Dedicar tiempo extra a aprender nuevas habilidades sin tener terminado previamente lo básico para el sprint
-
-- Dejar de hacer:
-
-1. No ser tan estrictos con los horarios pactados a la hora de las reuniones. Ser más flexibles
