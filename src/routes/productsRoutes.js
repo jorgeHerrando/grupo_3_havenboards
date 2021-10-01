@@ -15,10 +15,16 @@ const productsController = require("../controllers/productsController");
 /*** GET ALL PRODUCTS ***/
 router.get("/", productsController.shop);
 
+/*** GET ONSALE PRODUCTS ***/
+router.get("/onsale", productsController.onsale);
+
+/*** SEARCH PRODUCTS ***/
+router.get("/search", productsController.search);
+
 /*** CREATE ONE PRODUCT ***/
 router.get("/create", adminMiddleware, productsController.create); //manda vista del form a través del método create del controlador
 router.post(
-  "/",
+  "/create",
   upload.array("image", 6),
   validationsCreate,
   productsController.store
@@ -41,5 +47,8 @@ router.delete("/:id", adminMiddleware, productsController.destroy);
 
 /*** IR AL CARRITO ***/
 router.get("/productCart", productsController.productCart);
+
+/*** GET ALL PRODUCTS and FILTER THEM BY TYPE ***/
+router.get("/:category?", productsController.shop);
 
 module.exports = router;
