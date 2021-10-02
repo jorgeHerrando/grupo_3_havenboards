@@ -26,6 +26,7 @@ const productsController = {
     } catch (e) {
       res.redirect("/");
     }
+    console.log(products);
     // variable que nos dirá qué mostrar en la vista
     let productsToShow;
 
@@ -150,14 +151,16 @@ const productsController = {
     let subcategoriesDB = db.Subcategory.findAll();
     let brandsDB = db.Brand.findAll();
     let sizesDB = db.Size.findAll();
+    let tagsDB = db.Tag.findAll();
 
-    Promise.all([categoriesDB, subcategoriesDB, brandsDB, sizesDB])
-      .then(function ([categories, subcategories, brands, sizes]) {
+    Promise.all([categoriesDB, subcategoriesDB, brandsDB, sizesDB, tagsDB])
+      .then(function ([categories, subcategories, brands, sizes, tags]) {
         return res.render("products/createProduct", {
           categories,
           subcategories,
           brands,
           sizes,
+          tags,
         });
       })
       .catch((e) => res.redirect("/"));
@@ -172,9 +175,10 @@ const productsController = {
       let subcategoriesDB = db.Subcategory.findAll();
       let brandsDB = db.Brand.findAll();
       let sizesDB = db.Size.findAll();
+      let tagsDB = db.Tag.findAll();
 
-      Promise.all([categoriesDB, subcategoriesDB, brandsDB, sizesDB])
-        .then(function ([categories, subcategories, brands, sizes]) {
+      Promise.all([categoriesDB, subcategoriesDB, brandsDB, sizesDB, tagsDB])
+        .then(function ([categories, subcategories, brands, sizes, tags]) {
           // devuelvo la vista con errores y la info necesaria
           return res.render("products/createProduct", {
             errors: resultValidation.mapped(), //convierto el array errors en obj.literal
@@ -183,17 +187,12 @@ const productsController = {
             subcategories,
             brands,
             sizes,
+            tags,
           });
         })
         .catch((e) => res.send(e));
       // si no
     } else {
-      // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos nuevo array donde los pushearemos
-      let images = [];
-      for (i = 0; i < req.files.length; i++) {
-        images.push(req.files[i].filename);
-      }
-
       const newProduct = await db.Product.create(
         {
           name: req.body.name,
@@ -207,7 +206,7 @@ const productsController = {
           brand_id: req.body.brand,
           price: Number(req.body.price),
           discount: Number(req.body.discount),
-          sale: Number(req.body.sale),
+          sale: parseInt(req.body.sale),
         }
         // , {
         //   include: [{
@@ -216,13 +215,32 @@ const productsController = {
         // }
       );
       // .then(function (data) {
-      const size = req.body.size;
-      await newProduct.addSizes(size);
-      console.log(images);
+
+      // IMAGES
+      // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos nuevo array donde los pushearemos
+      let images = [];
+      for (i = 0; i < req.files.length; i++) {
+        images.push(req.files[i].filename);
+      }
       for (i = 0; i < images.length; i++) {
         // ahora con uuid ya no son 2 iguales y creara tantas imagenes como haya en el array
-        await newProduct.createImage({ name: images[i] }, {});
+        await newProduct.createImage({ name: images[i] });
       }
+
+      // SIZES
+      const size = req.body.size;
+      // añadimos sizes ya creadas
+      await newProduct.addSizes(size);
+
+      // STOCK
+      const stock = parseInt(req.body.stock);
+      // añadimos stocks nuevos
+      await newProduct.createStock({ amount: stock, size_id: size }, {});
+
+      // TAGS
+      const tags = req.body.tag;
+      // añadimos tags ya creados
+      await newProduct.addTags(tags);
 
       let newProductId = newProduct.id;
       return res.redirect("/products/detail/" + newProductId);
