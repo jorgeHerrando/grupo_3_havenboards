@@ -969,6 +969,10 @@ article.cart-buttons button:first-child {
   border-bottom: 1px solid #4abbc7;
   color: #000;
 }
+.contact-form form textarea {
+  min-width: 100%;
+  max-width: 100%;
+}
 .img-edit-product-container input {
   width: 2rem !important;
 }

@@ -40,7 +40,7 @@ router.put(
   upload.array("image", 6),
   validationsEdit,
   productsController.productEditUpload
-);
+); // edita el product
 
 /*** DELETE ONE PRODUCT***/
 router.delete("/:id", adminMiddleware, productsController.destroy);
