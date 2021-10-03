@@ -216,7 +216,7 @@ const productsController = {
 
       // SIZES
       const size = req.body.size;
-      // añadimos sizes ya creadas
+      // añadimos sizes ya creadas add + nombre asociacion con mayusculas y puede ser plural
       await newProduct.addSizes(size);
 
       // STOCK
@@ -368,15 +368,35 @@ const productsController = {
     }
   },
 
-  destroy: (req, res) => {
+  destroy: async (req, res) => {
+    // recuperamos el ID
     let id = req.params.id;
+    // buscamos el producto a eliminar
+    const product = await db.Product.findByPk(id);
+    // le quitamos las asocicaciones
+    await product.removeImages([id]);
 
-    // products pasa a ser un array de todos los productos excepto del que queremos eliminar
-    products = products.filter((elem) => elem.id != id);
+    await product.setTags([]);
 
-    let productsJSON = JSON.stringify(products); // lo pasamos a JSON
-    fs.writeFileSync(productsFilePath, productsJSON); //escribimos la nueva DB
-    res.redirect("/"); //redireccionamos al home
+    await product.setSizes([]);
+
+    await product.removeStocks([id]);
+
+    // eliminamos el producto
+    await db.Product.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+    return res.redirect("/"); //redireccionamos al home
   },
+  // // ////////////////////////////////////
+
+  // // products pasa a ser un array de todos los productos excepto del que queremos eliminar
+  // products = products.filter((elem) => elem.id != id);
+
+  // let productsJSON = JSON.stringify(products); // lo pasamos a JSON
+  // fs.writeFileSync(productsFilePath, productsJSON); //escribimos la nueva DB
 };
 module.exports = productsController;

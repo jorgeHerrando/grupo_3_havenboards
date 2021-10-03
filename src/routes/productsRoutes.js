@@ -48,7 +48,7 @@ router.delete("/:id", adminMiddleware, productsController.destroy);
 /*** IR AL CARRITO ***/
 router.get("/productCart", productsController.productCart);
 
-/*** GET ALL PRODUCTS and FILTER THEM BY TYPE ***/
+/*** GET ALL PRODUCTS and FILTER THEM BY CATEGORY ***/
 router.get("/:category?", productsController.shop);
 
 module.exports = router;
