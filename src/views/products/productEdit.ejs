@@ -43,8 +43,7 @@
                   required
                   class="<%= locals.errors && errors.description ? 'is-invalid' : null %>"
                   value="<%= locals.oldData && oldData.description ? oldData.description : editProduct.description %>"/
-                  >
-                  <%= editProduct.description %>
+                  ><%= editProduct.description %>
                 </textarea>
                 <% if (locals.errors && errors.description) { %>
                   <label class="infovalidacion">

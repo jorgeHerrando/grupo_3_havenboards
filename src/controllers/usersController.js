@@ -32,11 +32,12 @@ const usersController = {
 
     // existe el user?
     let userToLogin = await db.User.findOne({
-      include: ["image", "role"],
+      include: ["image", "role", "address"],
       where: {
         email: req.body.email,
       },
     });
+
     // existe el user?
     if (userToLogin) {
       // el password coincide?
@@ -56,6 +57,7 @@ const usersController = {
             maxAge: 1000 * 60 * 60 * 24, //24 horas
           });
         }
+
         return res.redirect("/users/profile");
       } else {
         // si contraseña inválida
@@ -84,7 +86,7 @@ const usersController = {
 
   // form register
   register: (req, res) => {
-    res.render("users/register");
+    return res.render("users/register");
   },
 
   // envío register
@@ -150,6 +152,120 @@ const usersController = {
     res.render("users/profile", {
       user: req.session.userLogged,
     });
+  },
+
+  // detalle usuario
+  editProfile: (req, res) => {
+    return res.render("users/editProfile", {
+      user: req.session.userLogged,
+    });
+  },
+
+  processEditProfile: async (req, res) => {
+    const resultValidation = validationResult(req);
+
+    // validaciones express
+    if (resultValidation.errors.length > 0) {
+      return res.render("users/editProfile", {
+        errors: resultValidation.mapped(), //convierto el array errors en obj.literal
+        oldData: req.body,
+        user: req.session.userLogged,
+      });
+    }
+
+    let user = req.session.userLogged;
+
+    let userToUpdate = await db.User.findOne({
+      include: ["image", "role", "address"],
+      where: {
+        id: user.id,
+      },
+    });
+
+    // si modificaron nombre o apellido
+    if (
+      userToUpdate.firstName != req.body.firstName ||
+      userToUpdate.lastName != req.body.lastName
+    ) {
+      // lo modificamos
+      await db.User.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+        },
+        {
+          where: {
+            id: user.id,
+          },
+        }
+      );
+    }
+
+    // guardamos los valores de address en la variable
+    let address = [
+      req.body.streetName,
+      req.body.number,
+      req.body.apartment,
+      req.body.province,
+      req.body.city,
+      req.body.postalCode,
+      req.body.country,
+    ];
+    let notEmptyAddress = [];
+    for (let elem of address) {
+      if (elem) {
+        notEmptyAddress.push(elem);
+        break;
+      }
+    }
+    console.log(notEmptyAddress.length > 0);
+
+    // si el user tiene address se actualiza el address
+    if (userToUpdate.address) {
+      await db.Address.update(
+        {
+          streetName: req.body.streetName,
+          number: req.body.number ? Number(req.body.number) : null,
+          apartment: req.body.apartment,
+          province: req.body.province,
+          city: req.body.city,
+          postalCode: req.body.postalCode ? Number(req.body.postalCode) : null,
+          country: req.body.country,
+        },
+        {
+          where: {
+            user_id: user.id,
+          },
+        }
+      );
+      // si no, se crea uno si hay algún dato
+    } else if (notEmptyAddress.length > 0) {
+      await userToUpdate.createAddress(
+        {
+          streetName: req.body.streetName,
+          number: req.body.apartment ? Number(req.body.number) : null,
+          apartment: req.body.apartment,
+          province: req.body.province,
+          city: req.body.city,
+          postalCode: req.body.postalCode ? Number(req.body.postalCode) : null,
+          country: req.body.country,
+          user_id: user.id,
+        },
+        {}
+      );
+    }
+
+    // buscamos el usuario editado
+    const userEdited = await db.User.findOne({
+      include: ["image", "role", "address"],
+      where: {
+        id: user.id,
+      },
+    });
+    // lo pasamos a session
+    req.session.userLogged = userEdited;
+
+    res.redirect("/users/profile");
   },
 
   logout: function (req, res) {

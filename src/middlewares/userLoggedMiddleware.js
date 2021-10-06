@@ -9,10 +9,10 @@ function userLoggedMiddleware(req, res, next) {
 
   let emailInCookie = req.cookies.userEmail; //guardo en variable lo que hay en la cookie userEmail
   // lo busco en la DB
-  let userFromCookie;
+
   if (emailInCookie) {
-    userFromCookie = db.User.findOne({
-      include: ["image", "role"],
+    db.User.findOne({
+      include: ["image", "role", "address"],
       where: {
         email: emailInCookie,
       },
