@@ -202,6 +202,7 @@ const usersController = {
 
     let user = req.session.userLogged;
 
+    // busco user a editar
     let userToUpdate = await db.User.findOne({
       include: ["image", "role", "address"],
       where: {
@@ -227,7 +228,6 @@ const usersController = {
         }
       );
     }
-    console.log(req.file);
 
     // IMAGE
     // si viene imagen
@@ -264,7 +264,6 @@ const usersController = {
         break;
       }
     }
-    console.log(notEmptyAddress.length > 0);
 
     // si el user tiene address se actualiza el address
     if (userToUpdate.address) {

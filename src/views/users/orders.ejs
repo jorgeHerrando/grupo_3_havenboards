@@ -5,9 +5,9 @@
     <main>
       <section>
         <ul>
-          <% for(let order of orders) { %>
+          <% for(let i=0; i<orders.length; i++) { %>
             <li>
-              <%= order.id %>
+              <%= i+1 %>
             </li>
             <% for (let detail of orderDetail) { %>
               <li>
@@ -21,7 +21,7 @@
               </li>
             <% } %>
             <li>
-              <%= order.totalPrice %>
+              <%= orders[i].totalPrice %>
             </li>
           <% } %>
         </ul>
