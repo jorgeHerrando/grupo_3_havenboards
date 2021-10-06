@@ -149,8 +149,35 @@ const usersController = {
 
   // detalle usuario
   profile: (req, res) => {
-    res.render("users/profile", {
+    return res.render("users/profile", {
       user: req.session.userLogged,
+    });
+  },
+
+  // orders
+  order: async (req, res) => {
+    let id = req.params.id;
+    // let user = await db.User.findOne({
+    //   include: ["orders"],
+    //   where: {
+    //     id: id,
+    //   },
+    // });
+    let orders = await db.Order.findAll({
+      include: ["orderDetails", "user", "address", "paymentMethod"],
+      where: {
+        user_id: id,
+      },
+    });
+    let orderDetail = await db.OrderDetail.findAll({
+      include: ["order", "product"],
+      where: {
+        user_id: id,
+      },
+    });
+    return res.render("users/orders", {
+      orders,
+      orderDetail,
     });
   },
 

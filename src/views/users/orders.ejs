@@ -1,0 +1,32 @@
+<%- include('../partials/head', { title: "Orders" }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main>
+      <section>
+        <ul>
+          <% for(let order of orders) { %>
+            <li>
+              <%= order.id %>
+            </li>
+            <% for (let detail of orderDetail) { %>
+              <li>
+                <%= detail.product.name %>
+              </li>
+              <li>
+                <%= detail.amount %>
+              </li>
+              <li>
+                <%= detail.price %>
+              </li>
+            <% } %>
+            <li>
+              <%= order.totalPrice %>
+            </li>
+          <% } %>
+        </ul>
+      </section>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
