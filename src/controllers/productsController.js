@@ -24,7 +24,7 @@ const productsController = {
       });
       // si hay errores redirigimos al main. Para que no quede colgado
     } catch (e) {
-      res.redirect("/");
+      return res.redirect("/");
     }
     // variable que nos dirá qué mostrar en la vista
     let productsToShow;
@@ -323,7 +323,7 @@ const productsController = {
         tags,
       });
 
-      // si no
+      // si no hay errores
     } else {
       await db.Product.update(
         {
