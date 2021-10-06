@@ -28,6 +28,24 @@ const validations = [
     .isNumeric()
     .withMessage("Debes escribir un número"),
   body("country").optional(),
+  body("avatar").custom((value, { req }) => {
+    let file = req.file;
+    let acceptedExtensions = [".jpg", ".png", ".gif"];
+
+    if (file) {
+      // throw new Error("Tienes que subir una imagen");
+      // } else {
+      let fileExtension = path.extname(file.originalname);
+      if (!acceptedExtensions.includes(fileExtension)) {
+        throw new Error(
+          `Las extensiones de archivo permitidas son ${acceptedExtensions.join(
+            ", "
+          )}`
+        ).bail();
+      }
+    }
+    return true;
+  }),
 ];
 
 module.exports = validations;

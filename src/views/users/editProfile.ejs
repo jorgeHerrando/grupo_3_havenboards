@@ -15,7 +15,7 @@
         <div class="contact-wrapper">
           <div class="contact-form">
 
-            <form action="/users/profile/edit" method="POST">
+            <form action="/users/profile/edit" method="POST" enctype="multipart/form-data">
               <p>
                 <label for="firstName">Nombre</label>
                 <input
@@ -56,6 +56,19 @@
                     <%= errors.lastName.msg %>
                   </label>
                 <% } %>
+              </p>
+
+              <p>
+                <label for="image">Cambiar imagen de perfil</label>
+                <input type="file"
+                  name="avatar"
+                  id="image"
+                  class="<%= locals.errors && errors.avatar ? 'is-invalid' : null %>"/>
+                  <% if (locals.errors && errors.avatar) { %> 
+                    <label class="infovalidacion">
+                      <%= errors.avatar.msg %>
+                    </label>
+                  <% } %>
               </p>
 
               <p>

@@ -41,6 +41,7 @@ router.get("/profile/edit", authMiddleware, usersController.editProfile); //no d
 // Procesar Editar perfil
 router.post(
   "/profile/edit",
+  upload.single("avatar"),
   authMiddleware,
   editUserMiddleware,
   usersController.processEditProfile

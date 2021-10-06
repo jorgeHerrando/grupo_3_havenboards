@@ -200,6 +200,25 @@ const usersController = {
         }
       );
     }
+    console.log(req.file);
+
+    // IMAGE
+    // si viene imagen
+    if (req.file) {
+      // creamos una
+      let avatar = await db.UserImage.create({ name: req.file.filename });
+      // y se la metemos al user
+      await db.User.update(
+        {
+          image_id: avatar.id,
+        },
+        {
+          where: {
+            id: user.id,
+          },
+        }
+      );
+    }
 
     // guardamos los valores de address en la variable
     let address = [
