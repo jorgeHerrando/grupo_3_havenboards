@@ -59,7 +59,7 @@
 
 
             <!-- esto se muestra si el producto dispone de tallas. -->
-            <% if (detailProduct.sizes[0].name != null) { %>
+            <% if (detailProduct.sizes[0].name != "Talle único") { %>
               <select name="size" id="sizes">
                 <option value="" disabled selected>Select Size</option>
                 <% for (const size of detailProduct.sizes) { %>
