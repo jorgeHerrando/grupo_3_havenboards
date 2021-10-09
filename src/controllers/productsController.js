@@ -5,9 +5,11 @@ const path = require("path");
 const removeDuplicates = require("../helpers/removeDuplicates");
 const capFirstLetter = require("../helpers/capFirstLetter");
 
+// DB
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 
+// VALIDATIONS
 const { validationResult } = require("express-validator");
 const { pathToFileURL } = require("url");
 
@@ -15,9 +17,11 @@ const { pathToFileURL } = require("url");
 // const productsFilePath = path.join(__dirname, "../data/products.json"); //ruta a nuestra DB JSON
 // let products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8")); // pasamos de formato JSON a JS
 
+// CONTROLADOR
 const productsController = {
+  // MUESTRA PRODUCTOS
   shop: async (req, res) => {
-    // recogemos query strings del paginado
+    // recogemos query strings del paginado si los hay
     const pageAsNumber = Number.parseInt(req.query.page);
     const sizeAsNumber = Number.parseInt(req.query.size);
 
@@ -31,7 +35,7 @@ const productsController = {
       size = sizeAsNumber;
     }
 
-    // recogemos el param
+    // recogemos el param category si lo hay
     let category = req.params.category;
     let products;
     // llamamos a todos los productos con sus img y category
@@ -40,6 +44,7 @@ const productsController = {
       products = await db.Product.findAndCountAll({
         // para que solo cuente objetos y no asociaciones
         distinct: true,
+        // para paginar
         limit: size,
         offset: page * size,
         include: ["images", "category"],
@@ -51,15 +56,19 @@ const productsController = {
     // variable que nos dirá qué mostrar en la vista
     let productsToShow;
 
-    // si llegan params
+    // si llegan params category
     if (category) {
+      // buscamos la categoría que coincide
       let productsCategory = await db.Category.findOne({
         where: {
+          // ponemos la primera en mayúscula que es como está en la DB
           name: capFirstLetter(category),
         },
       });
       // si se encuentra alguna categoría en la DB
       if (productsCategory) {
+        // búscame aquellos que tienen esa categoría
+        // devuelve count y rows
         productsToShow = await db.Product.findAndCountAll({
           // para que solo cuente objetos y no asociaciones
           distinct: true,
@@ -80,6 +89,7 @@ const productsController = {
       if (productsToShow) {
         // mandamos la vista con lo que queremos
         return res.render("products/shop", {
+          // sólo queremos enviar lo que hay en rows
           products: productsToShow.rows,
           category: productsCategory,
           totalPages: Math.ceil(productsToShow.count / size),
@@ -121,6 +131,7 @@ const productsController = {
     let onsale = "En descuento";
     let productsToShow;
     try {
+      // encuentra todos los que estén en oferta
       productsToShow = await db.Product.findAndCountAll({
         distinct: true,
         limit: size,
@@ -149,6 +160,7 @@ const productsController = {
     // traemos los tags que coincidan con lo que puso el user
     let tags;
     try {
+      // buscamos los tags que tengan la parte introducida por el usuario
       tags = await db.Tag.findAll({
         where: {
           name: {
@@ -171,9 +183,13 @@ const productsController = {
     }
 
     // me manda todos repetidos por cada tag que contiene el objeto y coincide
+    // por cada producto
     for (let product of products) {
+      // por cada tag del producto
       for (let productTag of product.tags) {
+        // por cada uno de los tags
         for (let tag of tags) {
+          // comparame los tags
           if (tag.name == productTag.name) {
             productsToShow.push(product);
           }
@@ -212,6 +228,7 @@ const productsController = {
   },
 
   create: (req, res) => {
+    // traemos todo lo necesario para el formulario
     let categoriesDB = db.Category.findAll();
     let subcategoriesDB = db.Subcategory.findAll();
     let brandsDB = db.Brand.findAll();
@@ -459,6 +476,7 @@ const productsController = {
   },
   // // ////////////////////////////////////
 
+  // JSON
   // // products pasa a ser un array de todos los productos excepto del que queremos eliminar
   // products = products.filter((elem) => elem.id != id);
 
