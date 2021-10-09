@@ -777,6 +777,26 @@ section.shop-more a.shop-more-button {
   border-radius: 5px;
 }
 
+/* PAGINACIÓN */
+section.shop-pagination {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+}
+section.shop-pagination form {
+  width: 30px;
+  text-align: center;
+}
+section.shop-pagination form button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #153351;
+}
+section.shop-pagination form button:hover {
+  color: #4abbc7;
+}
+
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------  Cart ------------------------------------------ */

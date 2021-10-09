@@ -1,12 +1,15 @@
 const fs = require("fs");
 const path = require("path");
 
+// HELPERS
 const removeDuplicates = require("../helpers/removeDuplicates");
+const capFirstLetter = require("../helpers/capFirstLetter");
 
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 
 const { validationResult } = require("express-validator");
+const { pathToFileURL } = require("url");
 
 // ------- JSON ------- //
 // const productsFilePath = path.join(__dirname, "../data/products.json"); //ruta a nuestra DB JSON
@@ -14,12 +17,31 @@ const { validationResult } = require("express-validator");
 
 const productsController = {
   shop: async (req, res) => {
+    // recogemos query strings del paginado
+    const pageAsNumber = Number.parseInt(req.query.page);
+    const sizeAsNumber = Number.parseInt(req.query.size);
+
+    // definimos la paginación y número de productos a mostrar
+    let page = 0;
+    if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+      page = pageAsNumber;
+    }
+    let size = 8;
+    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 12) {
+      size = sizeAsNumber;
+    }
+
     // recogemos el param
     let category = req.params.category;
     let products;
     // llamamos a todos los productos con sus img y category
     try {
-      products = await db.Product.findAll({
+      // nos devuelve un count
+      products = await db.Product.findAndCountAll({
+        // para que solo cuente objetos y no asociaciones
+        distinct: true,
+        limit: size,
+        offset: page * size,
         include: ["images", "category"],
       });
       // si hay errores redirigimos al main. Para que no quede colgado
@@ -31,17 +53,37 @@ const productsController = {
 
     // si llegan params
     if (category) {
+      let productsCategory = await db.Category.findOne({
+        where: {
+          name: capFirstLetter(category),
+        },
+      });
+      // si se encuentra alguna categoría en la DB
+      if (productsCategory) {
+        productsToShow = await db.Product.findAndCountAll({
+          // para que solo cuente objetos y no asociaciones
+          distinct: true,
+          limit: size,
+          offset: page * size,
+          include: ["images", "category"],
+          where: {
+            category_id: productsCategory.id,
+          },
+        });
+      }
       // filtrame por categoría que llega
-      productsToShow = products.filter(
-        (product) => product.category.name.toLowerCase() == category
-      );
+      // productsToShow = products.rows.filter(
+      //   (product) => product.category.name == capFirstLetter(category)
+      // );
 
-      // si hay coincidencias con category
-      if (productsToShow != "") {
+      // si hay productos que mostrar
+      if (productsToShow) {
         // mandamos la vista con lo que queremos
         return res.render("products/shop", {
-          products: productsToShow,
-          category: productsToShow[0].category,
+          products: productsToShow.rows,
+          category: productsCategory,
+          totalPages: Math.ceil(productsToShow.count / size),
+          size: size,
         });
         // si no 404
       } else {
@@ -50,17 +92,39 @@ const productsController = {
       // si no hay categoría, muestra todos
     } else {
       productsToShow = products;
+
       return res.render("products/shop", {
-        products: productsToShow,
+        products: productsToShow.rows,
+        // aquí podemos contarlo
+        // ceil lo redondea hacia arriba para la última página
+        totalPages: Math.ceil(productsToShow.count / size),
+        size: size,
       });
     }
   },
 
   onsale: async (req, res) => {
+    // recogemos query strings del paginado
+    const pageAsNumber = Number.parseInt(req.query.page);
+    const sizeAsNumber = Number.parseInt(req.query.size);
+
+    // definimos la paginación y número de productos a mostrar
+    let page = 0;
+    if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+      page = pageAsNumber;
+    }
+    let size = 8;
+    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 12) {
+      size = sizeAsNumber;
+    }
+
     let onsale = "En descuento";
-    let products;
+    let productsToShow;
     try {
-      products = await db.Product.findAll({
+      productsToShow = await db.Product.findAndCountAll({
+        distinct: true,
+        limit: size,
+        offset: page * size,
         include: ["images"],
         where: {
           sale: 1,
@@ -70,8 +134,10 @@ const productsController = {
       res.redirect("/");
     }
     return res.render("products/shop", {
-      products,
+      products: productsToShow.rows,
       onsale,
+      totalPages: Math.ceil(productsToShow.count / size),
+      size: size,
     });
   },
 
