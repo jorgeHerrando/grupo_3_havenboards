@@ -409,7 +409,7 @@ main section.top-promotion article.top-promotion-img a.shop-now:hover {
 }
 
 section.top-info {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 /* centramos texto debajo de la foto princ */
 section.top-info p.top-info-p {
@@ -1132,6 +1132,20 @@ button.button-delete {
   display: block !important;
   margin: 0 auto !important;
 }
+
+section.personal-data,
+section.address {
+  padding-bottom: 1rem;
+}
+section.personal-data h3,
+section.address h3 {
+  padding: 1rem 1.5rem;
+  border: 1.3px solid #6d7b0b;
+}
+section.personal-data fieldset,
+section.address fieldset {
+  border: none;
+}
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------- */
 /* ----------------------------------  Detalle de Producto --------------------------------------- */
@@ -1455,6 +1469,9 @@ main.main-info section.info-view {
   }
 
   /* MAIN */
+  section.top-info {
+    padding: 2rem 0;
+  }
   main section.top-promotion article.top-promotion-img div.main-offer a {
     font-size: 1.2rem;
   }

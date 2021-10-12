@@ -31,7 +31,7 @@ const productsController = {
       page = pageAsNumber;
     }
     let size = 8;
-    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 12) {
+    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber <= 12) {
       size = sizeAsNumber;
     }
 
@@ -111,6 +111,71 @@ const productsController = {
         size: size,
       });
     }
+  },
+
+  brands: (req, res) => {
+    db.Brand.findAll()
+      .then((brands) => {
+        console.log(brands);
+        res.render("products/brands", {
+          brands: brands,
+        });
+      })
+      .catch((e) => res.send(e));
+  },
+
+  brandSelected: async (req, res) => {
+    // recogemos param de la marca
+    let brand = req.params.brand;
+
+    // seteamos limit y offset
+    const pageAsNumber = Number.parseInt(req.query.page);
+    const sizeAsNumber = Number.parseInt(req.query.size);
+    let page = 0;
+    if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+      page = pageAsNumber;
+    }
+    let size = 8;
+    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber <= 12) {
+      size = sizeAsNumber;
+    }
+
+    let brandToShow;
+    let productsToShow;
+    // encontramos la marca
+    try {
+      brandToShow = await db.Brand.findOne({
+        where: {
+          name: brand,
+        },
+      });
+    } catch (e) {
+      return res.send(e);
+    }
+
+    // encontramos los porudctos con esa marca
+    try {
+      productsToShow = await db.Product.findAndCountAll({
+        limit: size,
+        // para que solo cuente objetos y no asociaciones
+        distinct: true,
+        offset: page * size,
+        include: ["images", "category"],
+        where: {
+          brand_id: brandToShow.id,
+        },
+      });
+    } catch (e) {
+      return res.send(e);
+    }
+
+    // renderizamos vista
+    return res.render("products/shop", {
+      products: productsToShow.rows,
+      brand: brandToShow,
+      totalPages: Math.ceil(productsToShow.count / size),
+      size: size,
+    });
   },
 
   onsale: async (req, res) => {
