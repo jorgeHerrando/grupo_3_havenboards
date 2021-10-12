@@ -18,6 +18,9 @@ router.get("/", productsController.shop);
 /*** GET ONSALE PRODUCTS ***/
 router.get("/onsale", productsController.onsale);
 
+/*** Brands ***/
+router.get("/brands", productsController.brands);
+
 /*** SEARCH PRODUCTS ***/
 router.get("/search", productsController.search);
 

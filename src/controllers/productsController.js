@@ -31,7 +31,7 @@ const productsController = {
       page = pageAsNumber;
     }
     let size = 8;
-    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 12) {
+    if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber <= 12) {
       size = sizeAsNumber;
     }
 
@@ -111,6 +111,17 @@ const productsController = {
         size: size,
       });
     }
+  },
+
+  brands: (req, res) => {
+    db.Brand.findAll()
+      .then((brands) => {
+        console.log(brands);
+        res.render("products/brands", {
+          brands: brands,
+        });
+      })
+      .catch((e) => res.send(e));
   },
 
   onsale: async (req, res) => {
