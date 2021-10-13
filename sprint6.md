@@ -1,6 +1,9 @@
 Aspectos a destacar para el testeo:
 
--Hemos dejado los archivos de creación de base de datos(structure.sql) y rellenos de datos(data.sql) por separado, así como el dump completo en el archivos Havenboards.sql
+- Para poder crear y editar productos hay un admin middleware, de tal manera que tendréis que usar el login con un admin. Si bien se puede crear un nuevo user y cambiarle el rol en la DB, el usuario admin 'jorge@gmail.com' tiene contraseña 'Barcelona2020'.
+Un usuario categoría user puede ser 'jorge2@gmail.com' con contraseña 'Jorge2'
+
+- Hemos dejado los archivos de creación de base de datos(structure.sql) y rellenos de datos(data.sql) por separado, así como el dump completo en el archivos Havenboards.sql
 
 - Creación, edición, y eliminación de productos y sus tablas adheridas funcionando, con sólo acceso para usuarios admin (faltan crear las vistas admin)
 
