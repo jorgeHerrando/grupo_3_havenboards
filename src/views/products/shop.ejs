@@ -78,7 +78,7 @@
         <% } %> 
       </section>
 
-      <% if(totalPages > 1) { %>
+      <% if(locals.totalPages && totalPages > 1) { %>
         <section class="shop-pagination">
           <% for (let i=0; i < totalPages; i++){ %>
             <% if(locals.category) { %>
