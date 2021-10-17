@@ -156,19 +156,17 @@ const usersController = {
 
   // orders
   order: async (req, res) => {
+    // recoge el id por param
     let id = req.params.id;
-    // let user = await db.User.findOne({
-    //   include: ["orders"],
-    //   where: {
-    //     id: id,
-    //   },
-    // });
+
+    // todas las orders del user
     let orders = await db.Order.findAll({
       include: ["orderDetails", "user", "address", "paymentMethod"],
       where: {
         user_id: id,
       },
     });
+    // todos los orderDetail del user
     let orderDetail = await db.OrderDetail.findAll({
       include: ["order", "product"],
       where: {

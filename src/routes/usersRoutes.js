@@ -35,7 +35,7 @@ router.post("/login", loginValidation, usersController.processLogin);
 // Perfil de usuario
 router.get("/profile", authMiddleware, usersController.profile); //no deja entrar si no esta logueado
 
-// Perfil de usuario
+// Orders de usuario
 router.get("/profile/orders/:id", authMiddleware, usersController.order); //no deja entrar si no esta logueado
 
 // Editar perfil formulario

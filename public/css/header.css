@@ -33,6 +33,10 @@ main {
 .header-account ul li {
   margin-left: 1rem;
 }
+
+p.hello-user {
+  color: #000;
+}
 /* hacemos flex en el top header */
 /* con justify ponemos los items separados */
 /* con align los centramos verticalmente */
