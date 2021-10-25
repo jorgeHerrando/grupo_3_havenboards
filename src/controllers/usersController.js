@@ -30,7 +30,7 @@ const usersController = {
     // // existe el user? - JSON
     // let userToLogin = User.findByField("email", req.body.email);
 
-    // existe el user?
+    // Validación propia: existe el user?
     let userToLogin = await db.User.findOne({
       include: ["image", "role", "address"],
       where: {
@@ -92,6 +92,7 @@ const usersController = {
   // envío register
   createUser: async (req, res) => {
     const resultValidation = validationResult(req);
+    console.log(req);
 
     if (resultValidation.errors.length > 0) {
       return res.render("users/register", {
@@ -100,7 +101,7 @@ const usersController = {
       });
     }
 
-    // Validación propia
+    // Validación propia, que no exista ya el email
     let userInDB = await db.User.findOne({
       where: {
         email: req.body.email,

@@ -338,19 +338,85 @@ const productsController = {
           });
         })
         .catch((e) => res.send(e));
-      // si no
-    } else {
+    }
+
+    // Validación propia: existe el dato?
+    // existe category?
+    let categoryInDB = await db.Category.findOne({
+      where: {
+        id: Number(req.body.category),
+      },
+    });
+    // existe subcategory?
+    let subcategoryInDB = await db.Subcategory.findOne({
+      where: {
+        id: Number(req.body.subcategory),
+      },
+    });
+    // existe brand?
+    let brandInDB = await db.Brand.findOne({
+      where: {
+        id: Number(req.body.brand),
+      },
+    });
+    // existe size?
+    let sizeInDB = await db.Size.findOne({
+      where: {
+        id: Number(req.body.size),
+      },
+    });
+    // existe tags?
+    // rescatamos todos los tags
+    let tagsInDB = await db.Tag.findAll();
+    // chequearemos estos
+    let tagsCheck = [];
+    // los tags que vienen por form
+    let tagsForm = req.body.tag;
+
+    // si se manda más de un tag será un obj(array)
+    if (typeof tagsForm == "object") {
+      // por cada tag que llega del form
+      for (let tagForm of tagsForm) {
+        // por cada tag en DB
+        for (let tagDB of tagsInDB) {
+          // se comparan y si coinciden se pushea al array
+          if (tagDB.id == tagForm) {
+            tagsCheck.push(tagForm);
+          }
+        }
+      }
+      // si no es objeto, string un solo valor. Si no está vacío
+    } else if (tagsForm !== "") {
+      // por cada tag en DB
+      for (let tagDB of tagsInDB) {
+        // se comparan y si coinciden se pushea al array
+        if (tagDB.id == tagsForm) {
+          tagsCheck.push(tagsForm);
+        }
+      }
+    }
+
+    // si no hay errores. Existe la cat, subcat o bien es vacía, brand, size y existe tagsCheck con algún push...
+    if (
+      categoryInDB &&
+      (subcategoryInDB || req.body.subcategory == "") &&
+      brandInDB &&
+      sizeInDB &&
+      tagsCheck.length >= 1
+    ) {
+      // creamos producto
       const newProduct = await db.Product.create({
         name: req.body.name,
         description: req.body.description,
-        category_id: req.body.category,
-        subcategory_id: req.body.subcategory ? req.body.subcategory : null, // si el valor que llega es vacío, ponle null
-        brand_id: req.body.brand,
+        category_id: Number(req.body.category),
+        subcategory_id: req.body.subcategory
+          ? Number(req.body.subcategory)
+          : null, // si el valor que llega es vacío, ponle null
+        brand_id: Number(req.body.brand),
         price: Number(req.body.price),
         discount: Number(req.body.discount),
         sale: parseInt(req.body.sale),
       });
-
       // IMAGES
       // con req.files accedemos a todos los file mandados y guardados en array. Solo queremos el nombre así que creamos nuevo array donde los pushearemos
       let images = [];
@@ -363,7 +429,7 @@ const productsController = {
       }
 
       // SIZES
-      const size = req.body.size;
+      const size = Number(req.body.size);
       // añadimos sizes ya creadas add + nombre asociacion con mayusculas y puede ser plural
       await newProduct.addSizes(size);
 
@@ -373,13 +439,99 @@ const productsController = {
       await newProduct.createStock({ amount: stock, size_id: size }, {});
 
       // TAGS
-      const tags = req.body.tag;
+      tagsCheck = tagsCheck.map((tag) => Number(tag));
+
       // añadimos tags ya creados
-      await newProduct.addTags(tags);
+      await newProduct.addTags(tagsCheck);
 
       let newProductId = newProduct.id;
+
       return res.redirect("/products/detail/" + newProductId);
+
+      // si llega algo que no existe en DB...
+    } else {
+      // llamamos a lo que necesitamos en el form
+      let categoriesDB = await db.Category.findAll();
+      let subcategoriesDB = await db.Subcategory.findAll();
+      let brandsDB = await db.Brand.findAll();
+      let sizesDB = await db.Size.findAll();
+      let tagsDB = await db.Tag.findAll();
+
+      // y dependiendo de lo que haya fallado...mandamos error correspondiente
+      // ESTO SEGURAMENTE SE PUEDE REFACTORIZAR
+      if (!categoryInDB) {
+        return res.render("products/createProduct", {
+          errors: {
+            category: {
+              msg: "La categoría no existe",
+            },
+          },
+          oldData: req.body,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (req.body.subcategory !== "") {
+        return res.render("products/createProduct", {
+          errors: {
+            subcategory: {
+              msg: "La subcategoría no existe",
+            },
+          },
+          oldData: req.body,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (!brandInDB) {
+        return res.render("products/createProduct", {
+          errors: {
+            brand: {
+              msg: "La marca no existe",
+            },
+          },
+          oldData: req.body,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (!sizeInDB) {
+        return res.render("products/createProduct", {
+          errors: {
+            size: {
+              msg: "La talla no existe",
+            },
+          },
+          oldData: req.body,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (tagsCheck.length < 1) {
+        return res.render("products/createProduct", {
+          errors: {
+            tag: {
+              msg: "La/s etiqueta/s no existe/n",
+            },
+          },
+          oldData: req.body,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      }
     }
+
     // .catch((e) => res.send(e));
   },
 

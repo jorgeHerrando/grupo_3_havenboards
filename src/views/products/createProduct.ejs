@@ -179,13 +179,8 @@
                   
                 <option value="" disabled selected>Seleccionar Talle</option>
                   <% for (const oneSize of sizes) { %>
-                    <% if(oneSize.id == 0) { %>
-                      <option value="<%= oneSize.id %>" 
-                        <%= locals.oldData && (oldData.size == oneSize.id) ? 'selected':"" %>>Talle Único</option>
-                    <% } else { %>
-                      <option value="<%= oneSize.id %>" 
-                      <%= locals.oldData && (oldData.size == oneSize.id) ? 'selected':"" %>><%= oneSize.name %></option>
-                    <% } %>
+                    <option value="<%= oneSize.id %>" 
+                    <%= locals.oldData && (oldData.size == oneSize.id) ? 'selected':"" %>><%= oneSize.name %></option>
                   <% } %>
                   
                 </select>
@@ -219,7 +214,6 @@
               </p>
 
               <p>
-                <%console.log(oldData.tag)%>
                 <legend>Elige al menos un tag*</legend>
                 <% if (locals.errors && errors.tag) { %>
                   <label class="infovalidacion">
