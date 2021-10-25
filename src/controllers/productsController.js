@@ -622,16 +622,74 @@ const productsController = {
         sizes,
         tags,
       });
+    }
 
-      // si no hay errores
-    } else {
+    // Validación propia: existe el dato?
+    // existe category?
+    let categoryInDB = await db.Category.findOne({
+      where: {
+        id: Number(req.body.category),
+      },
+    });
+    // existe subcategory?
+    let subcategoryInDB = await db.Subcategory.findOne({
+      where: {
+        id: Number(req.body.subcategory),
+      },
+    });
+    // existe brand?
+    let brandInDB = await db.Brand.findOne({
+      where: {
+        id: Number(req.body.brand),
+      },
+    });
+    // existe tags?
+    // rescatamos todos los tags
+    let tagsInDB = await db.Tag.findAll();
+    // chequearemos estos
+    let tagsCheck = [];
+    // los tags que vienen por form
+    let tagsForm = req.body.tag;
+
+    // si se manda más de un tag será un obj(array)
+    if (typeof tagsForm == "object") {
+      // por cada tag que llega del form
+      for (let tagForm of tagsForm) {
+        // por cada tag en DB
+        for (let tagDB of tagsInDB) {
+          // se comparan y si coinciden se pushea al array
+          if (tagDB.id == tagForm) {
+            tagsCheck.push(tagForm);
+          }
+        }
+      }
+      // si no es objeto, string un solo valor. Si no está vacío
+    } else if (tagsForm !== "") {
+      // por cada tag en DB
+      for (let tagDB of tagsInDB) {
+        // se comparan y si coinciden se pushea al array
+        if (tagDB.id == tagsForm) {
+          tagsCheck.push(tagsForm);
+        }
+      }
+    }
+
+    // si no hay errores. Existe la cat, subcat o bien es vacía, brand, size y existe tagsCheck con algún push...
+    if (
+      categoryInDB &&
+      (subcategoryInDB || req.body.subcategory == "") &&
+      brandInDB &&
+      tagsCheck.length >= 1
+    ) {
       await db.Product.update(
         {
           name: req.body.name,
           description: req.body.description,
-          category_id: req.body.category,
-          subcategory_id: req.body.subcategory ? req.body.subcategory : null, // si el valor que llega es vacío, ponle null
-          brand_id: req.body.brand,
+          category_id: Number(req.body.category),
+          subcategory_id: req.body.subcategory
+            ? Number(req.body.subcategory)
+            : null, // si el valor que llega es vacío, ponle null
+          brand_id: Number(req.body.brand),
           price: Number(req.body.price),
           discount: Number(req.body.discount),
           sale: parseInt(req.body.sale),
@@ -659,12 +717,94 @@ const productsController = {
       }
 
       // TAGS
-      const tags = req.body.tag; // tags recogidos
-      const numberTags = tags.map((elem) => parseInt(elem));
+      const numberTags = tagsCheck.map((tag) => Number(tag));
 
+      // añadimos nuevos tags ya creados
       await editedProduct.setTags(numberTags);
 
       return res.redirect("/products/detail/" + id);
+      // si llega algo que no existe en DB...
+    } else {
+      // llamamos a lo que necesitamos en el form
+      let categoriesDB = await db.Category.findAll();
+      let subcategoriesDB = await db.Subcategory.findAll();
+      let brandsDB = await db.Brand.findAll();
+      let sizesDB = await db.Size.findAll();
+      let tagsDB = await db.Tag.findAll();
+      let editProduct = await db.Product.findByPk(id, {
+        include: [
+          "images",
+          "tags",
+          "brand",
+          "category",
+          "subcategory",
+          "sizes",
+        ],
+      });
+
+      // y dependiendo de lo que haya fallado...mandamos error correspondiente
+      // ESTO SEGURAMENTE SE PUEDE REFACTORIZAR
+      if (!categoryInDB) {
+        return res.render("products/productEdit", {
+          errors: {
+            category: {
+              msg: "La categoría no existe",
+            },
+          },
+          oldData: req.body,
+          editProduct,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (req.body.subcategory !== "") {
+        return res.render("products/productEdit", {
+          errors: {
+            subcategory: {
+              msg: "La subcategoría no existe",
+            },
+          },
+          oldData: req.body,
+          editProduct,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (!brandInDB) {
+        return res.render("products/productEdit", {
+          errors: {
+            brand: {
+              msg: "La marca no existe",
+            },
+          },
+          oldData: req.body,
+          editProduct,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      } else if (tagsCheck.length < 1) {
+        return res.render("products/productEdit", {
+          errors: {
+            tag: {
+              msg: "La/s etiqueta/s no existe/n",
+            },
+          },
+          oldData: req.body,
+          editProduct,
+          categories: categoriesDB,
+          subcategories: subcategoriesDB,
+          brands: brandsDB,
+          sizes: sizesDB,
+          tags: tagsDB,
+        });
+      }
     }
   },
 
