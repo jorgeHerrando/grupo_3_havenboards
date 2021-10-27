@@ -111,6 +111,42 @@ div.checkbox-row input {
   border-radius: 4px;
 }
 
+.contact-form form button.on-focus,
+.contact-form form input.on-focus,
+.contact-form form textarea.on-focus {
+  border-bottom: none;
+  border: 1px solid #4abbc7;
+  border-radius: 4px;
+}
+
+.contact-form form button.is-valid,
+.contact-form form input.is-valid,
+.contact-form form textarea.is-valid {
+  /* border-bottom: none; */
+  border-bottom: 1px solid #39c93e;
+  /* border-radius: 4px; */
+}
+
+p.password-input {
+  position: relative;
+}
+span.showBtn,
+span.showBtn2 {
+  position: absolute;
+  right: 25px;
+  top: 38px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+p.password2-input {
+  position: relative;
+}
+
+img.show-icon {
+  width: 20px;
+}
+
 /* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
 /* ------------------------------------------- 1050 ----------------------------------------------- */
 
@@ -129,7 +165,7 @@ div.checkbox-row input {
 
   .contact-form form p {
     margin: 0;
-    padding: 1em;
+    padding: 0.6em 1em;
   }
 
   .contact-form form div.block {
