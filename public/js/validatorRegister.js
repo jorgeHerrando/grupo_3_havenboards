@@ -35,7 +35,7 @@ window.onload = function () {
 
   // empezamos con el foco en el primer input y le ponemos la clase focus
   firstName.focus();
-  firstName.classList.add("focus");
+  firstName.classList.add("on-focus");
 
   // VALIDACIONES REGISTER
   // validacion firstName
