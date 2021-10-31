@@ -32,7 +32,7 @@
                   placeholder="Introduzca su nombre"
                   class="<%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
                   value="<%= locals.oldData && oldData.firstName ? oldData.firstName : user.firstName %>"
-                />
+                  />
                 <span class="infovalidacion firstName-validation"></span>
                 <% if (locals.errors && errors.firstName) { %> 
                   <label class="infovalidacion">
@@ -195,14 +195,17 @@
               <!-- usar node-fetch -->
               <p>
                 <label for="country">País</label>
-                <input
-                  type="text"
+                <select
                   name="country"
                   id="country"
-                  placeholder="País"
-                  class="<%= locals.errors && errors.country ? 'is-invalid' : null %>"
-                  value="<%= (user.address && user.address.country) ? user.address.country : "" %>"
+                  class="countries-select <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                 />
+                <% console.log(typeof countries) %>
+                <% countries.data.map(country => { %>
+                  <option value="<%= country.name.official %>" <%= country.name.official ===  user.address.country ? 'selected':"" %>><%= country.name.official %></option>
+                <% }) %>
+                
+                </select>
                 <span class="infovalidacion country-validation"></span>
                 <% if (locals.errors && errors.country) { %> 
                   <label class="infovalidacion">
