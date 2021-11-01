@@ -21,9 +21,8 @@ window.onload = function () {
 
     // chequeamos email vacío o formato
     if (email.value == "") {
-      if (email)
-        document.querySelector(".email-validation").innerText =
-          "El campo email no puede estar vacío";
+      document.querySelector(".email-validation").innerText =
+        "El campo email no puede estar vacío";
       email.classList.add("is-invalid");
       errors.push("error");
     } else if (!emailRegex.test(email.value)) {

@@ -187,7 +187,7 @@ const usersController = {
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((countries) => {
-        console.log(countries.data);
+        console.log(countries.data.common);
         return res.render("users/editProfile", {
           user: req.session.userLogged,
           countries: countries,
