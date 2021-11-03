@@ -20,7 +20,7 @@ window.onload = function () {
 
   // // Handle form
   form.addEventListener("submit", function (e) {
-    console.log(validateLastName());
+    // console.log(validateLastName());
     e.preventDefault();
     if (
       validateFirstName() &&
@@ -41,14 +41,15 @@ window.onload = function () {
   // validacion firstName
   function validateFirstName() {
     firstName.classList.remove("on-focus");
-    // is Empty?
+    // Esta vacío?
     if (checkIfEmpty(firstName)) {
       return;
     }
-    // length?
+    // tiene entre 2 y 20 caracteres?
     if (!hasLength(firstName, 2, 20)) {
       return;
     }
+    // setealo como válido
     setValid(firstName);
     lastName.focus();
     return true;
@@ -106,6 +107,7 @@ window.onload = function () {
     }
     // si hay algo escrito en password2, coincide?
     if (password2.value !== "") {
+      // coinciden?
       if (password.value !== password2.value) {
         setInvalid(password2, `Las contraseñas deben coincidir`);
         return;
@@ -186,6 +188,7 @@ window.onload = function () {
   }
 
   function setInvalid(field, message) {
+    // INTRODUCIMOS TEXTO EN SPAN
     document.querySelector(`.${field.name}-validation`).innerText = message;
     field.classList.remove("is-valid");
     field.classList.add("is-invalid");
@@ -221,7 +224,8 @@ window.onload = function () {
       element.alt = "hide icon";
       element.src = "/images/icons/hide.png";
     }
-    field = element.parentElement.previousElementSibling;
+    // buscamos el input con OOP
+    let field = element.parentElement.previousElementSibling;
     field.type == "password"
       ? (field.type = "text")
       : (field.type = "password");

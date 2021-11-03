@@ -31,7 +31,7 @@ app.use(userLoggedMiddleware);
 
 app.use(express.static("public")); // Necesario para los archivos estáticos en el folder /public
 app.use(express.urlencoded({ extended: false })); // to recognize the incoming Request Object as strings or arrays. Nos permite capturar la info del formulario en req.body
-app.use(express.json()); // to recognize the incoming Request Object as a JSON Object
+app.use(express.json()); // to recognize the incoming-outgoing Request Object as a JSON Object
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 
 // ************ Template Engine ************
@@ -45,9 +45,15 @@ const mainRouter = require("./src/routes/mainRouter");
 const usersRouter = require("./src/routes/usersRoutes");
 const productsRouter = require("./src/routes/productsRoutes");
 
+const apiUsersRouter = require("./src/routes/api/apiUsersRoutes");
+// const apiProductsRouter = require("./src/routes/api/apiProductsRoutes");
+
 app.use("/", mainRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
+
+app.use("/api/users", apiUsersRouter);
+// app.use("/api/products", apiUsersRouter);
 
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => {
