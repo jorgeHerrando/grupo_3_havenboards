@@ -1,8 +1,6 @@
-const axios = require("axios");
-
 // para trabajar con la DB
 const db = require("../../database/models");
-// const { response } = require("express");
+
 const Op = db.Sequelize.Op;
 
 const apiUsersController = {
@@ -15,11 +13,16 @@ const apiUsersController = {
       });
 
       users.forEach((user) => {
-        return user.setDataValue(
-          "detail",
-          `http://localhost:3000/api/users/${user.id}`
-        );
+        return (user.dataValues.detail = `http://localhost:3000/api/users/${user.id}`);
       });
+
+      // otra forma de hacerlo
+      // users.forEach((user) => {
+      //   return user.setDataValue(
+      //     "detail",
+      //     `http://localhost:3000/api/users/${user.id}`
+      //   );
+      // });
 
       res.status(200).json({
         count: users.length,
@@ -46,8 +49,11 @@ const apiUsersController = {
           id: id,
         },
       });
+
       // sobreescribimos el valor de image en la muestra al cliente
-      user.setDataValue("image", `/images/users/${user.image.name}`);
+      user.dataValues.image = `/images/users/${user.image.name}`;
+      // user.setDataValue("image", `/images/users/${user.image.name}`);
+
       // le mandamos el user con la info
       res.status(200).json({
         user,

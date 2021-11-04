@@ -201,7 +201,7 @@
                   class="countries-select <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                 />
                 <% countries.data.map(country => { %>
-                  <option value="<%= country.name.common %>" <%= country.name.common ===  user.address.country ? 'selected':"" %>><%= country.name.common %></option>
+                  <option value="<%= country.name.common %>" <%= country.name.common ===  (user.address && user.address.country) ? 'selected':"" %>><%= country.name.common %></option>
                 <% }) %>
                 
                 </select>

@@ -46,14 +46,14 @@ const usersRouter = require("./src/routes/usersRoutes");
 const productsRouter = require("./src/routes/productsRoutes");
 
 const apiUsersRouter = require("./src/routes/api/apiUsersRoutes");
-// const apiProductsRouter = require("./src/routes/api/apiProductsRoutes");
+const apiProductsRouter = require("./src/routes/api/apiProductsRoutes");
 
 app.use("/", mainRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
 app.use("/api/users", apiUsersRouter);
-// app.use("/api/products", apiUsersRouter);
+app.use("/api/products", apiProductsRouter);
 
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => {
