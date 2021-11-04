@@ -200,10 +200,11 @@
                   id="country"
                   class="countries-select <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                 />
-                <% console.log(typeof countries) %>
+                
                 <% countries.data.map(country => { %>
-                  <option value="<%= country.name.official %>" <%= country.name.official ===  user.address.country ? 'selected':"" %>><%= country.name.official %></option>
+                  <option value="<%= country.name.common %>" <%= country.name.common ===  (user.address && user.address.country) ? 'selected':"" %>><%= country.name.common %></option>
                 <% }) %>
+
                 
                 </select>
                 <span class="infovalidacion country-validation"></span>
