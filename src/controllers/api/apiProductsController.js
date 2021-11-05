@@ -7,8 +7,20 @@ const apiProductsController = {
   // listar todos users
   list: async (req, res) => {
     try {
-      // MUESTRA DE PRODUCTOS
+      // PRODUCTS PAGINATION
+      const pageAsNumber = parseInt(req.query.page);
+      const limit = 10;
+
+      // definimos la paginación
+      let page = 1;
+      if (!Number.isNaN(pageAsNumber) && pageAsNumber > 1) {
+        page = pageAsNumber;
+      }
+
+      // MUESTRA DE PRODUCTOS CON OFFSET-LIMIT
       const products = await db.Product.findAll({
+        limit: limit,
+        offset: (page - 1) * limit,
         include: [
           { association: "images", attributes: ["name"] },
           {
@@ -22,7 +34,7 @@ const apiProductsController = {
         order: [["id", "ASC"]],
       });
 
-      //   por cada producto
+      // por cada producto
       products.forEach((product) => {
         let images_url = [];
         // por cada imagen pusheamos su url en la variable de arriba
@@ -38,8 +50,7 @@ const apiProductsController = {
         product.dataValues.detail = `http://localhost:3000/api/products/${product.id}`;
       });
 
-      // MUESTRA COUNT PER CATEGORÍA
-
+      // MUESTRA COUNT POR CATEGORÍA
       //   llamamos a todas las categorías con sus productos
       const categories = await db.Category.findAll({
         include: ["products"],
@@ -48,15 +59,34 @@ const apiProductsController = {
       });
       //   guardaremos todo en un obj.literal
       let categoryCount = {};
+      // y aquí la cuenta de todos los productos
+      let count = 0;
       //   por cada categoría introduce key-value en categoryCount
       for (let category of categories) {
+        // meter key-value en un objeto literal
         categoryCount[category.name] = category.products.length;
+        // contar los productos
+        count += category.products.length;
       }
+
+      const totalPages = Math.ceil(count / limit);
 
       //   mostramos todo
       res.status(200).json({
-        count: products.length,
-        countByCategory: categoryCount,
+        meta: {
+          count: count,
+          countByCategory: categoryCount,
+          totalPages,
+          currentPage: page,
+          next:
+            page < totalPages && page > 0
+              ? `http://localhost:3000/api/products/?page=${page + 1}`
+              : undefined,
+          previous:
+            page > 1 && page <= totalPages
+              ? `http://localhost:3000/api/products/?page=${page - 1}`
+              : undefined,
+        },
         products,
       });
     } catch (e) {
@@ -74,7 +104,7 @@ const apiProductsController = {
     // recuperamos id
     const id = req.params.id;
     try {
-      // traemos los sizes
+      // traemos todos los sizes
       const sizes = await db.Size.findAll({
         attributes: ["id", "name"],
       });
@@ -125,7 +155,6 @@ const apiProductsController = {
 
       // por cada uno de los stocks asociados al producto que trae
       for (let stock of product.stocks) {
-        stock.dataValues.amount = stock.amount;
         // por cada una de las tallas
         for (let size of sizes) {
           // si coincide con la del stock

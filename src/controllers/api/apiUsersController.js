@@ -7,7 +7,26 @@ const apiUsersController = {
   // listar todos users
   list: async (req, res) => {
     try {
+      // USERS PAGINATION
+      const pageAsNumber = parseInt(req.query.page);
+      const limit = 2;
+
+      // definimos la paginación
+      let page = 1;
+      if (!Number.isNaN(pageAsNumber) && pageAsNumber > 1) {
+        page = pageAsNumber;
+      }
+
+      // TODOS LOS USERS
       const users = await db.User.findAll({
+        attributes: ["id", "firstName", "lastName", "email"],
+        order: [["id", "ASC"]],
+      });
+
+      // MUESTRA DE USERS CON OFFSET-LIMIT
+      const paginatedUsers = await db.User.findAll({
+        limit: limit,
+        offset: (page - 1) * limit,
         attributes: ["id", "firstName", "lastName", "email"],
         order: [["id", "ASC"]],
       });
@@ -23,10 +42,23 @@ const apiUsersController = {
       //     `http://localhost:3000/api/users/${user.id}`
       //   );
       // });
+      const totalPages = Math.ceil(users.length / limit);
 
       res.status(200).json({
-        count: users.length,
-        users,
+        meta: {
+          count: users.length,
+          totalPages,
+          currentPage: page,
+          next:
+            page < totalPages && page > 0
+              ? `http://localhost:3000/api/users/?page=${page + 1}`
+              : undefined,
+          previous:
+            page > 1 && page <= totalPages
+              ? `http://localhost:3000/api/users/?page=${page - 1}`
+              : undefined,
+        },
+        paginatedUsers,
       });
     } catch (e) {
       res.status(500).json({
