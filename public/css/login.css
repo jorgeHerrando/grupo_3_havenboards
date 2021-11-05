@@ -6,6 +6,10 @@
   background-size: cover;
 }
 
+.login-password {
+  position: relative;
+}
+
 .content-login {
   padding: 1.5em;
 }

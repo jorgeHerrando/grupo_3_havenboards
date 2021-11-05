@@ -30,10 +30,11 @@
                         </label>
                       <% } %>
                     </p>
-                    <p>
+                    <p class="login-password">
                       <label for="passwordLogin">Contraseña</label>
                       <input type="password" name="password"
-                      id="passwordLogin" required placeholder="Introduzca su contraseña" class="<%= locals.errors && errors.password ? 'is-invalid' : null %>"/>
+                      id="passwordLogin" required placeholder="Introduzca su contraseña" class="<%= locals.errors && errors.password ?'is-invalid':null%>"/>
+                      <span class="showBtn"><img class="show-icon" src="/images/icons/hide.png" alt="hide icon" /></span>
                       <span class="infovalidacion password-validation"></span>
                       <% if (locals.errors && errors.password) { %> 
                         <label class="infovalidacion">

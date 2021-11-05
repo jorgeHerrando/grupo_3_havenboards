@@ -2,6 +2,7 @@ window.onload = function () {
   // Input fields
   const email = document.querySelector("#emailLogin");
   const password = document.querySelector("#passwordLogin");
+  const showButton = document.querySelector(".showBtn");
 
   // Regex email
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -11,6 +12,25 @@ window.onload = function () {
 
   // empezamos con el foco en el primer input
   email.focus();
+
+  function showPassword(element) {
+    if (element.alt == "hide icon") {
+      element.src = "/images/icons/view.png";
+      element.alt = "show icon";
+    } else {
+      element.alt = "hide icon";
+      element.src = "/images/icons/hide.png";
+    }
+    // buscamos el input con OOP
+    let field = element.parentElement.previousElementSibling;
+    field.type == "password"
+      ? (field.type = "text")
+      : (field.type = "password");
+  }
+
+  showButton.addEventListener("click", function (e) {
+    showPassword(e.target);
+  });
 
   // Handle form
   form.addEventListener("submit", function (e) {
