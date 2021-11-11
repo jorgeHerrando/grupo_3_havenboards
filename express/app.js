@@ -1,3 +1,5 @@
+const cors = require("cors");
+
 // ************ Require's ************
 const express = require("express");
 
@@ -14,7 +16,7 @@ const app = express();
 const userLoggedMiddleware = require("./src/middlewares/userLoggedMiddleware");
 
 // ************ Middlewares ************
-
+app.use(cors());
 // declarar session antes que el middleware de logueo
 app.use(
   session({
@@ -62,10 +64,10 @@ app.use((req, res, next) => {
 });
 
 let mensaje = () => {
-  console.log("Servidor funcionando en puerto 3000");
+  console.log("Servidor funcionando en puerto 3001");
 };
 
-app.listen(3000, mensaje());
+app.listen(3001, mensaje());
 
 // ************ exports app ************
 // module.exports = app;

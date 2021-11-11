@@ -9,7 +9,7 @@ const apiUsersController = {
     try {
       // USERS PAGINATION
       const pageAsNumber = parseInt(req.query.page);
-      const limit = 2;
+      const limit = 5;
 
       // definimos la paginación
       let page = 1;
@@ -58,7 +58,7 @@ const apiUsersController = {
               ? `http://localhost:3000/api/users/?page=${page - 1}`
               : undefined,
         },
-        paginatedUsers,
+        users: paginatedUsers,
       });
     } catch (e) {
       res.status(500).json({
