@@ -111,6 +111,9 @@ window.onload = function () {
       if (password.value !== password2.value) {
         setInvalid(password2, `Las contraseñas deben coincidir`);
         return;
+      } else {
+        setValid(password2);
+        return;
       }
     }
     setValid(password);
