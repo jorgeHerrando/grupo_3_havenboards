@@ -113,20 +113,18 @@ const apiProductsController = {
             through: { attributes: [] },
           },
         ],
-        attributes: ["id", "name", "description", "sale", "price","discount"],
+        attributes: ["id", "name", "description", "sale", "price", "discount"],
         order: [["id", "ASC"]],
       });
 
       // saca el último
       let lastProduct = products.pop();
-      
+
       let images_url = [];
       // por cada imagen pusheamos su url en la variable de arriba
       lastProduct.images.forEach((image) => {
-        images_url.push(
-          `http://localhost:3000/images/products/${image.name}`
-        );
-      })
+        images_url.push(`http://localhost:3000/images/products/${image.name}`);
+      });
       // creamos dataValue images_url
       lastProduct.dataValues.images_url = images_url;
 
@@ -254,6 +252,67 @@ const apiProductsController = {
     }
   },
 
+  sales: async (req, res) => {
+    try {
+      // MUESTRA SALES
+      //   llamamos a todos productos con sus ventas
+      const products = await db.Product.findAll({
+        include: ["orderDetails"],
+        attributes: ["name", "price"],
+        order: [["id", "ASC"]],
+      });
+
+      // vamos a sacar los productos con ventas
+      let productsWithSales = [];
+
+      // y guardarlos en el array
+      for (let product of products) {
+        if (product.orderDetails.length > 0) {
+          productsWithSales.push(product);
+        }
+      }
+
+      // objetos a mostrar
+      let productsToShow = [];
+
+      // de cada uno de los que tienen ventas armamos un objeto literal con propiedades
+      for (let productSale of productsWithSales) {
+        let amount = 0;
+        let totalPrice = 0;
+        let productObject = {};
+
+        // por cada detalle de orden suma la cantidad de productos y los precios totales
+        productSale.orderDetails.forEach((detail) => {
+          amount += detail.amount;
+          totalPrice = totalPrice + detail.amount * Number(detail.price);
+        });
+
+        productObject["name"] = productSale.name;
+        productObject["price"] = Number(productSale.price);
+        productObject["amount"] = amount;
+        productObject["totalPrice"] = totalPrice;
+
+        // y lo pusheamos a lo que queremos mostrar
+        productsToShow.push(productObject);
+      }
+
+      //   mostramos todo
+      res.status(200).json({
+        meta: {
+          count: productsToShow.length,
+        },
+        products: productsToShow,
+      });
+    } catch (e) {
+      res.status(500).json({
+        meta: {
+          status: "error",
+        },
+        error: "Orders not found",
+      });
+    }
+  },
+
   // detalle de un user
   detail: async (req, res) => {
     // recuperamos id
@@ -341,4 +400,4 @@ const apiProductsController = {
   },
 };
 
-module.exports = apiProductsController
+module.exports = apiProductsController;

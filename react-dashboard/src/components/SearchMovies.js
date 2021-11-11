@@ -9,7 +9,7 @@ function SearchMovies() {
   // Guardar contenido input búsqueda
   const [search, setSearch] = useState("action");
 
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
   useEffect(() => {
     //   con funcion tradicional

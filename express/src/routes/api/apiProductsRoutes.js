@@ -15,6 +15,7 @@ router.get("/subcategories", apiProductsController.subcategories); //para subcat
 router.get("/brands", apiProductsController.brands); //para marcas
 
 router.get("/orders", apiProductsController.orders); //para orders
+router.get("/sales", apiProductsController.sales); //para sales
 
 router.get("/:id", apiProductsController.detail); //para dar detalle de un user
 

@@ -1,36 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
-import GenresInDb from "./GenresInDb";
+import ProductsInCategory from "./ProductsInCategory";
 import LastProductInDb from "./LastProductInDb";
 import ContentRowMovies from "./ContentRowMovies";
 import SearchMovies from "./SearchMovies";
 import ProductDetail from "./ProductDetail";
-import Chart from './Chart';
+import ProductsChart from "./ProductsChart";
+import SalesChart from "./SalesChart/SalesChart";
 import NotFound from "./NotFound";
 import { Link, Route, Switch } from "react-router-dom";
 
 function SideBar() {
   const [product, setProduct] = useState();
-    
+
   useEffect(() => {
-    
-      const getInfo = async () => {
-        let resProduct = await fetch(`http://localhost:3001/api/products/last`);
-        let productSaved = await resProduct.json();
-        console.log(productSaved);
+    const getInfo = async () => {
+      let resProduct = await fetch(`http://localhost:3001/api/products/last`);
+      let productSaved = await resProduct.json();
+      console.log(productSaved);
 
-        let lastProduct = productSaved;
-        console.log(lastProduct);
-    
+      let lastProduct = productSaved;
+      console.log(lastProduct);
 
-        setProduct(lastProduct);
-          
-      };
-      getInfo();
-      console.log(product);
-    }, []);
-
+      setProduct(lastProduct);
+    };
+    getInfo();
+    console.log(product);
+  }, []);
 
   return (
     <React.Fragment>
@@ -98,6 +95,14 @@ function SideBar() {
           </Link>
         </li>
 
+        {/*<!-- Nav Item - Tables -->*/}
+        <li className="nav-item nav-link">
+          <Link className="nav-link" to="/SalesChart">
+            <i className="fas fa-fw fa-table"></i>
+            <span>Sales List</span>
+          </Link>
+        </li>
+
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
@@ -124,7 +129,7 @@ function SideBar() {
           <ContentWrapper />
         </Route>
         <Route path="/GenresInDb">
-          <GenresInDb />
+          <ProductsInCategory />
         </Route>
         <Route path="/LastProductInDb">
           <LastProductInDb />
@@ -136,12 +141,15 @@ function SideBar() {
           <SearchMovies />
         </Route>
         <Route path="/ProductDetail">
-          {product && <ProductDetail {...product.product}/>}
+          {product && <ProductDetail {...product.product} />}
         </Route>
         <Route path="/Chart">
-          <Chart />
+          <ProductsChart />
         </Route>
-        
+        <Route path="/SalesChart">
+          <SalesChart />
+        </Route>
+
         <Route component={NotFound} />
       </Switch>
       {/*<!-- End Microdesafio 2 -->*/}

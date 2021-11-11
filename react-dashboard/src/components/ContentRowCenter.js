@@ -1,43 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import LastProductInDb from './LastProductInDb';
-import GenresInDb from './GenresInDb';
+import React, { useState, useEffect } from "react";
+import LastProductInDb from "./LastProductInDb";
+import ProductsInCategory from "./ProductsInCategory";
 
-function ContentRowCenter(){
-    // seteamos estado product
-    const [product, setProduct] = useState();
-    
-    // comoonentDidMount()
-    useEffect(() => {
-    
-        const getInfo = async () => {
-          let resProduct = await fetch(`http://localhost:3001/api/products/last`);
-          let productSaved = await resProduct.json();
-          console.log(productSaved);
+function ContentRowCenter() {
+  // seteamos estado product
+  const [product, setProduct] = useState();
 
-          let lastProduct = productSaved;
-          console.log(lastProduct);
-    
+  // comoonentDidMount()
+  useEffect(() => {
+    const getInfo = async () => {
+      let resProduct = await fetch(`http://localhost:3001/api/products/last`);
+      let productSaved = await resProduct.json();
+      console.log(productSaved);
 
-          setProduct(lastProduct);
-          
-        };
-        getInfo();
-      }, []);
+      let lastProduct = productSaved;
+      console.log(lastProduct);
 
-   
+      setProduct(lastProduct);
+    };
+    getInfo();
+  }, []);
 
-    return (
-        <div className="row">
-            {product ?  <LastProductInDb {...product.product} /> : "Cargando..."}
-            {/*<!-- Last Movie in DB -->*/}
-            
-            {/*<!-- End content row last movie in Data Base -->*/}
+  return (
+    <div className="row">
+      {product ? <LastProductInDb {...product.product} /> : "Cargando..."}
+      {/*<!-- Last Movie in DB -->*/}
 
-            {/*<!-- Genres in DB -->*/}
-            <GenresInDb />
+      {/*<!-- End content row last movie in Data Base -->*/}
 
-        </div>
-    )
+      {/*<!-- Genres in DB -->*/}
+      <ProductsInCategory />
+    </div>
+  );
 }
 
 export default ContentRowCenter;
