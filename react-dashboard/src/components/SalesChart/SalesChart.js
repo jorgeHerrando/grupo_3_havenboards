@@ -11,9 +11,12 @@ function SalesChart() {
       let resProducts = await fetch(`http://localhost:3001/api/products/sales`);
       let productsSaved = await resProducts.json();
 
+      // console.log(productsSaved);
+
       setSales(productsSaved); //products=productsSaved
     };
     allInfo();
+    // console.log(sales);
   }, []);
 
   return (

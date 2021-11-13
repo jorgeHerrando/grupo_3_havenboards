@@ -37,7 +37,7 @@ CREATE TABLE `addresses` (
   PRIMARY KEY (`id`),
   KEY `addresses_FK` (`user_id`),
   CONSTRAINT `addresses_FK` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `addresses` (
 
 LOCK TABLES `addresses` WRITE;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
-INSERT INTO `addresses` VALUES (1,'2021-09-20 15:47:58','2021-10-06 17:31:55','Almozara',32,'2B','Buenos Aires','Merlo',1722,'Argentina',7),(2,'2021-10-29 11:58:08','2021-10-29 11:58:08','Callejas',NULL,NULL,NULL,'Madrid',NULL,'España',3);
+INSERT INTO `addresses` VALUES (1,'2021-09-20 15:47:58','2021-10-06 17:31:55','Almozara',32,'2B','Buenos Aires','Merlo',1722,'Argentina',7),(2,'2021-10-29 11:58:08','2021-10-29 11:58:08','Callejas',NULL,NULL,NULL,'Madrid',NULL,'España',1),(3,'2021-11-12 11:02:29','2021-11-12 11:02:29','Sarandí',14,'2A','Buenos Aires','Merlo',1899,'Argentina',3),(4,'2021-11-12 11:04:52','2021-11-12 11:04:52','Sarmiento',28,'1B','Buenos Aires','Buenos Aires',1322,'Argentina',2);
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,13 +123,13 @@ CREATE TABLE `order_details` (
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `detail_order_product_FK` (`order_id`),
-  KEY `detail_order_product_FK_1` (`product_id`),
   KEY `order_details_FK` (`user_id`),
-  CONSTRAINT `detail_order_product_FK` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  CONSTRAINT `detail_order_product_FK_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  CONSTRAINT `order_details_FK` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `order_details_FK_1` (`order_id`),
+  KEY `order_details_FK_2` (`product_id`),
+  CONSTRAINT `order_details_FK` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `order_details_FK_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  CONSTRAINT `order_details_FK_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `order_details` (
 
 LOCK TABLES `order_details` WRITE;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
-INSERT INTO `order_details` VALUES (1,1,26,1,120.00,'2021-09-20 16:43:36',NULL,7),(2,1,27,2,120.00,'2021-09-20 16:43:36',NULL,7),(3,2,26,1,120.00,'2021-09-20 16:43:36','2021-10-14 18:13:28',7),(4,2,27,2,120.00,'2021-09-20 16:43:36','2021-10-14 18:13:28',7);
+INSERT INTO `order_details` VALUES (1,1,26,1,120.00,'2021-09-20 16:43:36',NULL,7),(2,1,27,2,120.00,'2021-09-20 16:43:36',NULL,7),(3,2,26,1,120.00,'2021-09-20 16:43:36','2021-10-14 18:13:28',7),(4,2,27,2,120.00,'2021-09-20 16:43:36','2021-10-14 18:13:28',7),(5,3,3,1,110.00,'2021-11-12 10:58:22','2021-11-12 10:58:22',1),(6,4,16,2,75.00,'2021-11-12 11:02:35','2021-11-12 11:02:35',3),(7,5,18,1,15.00,'2021-11-12 11:06:45','2021-11-12 11:06:45',2),(8,5,19,1,5.00,'2021-11-12 11:06:45','2021-11-12 11:06:45',2),(9,6,21,3,120.00,'2021-11-12 11:13:37','2021-11-12 11:13:37',4),(10,6,15,1,55.00,'2021-11-12 11:13:37','2021-11-12 11:13:37',4),(11,7,12,2,23.00,'2021-11-12 11:14:50','2021-11-12 11:14:50',5),(12,7,11,1,32.00,'2021-11-12 11:14:50','2021-11-12 11:14:50',5);
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +153,7 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `method_id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL,
+  `address_id` int(11) DEFAULT NULL,
   `totalPrice` decimal(10,2) NOT NULL,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -164,7 +164,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_FK` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `orders_FK_1` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`),
   CONSTRAINT `orders_FK_2` FOREIGN KEY (`method_id`) REFERENCES `payment_methods` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,7,1,1,360.00,'2021-09-20 15:57:45',NULL),(2,7,1,1,360.00,'2021-09-20 15:57:45','2021-10-14 18:12:59');
+INSERT INTO `orders` VALUES (1,7,1,1,360.00,'2021-09-20 15:57:45',NULL),(2,7,1,1,360.00,'2021-09-20 15:57:45','2021-10-14 18:12:59'),(3,1,1,2,240.00,'2021-11-12 10:57:13','2021-11-12 10:57:13'),(4,3,1,3,180.00,'2021-11-12 11:02:33','2021-11-12 11:02:33'),(5,2,1,4,300.00,'2021-11-12 11:05:01','2021-11-12 11:05:01'),(6,4,1,NULL,580.00,'2021-11-12 11:10:57','2021-11-12 11:10:57'),(7,5,1,NULL,320.00,'2021-11-12 11:11:27','2021-11-12 11:11:27');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,4 +546,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-01 16:52:54
+-- Dump completed on 2021-11-13 16:52:17

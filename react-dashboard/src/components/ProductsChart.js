@@ -4,8 +4,10 @@ import ProductsChartRow from "./ProductsChartRow";
 function Chart() {
   // estado productos
   const [products, setProducts] = useState();
+  // paginado
+  const [page, setPage] = useState(1);
 
-  // componentDidMount
+  // componentDidMount: Al montar componente traemos productos
   useEffect(() => {
     const allInfo = async () => {
       let resProducts = await fetch(`http://localhost:3001/api/products/`);
@@ -15,6 +17,33 @@ function Chart() {
     };
     allInfo();
   }, []);
+
+  // functions
+  const previous = async () => {
+    const allInfo = async () => {
+      let resProducts = await fetch(
+        `http://localhost:3001/api/products/?page=${page - 1}`
+      );
+      let productsSaved = await resProducts.json();
+
+      setProducts(productsSaved); //products=productsSaved
+      setPage(page - 1);
+    };
+    allInfo();
+  };
+
+  const next = async () => {
+    const allInfo = async () => {
+      let resProducts = await fetch(
+        `http://localhost:3001/api/products/?page=${page + 1}`
+      );
+      let productsSaved = await resProducts.json();
+
+      setProducts(productsSaved); //products=productsSaved
+      setPage(page + 1);
+    };
+    allInfo();
+  };
 
   return (
     /* <!-- DataTales Example --> */
@@ -56,6 +85,17 @@ function Chart() {
             </tbody>
           </table>
         </div>
+        {/* paginado */}
+        {products && page > 1 ? (
+          <button onClick={previous}>Anterior</button>
+        ) : (
+          ""
+        )}
+        {products && page < products.meta.totalPages ? (
+          <button onClick={next}>Siguiente</button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -5,9 +5,13 @@ const router = express.Router();
 // ************ Controller Require ************
 const apiUsersController = require("../../controllers/api/apiUsersController");
 
-// Listado de users
-router.get("/", apiUsersController.list); //para listar todos los users
+// LISTADO DE USERS
+router.get("/", apiUsersController.list);
 
-router.get("/:id", apiUsersController.detail); //para dar detalle de un user
+// PROCESAR LOGIN
+router.post("/login", apiUsersController.processLogin);
+
+// USER DETAILS
+router.get("/:id", apiUsersController.detail);
 
 module.exports = router;

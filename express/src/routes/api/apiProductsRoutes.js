@@ -5,18 +5,27 @@ const router = express.Router();
 // ************ Controller Require ************
 const apiProductsController = require("../../controllers/api/apiProductsController");
 
-// Listado de users
-router.get("/", apiProductsController.list); //para listar todos los products
-router.get("/last", apiProductsController.lastProduct); //para listar todos los products
+// TODOS LOS PRODUCTOS
+router.get("/", apiProductsController.list);
+// EL ÚLTIMO PRODUCT
+router.get("/last", apiProductsController.lastProduct);
 
-router.get("/categories", apiProductsController.categories); //para categorías
-router.get("/subcategories", apiProductsController.subcategories); //para subcategorías
+// CATEGORÍAS
+router.get("/categories", apiProductsController.categories);
+// SUBCATEGORÍAS
+router.get("/subcategories", apiProductsController.subcategories);
 
-router.get("/brands", apiProductsController.brands); //para marcas
+// MARCAS
+router.get("/brands", apiProductsController.brands);
 
-router.get("/orders", apiProductsController.orders); //para orders
-router.get("/sales", apiProductsController.sales); //para sales
+// ORDERS
+router.get("/orders", apiProductsController.orders);
+// SALES
+router.get("/sales", apiProductsController.sales);
+// TOP 5
+router.get("/topFive/:top?", apiProductsController.topFive);
 
-router.get("/:id", apiProductsController.detail); //para dar detalle de un user
+// DETALLE PRODUCTO
+router.get("/:id", apiProductsController.detail);
 
 module.exports = router;

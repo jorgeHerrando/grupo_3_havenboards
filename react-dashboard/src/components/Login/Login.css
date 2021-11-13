@@ -1,0 +1,40 @@
+.login-password {
+  position: relative;
+}
+
+.content-login {
+  padding: 1.5em;
+}
+
+.contact-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.login-form {
+  width: 100%;
+}
+
+/* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
+/* ------------------------------------------- 415 ----------------------------------------------- */
+
+@media (min-width: 415px) {
+  .content-login {
+    padding: 2.2rem;
+  }
+}
+
+/* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */
+/* ------------------------------------------- 769 ----------------------------------------------- */
+@media (min-width: 769px) {
+  .content-login {
+    padding: 3rem;
+  }
+
+  .login-form {
+    width: 50%;
+    padding: 0 2rem;
+  }
+}

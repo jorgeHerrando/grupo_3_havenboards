@@ -9,10 +9,10 @@ function LastProductInDb(props) {
     const getInfo = async () => {
       let resProduct = await fetch(`http://localhost:3001/api/products/last`);
       let productSaved = await resProduct.json();
-      console.log(productSaved);
+      // console.log(productSaved);
 
       let lastProduct = productSaved;
-      console.log(lastProduct);
+      // console.log(lastProduct);
 
       setProduct(lastProduct);
     };

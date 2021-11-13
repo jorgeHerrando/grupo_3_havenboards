@@ -1,4 +1,5 @@
 // para trabajar con la DB
+const { sequelize } = require("../../database/models");
 const db = require("../../database/models");
 
 const Op = db.Sequelize.Op;
@@ -13,6 +14,7 @@ const apiProductsController = {
 
       // definimos la paginación
       let page = 1;
+      // si es número lo que llega en el string
       if (!Number.isNaN(pageAsNumber) && pageAsNumber > 1) {
         page = pageAsNumber;
       }
@@ -40,14 +42,14 @@ const apiProductsController = {
         // por cada imagen pusheamos su url en la variable de arriba
         product.images.forEach((image) => {
           images_url.push(
-            `http://localhost:3000/images/products/${image.name}`
+            `http://localhost:3001/images/products/${image.name}`
           );
         });
         // creamos dataValue images_url
         product.dataValues.images_url = images_url;
 
         // creamos dataValue detail
-        product.dataValues.detail = `http://localhost:3000/api/products/${product.id}`;
+        product.dataValues.detail = `http://localhost:3001/api/products/${product.id}`;
       });
 
       // MUESTRA COUNT POR CATEGORÍA
@@ -80,11 +82,11 @@ const apiProductsController = {
           currentPage: page,
           next:
             page < totalPages && page > 0
-              ? `http://localhost:3000/api/products/?page=${page + 1}`
+              ? `http://localhost:3001/api/products/?page=${page + 1}`
               : undefined,
           previous:
             page > 1 && page <= totalPages
-              ? `http://localhost:3000/api/products/?page=${page - 1}`
+              ? `http://localhost:3001/api/products/?page=${page - 1}`
               : undefined,
         },
         products,
@@ -123,13 +125,13 @@ const apiProductsController = {
       let images_url = [];
       // por cada imagen pusheamos su url en la variable de arriba
       lastProduct.images.forEach((image) => {
-        images_url.push(`http://localhost:3000/images/products/${image.name}`);
+        images_url.push(`http://localhost:3001/images/products/${image.name}`);
       });
       // creamos dataValue images_url
       lastProduct.dataValues.images_url = images_url;
 
       // creamos dataValue detail
-      lastProduct.dataValues.detail = `http://localhost:3000/api/products/${lastProduct.id}`;
+      lastProduct.dataValues.detail = `http://localhost:3001/api/products/${lastProduct.id}`;
 
       //   mostramos todo
       res.status(200).json({
@@ -287,6 +289,7 @@ const apiProductsController = {
           totalPrice = totalPrice + detail.amount * Number(detail.price);
         });
 
+        // crear key-value en el object
         productObject["name"] = productSale.name;
         productObject["price"] = Number(productSale.price);
         productObject["amount"] = amount;
@@ -302,6 +305,48 @@ const apiProductsController = {
           count: productsToShow.length,
         },
         products: productsToShow,
+      });
+    } catch (e) {
+      res.status(500).json({
+        meta: {
+          status: "error",
+        },
+        error: "Orders not found",
+      });
+    }
+  },
+
+  topFive: async (req, res) => {
+    let limit = 5;
+    const top = req.params.top;
+    if (top) {
+      limit = Number(top);
+    }
+
+    try {
+      // MUESTRA SALES
+      //   llamamos a las orderDetails
+      const maxOrders = await db.OrderDetail.findAll({
+        // nos trae la columna product_id y el sumatorio de la columna amount según product_id
+        attributes: [
+          "product_id",
+          [sequelize.fn("sum", sequelize.col("amount")), "totalAmount"],
+        ],
+        // esta es la agrupación
+        group: ["product_id"],
+        // de mayor a menor
+        order: sequelize.literal("totalAmount DESC"),
+        // que incluya el nombre del producto
+        include: [{ association: "product", attributes: ["name"] }],
+        limit: limit,
+      });
+
+      //   mostramos todo
+      res.status(200).json({
+        meta: {
+          count: maxOrders.length,
+        },
+        products: maxOrders,
       });
     } catch (e) {
       res.status(500).json({
@@ -383,7 +428,7 @@ const apiProductsController = {
       // por cada imagen de producto
       for (let image of product.images) {
         // le añadimos una url
-        image.dataValues.url = `http://localhost:3000/images/products/${image.name}`;
+        image.dataValues.url = `http://localhost:3001/images/products/${image.name}`;
       }
       // le mandamos el product con la info
       res.status(200).json({
