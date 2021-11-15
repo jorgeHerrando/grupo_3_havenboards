@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import SideBar from "./SideBar";
 import Login from "./Login/Login";
+import AddProduct from "./AddProduct";
 
 function App() {
   // borrar el session al iniciar App
@@ -11,6 +12,7 @@ function App() {
     <React.Fragment>
       <div id="wrapper">
         <SideBar />
+        {/* <AddProduct /> */}
         {/* <Login /> */}
       </div>
     </React.Fragment>

@@ -25,6 +25,7 @@ const apiProductsController = {
         offset: (page - 1) * limit,
         include: [
           { association: "images", attributes: ["name"] },
+          { association: "brand", attributes: ["name"] },
           {
             association: "sizes",
             attributes: ["name"],
@@ -32,7 +33,7 @@ const apiProductsController = {
             through: { attributes: [] },
           },
         ],
-        attributes: ["id", "name", "description", "price"],
+        attributes: ["id", "name", "description", "price", "discount"],
         order: [["id", "ASC"]],
       });
 

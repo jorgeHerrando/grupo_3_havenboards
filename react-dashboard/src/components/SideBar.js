@@ -9,6 +9,7 @@ import ProductDetail from "./ProductDetail";
 import ProductsChart from "./ProductsChart";
 import SalesChart from "./SalesChart/SalesChart";
 import TopFiveChart from "./TopFiveChart";
+import AddProduct from "./AddProduct";
 import Login from "./Login/Login";
 import Help from "./Help";
 import Denied from "./Denied";
@@ -196,6 +197,20 @@ function SideBar() {
           )}
         </li>
 
+        <li className="nav-item nav-link">
+          {connected ? (
+            <Link className="nav-link" to="/AddProduct">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Add Product</span>
+            </Link>
+          ) : (
+            <Link className="nav-link" to="/">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Add Product</span>
+            </Link>
+          )}
+        </li>
+
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
@@ -237,6 +252,13 @@ function SideBar() {
         <Route path="/TopFiveChart">
           {userLogged && userLogged.role == "admin" && connected ? (
             <TopFiveChart />
+          ) : (
+            <Denied />
+          )}
+        </Route>
+        <Route path="/AddProduct">
+          {userLogged && userLogged.role == "admin" && connected ? (
+            <AddProduct />
           ) : (
             <Denied />
           )}
