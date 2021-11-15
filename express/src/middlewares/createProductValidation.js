@@ -82,6 +82,7 @@ const validations = [
       //probe mil cosas y es la única que funciona
       throw new Error("Tienes que subir al menos una imagen");
     } else {
+      // si hay imagenes, chequea cada una de ellas
       for (const onefile of file) {
         let fileExtension = path.extname(onefile.originalname);
         if (!acceptedExtensions.includes(fileExtension)) {

@@ -90,6 +90,7 @@ const productsController = {
         // mandamos la vista con lo que queremos
         return res.render("products/shop", {
           // sólo queremos enviar lo que hay en rows
+          page: page,
           products: productsToShow.rows,
           category: productsCategory,
           totalPages: Math.ceil(productsToShow.count / size),
@@ -104,6 +105,7 @@ const productsController = {
       productsToShow = products;
 
       return res.render("products/shop", {
+        page: page,
         products: productsToShow.rows,
         // aquí podemos contarlo
         // ceil lo redondea hacia arriba para la última página

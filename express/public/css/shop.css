@@ -133,18 +133,22 @@ section.shop-pagination {
   justify-content: center;
   padding-bottom: 1.5rem;
 }
-section.shop-pagination form {
-  width: 30px;
-  text-align: center;
-}
-section.shop-pagination form button {
+
+section.shop-pagination a {
+  margin: 0 1rem;
   cursor: pointer;
   background: none;
   border: none;
   color: #153351;
 }
-section.shop-pagination form button:hover {
+
+section.shop-pagination a:hover,
+section.shop-pagination a.onPage {
   color: #4abbc7;
+}
+
+section.shop-pagination a.onPage:hover {
+  color: #153351;
 }
 
 /* ------------------------------------- MEDIA - QUERIES ----------------------------------------- */

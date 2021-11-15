@@ -1,3 +1,4 @@
+// para poder conectar React -API
 const cors = require("cors");
 
 // ************ Require's ************
@@ -47,13 +48,16 @@ const mainRouter = require("./src/routes/mainRouter");
 const usersRouter = require("./src/routes/usersRoutes");
 const productsRouter = require("./src/routes/productsRoutes");
 
+// API
 const apiUsersRouter = require("./src/routes/api/apiUsersRoutes");
 const apiProductsRouter = require("./src/routes/api/apiProductsRoutes");
 
+// SISTEMA DE RUTEO
 app.use("/", mainRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
+// API
 app.use("/api/users", apiUsersRouter);
 app.use("/api/products", apiProductsRouter);
 

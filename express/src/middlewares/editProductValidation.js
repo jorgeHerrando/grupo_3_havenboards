@@ -1,32 +1,6 @@
 const path = require("path");
 const { body } = require("express-validator");
 
-// const categories = [
-//   "Snowboarding",
-//   "Skateboarding",
-//   "Surf",
-//   "Wakeboarding",
-//   "Accessory",
-// ];
-// const subcategories = [
-//   "",
-//   "Helmet",
-//   "Gloves",
-//   "Protection",
-//   "Fin",
-//   "Wax",
-//   "Glasses",
-// ];
-// const brands = [
-//   "Quicksilver",
-//   "Billabong",
-//   "Roxy",
-//   "Patagonia",
-//   "Hurley",
-//   "Burton",
-// ];
-// const sizes = ["", "S", "M", "L"];
-
 const validations = [
   body("name")
     .notEmpty()
